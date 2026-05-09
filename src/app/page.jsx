@@ -4,6 +4,7 @@ import About from "../components/About";
 import Project from "../components/Project";
 import Skills from "../components/Skills";
 import Certificates from "../components/Certificates";
+import Experience from "../components/Experience";
 
 export default function Page() {
   return (
@@ -17,6 +18,7 @@ export default function Page() {
       <Project />
       <Skills />
       <Certificates />
+      <Experience />
     </main>
   );
 }

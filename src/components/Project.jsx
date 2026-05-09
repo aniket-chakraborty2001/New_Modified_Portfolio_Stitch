@@ -5,73 +5,73 @@ const projects = [
     title: "Berger Exterior Home Layering",
     description: "Implemented in Berger My Color Mobile Application to show users how their home will look in different color combinations. Achieved 90%+ accuracy",
     tags: ["Gemini API", "OpenCv", "Pillow", "Fast API"],
-    image: "/Berger_Exterior_Layering.jpg",
+    image: "/projects/demo_project.png",
   },
   {
     title: "Berger Site Inspection",
     description: "Implemented in Berger My Color App, used to give an estimate of coloring/repainting any building when four side images are given. Achieved accuracy of 94%.",
     tags: ["Computer Vision", "Meta SAM3", "OpenCv", "Pillow", "Fast API", "PyTorch"],
-    image: "/berger_site_inspection.jpg",
+    image: "/projects/demo_project.png",
   },
   {
     title: "Company Attendance System",
     description: "An inhouse project used in Company website to Mark Attendance of employees using face embedding and detection model. Achieved 95%+ accuracy",
     tags: ["ONNX", "DeepFace", "Buffalo", "Face Embedding", "Face recognition", "Fast API"],
-    image: "/attendance_system.jpg",
+    image: "/projects/demo_project.png",
   },
   {
     title: "Cricket Bio-Analytics System",
     description: "Live Camera captures video of cricket players side profile and this system gives an real time feedback, monitor poses, shot classification and gives feedback",
     tags: ["Computer Vision", "YOLO", "OpenCv", "Mediapipe", "RoboFlow", "Streamlit"],
-    image: "/cricket_analysis.jpg",
+    image: "/projects/demo_project.png",
   },
   {
     title: "Instore Analytics",
     description: "A computer vision based system that tracks real time user's count, IN and OUT numbers, gender and age based detection. Finally, gendernand age based analytics",
     tags: ["OpenCv", "YOLO", "Computer Vision", "Line boundary system", "Streamlit", "Face and Gender Detection Model"],
-    image: "/instore_analytics.jpg",
+    image: "/projects/demo_project.png",
   },
   {
     title: "Berger Agentic Voice Agent",
     description: "A self framework and Groq based voice agent that uses Whisper (STT), RAG + LLM and SARVAM TTS service with Berger Internal data. Users asks questions in English, Hindi or Bengali, agent answers back in same language. Not done completely for Bengali.",
     tags: ["Webhook", "VAD", "Groq", "Voice Agent", "RAG", "Whisper STT", "SARVAM TTS", "Fast API"],
-    image: "/voice_agent.jpg",
+    image: "/projects/demo_project.png",
   },
   {
     title: "Rehau Edge Band Maching",
     description: "A Google's ViT based Model that takes a user input image, extract features and suggests more edge bands with same texture pattern. Available too test in Rehau One Mobile application.",
     tags: ["Vision Transformers", "OpenCv", "Hugging face", "Pillow", "Fast API"],
-    image: "/edge_band_pattern.jpg",
+    image: "/projects/demo_project.png",
   },
   {
     title: "Car Inspection Reporting System",
     description: "Computer Vision based system that takes a car 360 degree video, detects different car parts, damages and returns a detailed result in excel format",
     tags: ["YOLO", "OpenCv", "RoboFlow", "Streamlit"],
-    image: "/car_inspection_system.jpg",
+    image: "/projects/demo_project.png",
   },
   {
     title: "PotHole Detection System",
     description: "An AI based computer vision technique that takes car camera feeds of road and detects pothole in real time.",
     tags: ["YOLO", "Computer Vision", "Opencv", "Streamlit"],
-    image: "/pothole_detection_system.jpg",
+    image: "/projects/demo_project.png",
   },
   {
     title: "RAG ChatBot",
     description: "A Retrieval Augmented Generation based Chatbot using opensource data for Hawaiin Wild Fire. Uses Openai API keys to build the RAG",
     tags: ["OpenAI", "RAG", "HuggingFace", "Langchain", "Faiss", "Vector database", "streamlit"],
-    image: "/rag_chatbot.jpg",
+    image: "/projects/demo_project.png",
   },
   {
     title: "OpenClaw Website Agent",
     description: "An OpenClaw based agent that takes an excel file containing some company emails, crawls the website, understand business, pros cons user journey and suggest chnges.",
     tags: ["OpenClaw", "Windows", "Excel", "Agent", "Openai", "Tools"],
-    image: "/openclaw_agent.jpg",
+    image: "/projects/demo_project.png",
   },
   {
     title: "SAM2 Human Tracking",
     description: "Meta SAM2 based human tracking system that detects, tracks, segments humans in a place or store",
     tags: ["Python", "PyTorch", "Meta SAM2", "YOLO", "OpenCv", "Pillow"],
-    image: "/opt-signal.jpg",
+    image: "/projects/demo_project.png",
   },
 ];
 
@@ -165,7 +165,7 @@ export default function Project() {
 
           <div className="relative min-h-[22rem] bg-[#101820]">
             <Image
-              src="/itr_calculation.jpg"
+              src="/projects/demo_project.png"
               alt="PROJECT_SYNERGY focus visual"
               fill
               sizes="(min-width: 1024px) 46rem, 100vw"

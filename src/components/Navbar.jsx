@@ -10,24 +10,23 @@ const navItems = [
   "Projects",
   "Skills",
   "Certificates",
-  "Internship",
+  "Experience",
   "Education",
   "Contact",
 ];
 
-const trackedSectionIds = ["home", "about", "projects", "skills", "certificates"];
+const trackedSectionIds = [
+  "home",
+  "about",
+  "projects",
+  "skills",
+  "certificates",
+  "experience",
+];
 
 export default function Navbar() {
   const activeLockUntilRef = useRef(0);
-  const [activeSection, setActiveSection] = useState(() => {
-    if (typeof window === "undefined") {
-      return "home";
-    }
-
-    const hashSection = window.location.hash.replace("#", "");
-
-    return trackedSectionIds.includes(hashSection) ? hashSection : "home";
-  });
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     let animationFrameId = 0;
