@@ -26,33 +26,9 @@ const projects = [
     image: "/projects/demo_project.png",
   },
   {
-    title: "Instore Analytics",
-    description: "A computer vision based system that tracks real time user's count, IN and OUT numbers, gender and age based detection. Finally, gendernand age based analytics",
-    tags: ["OpenCv", "YOLO", "Computer Vision", "Line boundary system", "Streamlit", "Face and Gender Detection Model"],
-    image: "/projects/demo_project.png",
-  },
-  {
-    title: "Berger Agentic Voice Agent",
-    description: "A self framework and Groq based voice agent that uses Whisper (STT), RAG + LLM and SARVAM TTS service with Berger Internal data. Users asks questions in English, Hindi or Bengali, agent answers back in same language. Not done completely for Bengali.",
-    tags: ["Webhook", "VAD", "Groq", "Voice Agent", "RAG", "Whisper STT", "SARVAM TTS", "Fast API"],
-    image: "/projects/demo_project.png",
-  },
-  {
     title: "Rehau Edge Band Maching",
     description: "A Google's ViT based Model that takes a user input image, extract features and suggests more edge bands with same texture pattern. Available too test in Rehau One Mobile application.",
     tags: ["Vision Transformers", "OpenCv", "Hugging face", "Pillow", "Fast API"],
-    image: "/projects/demo_project.png",
-  },
-  {
-    title: "Car Inspection Reporting System",
-    description: "Computer Vision based system that takes a car 360 degree video, detects different car parts, damages and returns a detailed result in excel format",
-    tags: ["YOLO", "OpenCv", "RoboFlow", "Streamlit"],
-    image: "/projects/demo_project.png",
-  },
-  {
-    title: "PotHole Detection System",
-    description: "An AI based computer vision technique that takes car camera feeds of road and detects pothole in real time.",
-    tags: ["YOLO", "Computer Vision", "Opencv", "Streamlit"],
     image: "/projects/demo_project.png",
   },
   {
@@ -60,45 +36,44 @@ const projects = [
     description: "A Retrieval Augmented Generation based Chatbot using opensource data for Hawaiin Wild Fire. Uses Openai API keys to build the RAG",
     tags: ["OpenAI", "RAG", "HuggingFace", "Langchain", "Faiss", "Vector database", "streamlit"],
     image: "/projects/demo_project.png",
-  },
-  {
-    title: "OpenClaw Website Agent",
-    description: "An OpenClaw based agent that takes an excel file containing some company emails, crawls the website, understand business, pros cons user journey and suggest chnges.",
-    tags: ["OpenClaw", "Windows", "Excel", "Agent", "Openai", "Tools"],
-    image: "/projects/demo_project.png",
-  },
-  {
-    title: "SAM2 Human Tracking",
-    description: "Meta SAM2 based human tracking system that detects, tracks, segments humans in a place or store",
-    tags: ["Python", "PyTorch", "Meta SAM2", "YOLO", "OpenCv", "Pillow"],
-    image: "/projects/demo_project.png",
-  },
+  }
 ];
 
-function ProjectCard({ project }) {
+function ProjectCard({ project, index }) {
   return (
-    <article className="overflow-hidden rounded-[3px] border border-cyan-300/15 bg-[#0d213f] shadow-[0_0_0_rgba(100,255,231,0)] transition duration-300 ease-out hover:scale-[1.035] hover:border-cyan-300/45 hover:shadow-[0_22px_55px_rgba(100,255,231,0.24)]">
-      <div className="relative h-44 bg-[#101820]">
+    <article
+      className="project-card group relative isolate overflow-hidden rounded-[3px] border border-cyan-300/15 bg-[#0d213f] shadow-[0_0_0_rgba(100,255,231,0)] transition duration-500 ease-out hover:-translate-y-3 hover:border-cyan-300/55 hover:shadow-[0_28px_70px_rgba(100,255,231,0.24)]"
+      style={{ animationDelay: `${index * 70}ms` }}
+    >
+      <span className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_0%,rgba(100,255,231,0.16),transparent_34%),radial-gradient(circle_at_85%_18%,rgba(255,111,216,0.12),transparent_32%)] opacity-0 transition duration-500 group-hover:opacity-100" />
+      <span className="project-card-sheen pointer-events-none absolute inset-y-0 -left-1/2 z-20 w-1/2 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <span className="pointer-events-none absolute left-4 top-4 z-20 h-8 w-8 border-l border-t border-[#64ffe7]/0 transition duration-500 group-hover:border-[#64ffe7]/80" />
+      <span className="pointer-events-none absolute bottom-4 right-4 z-20 h-8 w-8 border-b border-r border-[#64ffe7]/0 transition duration-500 group-hover:border-[#64ffe7]/80" />
+
+      <div className="relative h-44 overflow-hidden bg-[#101820]">
         <Image
           src={project.image}
           alt={`${project.title} project visual`}
           fill
           sizes="(min-width: 1280px) 29rem, (min-width: 640px) 50vw, 100vw"
-          className="object-cover grayscale"
+          className="object-cover grayscale transition duration-700 ease-out group-hover:scale-110 group-hover:grayscale-0"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#06172f]/80 via-[#06172f]/15 to-transparent opacity-80 transition duration-500 group-hover:opacity-55" />
+        <div className="project-scan absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#64ffe7]/20 via-[#64ffe7]/5 to-transparent opacity-0 group-hover:opacity-100" />
       </div>
-      <div className="p-6">
-        <h3 className="text-xl font-black uppercase leading-none tracking-[0] text-[#dce7ff] drop-shadow-[0_3px_0_rgba(0,0,0,0.45)]">
+      <div className="relative p-6">
+        <h3 className="transition duration-500 text-xl font-black uppercase leading-none tracking-[0] text-[#dce7ff] drop-shadow-[0_3px_0_rgba(0,0,0,0.45)] group-hover:text-[#64ffe7]">
           {project.title}
         </h3>
         <p className="mt-5 text-sm leading-6 text-slate-100/90">
           {project.description}
         </p>
         <div className="mt-6 flex flex-wrap gap-5">
-          {project.tags.map((tag) => (
+          {project.tags.map((tag, tagIndex) => (
             <span
               key={tag}
-              className="text-xs font-black uppercase tracking-[0.12em] text-[#64ffe7]"
+              className="project-tag text-xs font-black uppercase tracking-[0.12em] text-[#64ffe7]"
+              style={{ transitionDelay: `${tagIndex * 35}ms` }}
             >
               {tag}
             </span>
@@ -115,6 +90,88 @@ export default function Project() {
       id="projects"
       className="relative z-10 mx-auto w-full max-w-[92rem] scroll-mt-20 px-5 pb-20 pt-24 sm:px-8 md:pt-28 lg:px-12"
     >
+      <style>{`
+        @keyframes project-rise {
+          0% {
+            opacity: 0;
+            transform: translateY(28px) scale(0.96);
+            filter: blur(10px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+          }
+        }
+
+        @keyframes project-sheen {
+          0%, 42% {
+            transform: translateX(0) skewX(-18deg);
+            opacity: 0;
+          }
+          58% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateX(310%) skewX(-18deg);
+            opacity: 0;
+          }
+        }
+
+        @keyframes project-scan {
+          0% {
+            transform: translateY(-120%);
+          }
+          100% {
+            transform: translateY(330%);
+          }
+        }
+
+        .project-card {
+          animation: project-rise 720ms cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        .project-card::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          border: 1px solid transparent;
+          background: linear-gradient(135deg, rgba(100,255,231,0.5), transparent 28%, transparent 70%, rgba(255,111,216,0.38)) border-box;
+          -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          opacity: 0;
+          transition: opacity 420ms ease;
+        }
+
+        .project-card:hover::before {
+          opacity: 1;
+        }
+
+        .project-card-sheen {
+          transform: translateX(0) skewX(-18deg);
+        }
+
+        .project-card:hover .project-card-sheen {
+          animation: project-sheen 950ms ease-out;
+        }
+
+        .project-scan {
+          animation: project-scan 2.8s ease-in-out infinite;
+        }
+
+        .project-tag {
+          display: inline-block;
+          transition: transform 260ms ease, color 260ms ease, text-shadow 260ms ease;
+        }
+
+        .project-card:hover .project-tag {
+          transform: translateY(-3px);
+          color: #9ffff0;
+          text-shadow: 0 0 14px rgba(100,255,231,0.55);
+        }
+      `}</style>
       <div className="text-center">
         <h2 className="text-3xl font-black uppercase tracking-[0] sm:text-4xl lg:text-5xl">
           <span className="animate-pulse bg-gradient-to-r from-[#64ffe7] via-[#ff6fd8] to-[#ffd36a] bg-clip-text text-transparent">
@@ -128,51 +185,9 @@ export default function Project() {
       </div>
 
       <div className="mt-16 grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
-        {projects.map((project) => (
-          <ProjectCard key={project.title} project={project} />
+        {projects.map((project, index) => (
+          <ProjectCard key={project.title} project={project} index={index} />
         ))}
-      </div>
-
-      <div className="mt-24">
-        <h3 className="text-2xl font-black uppercase tracking-[0] text-[#dce7ff] drop-shadow-[0_3px_0_rgba(0,0,0,0.45)]">
-          Current Focus
-        </h3>
-        <div className="mt-5 h-1 w-28 bg-[#64ffe7]" />
-
-        <article className="mt-12 grid overflow-hidden rounded-[3px] border border-cyan-300/15 bg-[#0d213f] lg:grid-cols-[1fr_1.05fr]">
-          <div className="p-8 sm:p-12 lg:p-16">
-            <p className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.16em] text-[#64ffe7]">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#64ffe7]" />
-              Active Development Phrase
-            </p>
-            <h4 className="mt-7 max-w-lg text-4xl font-black uppercase leading-[1.05] tracking-[0] text-[#dce7ff] drop-shadow-[0_4px_0_rgba(0,0,0,0.48)] sm:text-5xl">
-              ITR Calculation: OCR transaction categorization, ITR calculation system 
-            </h4>
-            <p className="mt-9 max-w-lg text-base leading-7 text-slate-100/90">
-              This project develops an autonomous system that takes an
-              bank statement pdf from user, reads it using OCR models (MuMarkdown or Chandra OCR),
-              categorizes the bank transactions in to different categories using Groq LLM and 
-              based on that calculate Income Tax Return on the bank statement
-              both in old and new tax regime. 
-            </p>
-            <p className="mt-8 max-w-lg text-base leading-7 text-slate-100/90">
-              The current iteration focus is on reading the bank statement pdf using
-              OCR services and using the Groq LLM to categorize the bank transactions
-              by observing either the Description, Particulars, Narration or 
-              Details columns. 
-            </p>
-          </div>
-
-          <div className="relative min-h-[22rem] bg-[#101820]">
-            <Image
-              src="/projects/demo_project.png"
-              alt="PROJECT_SYNERGY focus visual"
-              fill
-              sizes="(min-width: 1024px) 46rem, 100vw"
-              className="object-cover"
-            />
-          </div>
-        </article>
       </div>
     </section>
   );

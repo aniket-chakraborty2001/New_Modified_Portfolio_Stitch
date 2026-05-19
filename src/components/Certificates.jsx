@@ -1,8 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useRef } from "react";
 import { FiExternalLink, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { TbCertificate } from "react-icons/tb";
+import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const certificates = [
   {
@@ -55,43 +57,34 @@ const certificates = [
   },
 ];
 
-function CertificateCard({ certificate, state }) {
-  const stateClass = {
-    active:
-      "z-20 -translate-x-1/2 scale-100 opacity-100 blur-0 shadow-[0_0_80px_rgba(100,255,231,0.14)]",
-    previous:
-      "z-10 -translate-x-[108%] scale-[0.78] opacity-45 blur-[2px] md:-translate-x-[118%]",
-    next: "z-10 translate-x-[8%] scale-[0.78] opacity-45 blur-[2px] md:translate-x-[18%]",
-    hidden: "pointer-events-none z-0 -translate-x-1/2 scale-75 opacity-0 blur-md",
-  }[state];
-
+function CertificateCard({ certificate }) {
   return (
     <article
-      className={`absolute left-1/2 top-0 flex min-h-[35rem] w-[min(38rem,calc(100vw-2rem))] flex-col rounded-[10px] border border-cyan-300/15 bg-[#0d213f]/95 p-8 transition-all duration-700 sm:p-10 ${stateClass}`}
+      className="flex min-h-[23rem] w-full flex-col rounded-[10px] border border-cyan-300/15 bg-[#0d213f]/95 p-5 shadow-[0_0_80px_rgba(100,255,231,0.14)] transition-all duration-700 sm:p-6"
     >
-      <div className="flex items-start justify-between gap-6">
-        <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-[6px] bg-[#133a53] text-[#64ffe7]">
-          <TbCertificate className="h-11 w-11" />
+      <div className="flex items-start justify-between gap-5">
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[6px] bg-[#133a53] text-[#64ffe7]">
+          <TbCertificate className="h-8 w-8" />
         </div>
-        <p className="text-right text-sm font-semibold uppercase tracking-[0.28em] text-[#36d3c5]">
+        <p className="text-right text-xs font-semibold uppercase tracking-[0.22em] text-[#36d3c5]">
           {certificate.date}
         </p>
       </div>
 
-      <div className="mt-10">
-        <h3 className="break-words text-3xl font-black leading-tight tracking-[0] text-[#dce7ff] drop-shadow-[0_3px_0_rgba(0,0,0,0.45)] sm:text-4xl">
+      <div className="mt-6">
+        <h3 className="break-words text-2xl font-black leading-tight tracking-[0] text-[#dce7ff] drop-shadow-[0_3px_0_rgba(0,0,0,0.45)] sm:text-3xl">
           {certificate.title}
         </h3>
-        <p className="mt-4 break-words text-lg font-semibold tracking-[0.12em] text-[#64ffe7]">
+        <p className="mt-3 break-words text-sm font-semibold tracking-[0.12em] text-[#64ffe7] sm:text-base">
           {certificate.issuer}
         </p>
       </div>
 
-      <div className="mt-9 flex flex-wrap gap-3">
+      <div className="mt-5 flex flex-wrap gap-2">
         {certificate.skills.map((skill) => (
           <span
             key={skill}
-            className="rounded-[3px] border border-cyan-300/15 bg-[#071d38] px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-200/85"
+            className="rounded-[3px] border border-cyan-300/15 bg-[#071d38] px-2.5 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-slate-200/85"
           >
             {skill}
           </span>
@@ -102,7 +95,7 @@ function CertificateCard({ certificate, state }) {
         href={certificate.credentialUrl}
         target="_blank"
         rel="noreferrer"
-        className="mt-auto flex h-16 items-center justify-center gap-3 border border-[#64ffe7] text-base font-medium uppercase tracking-[0.14em] text-[#64ffe7] transition hover:bg-[#64ffe7] hover:text-[#06172f]"
+        className="mt-auto flex h-12 items-center justify-center gap-3 border border-[#64ffe7] text-sm font-medium uppercase tracking-[0.14em] text-[#64ffe7] transition hover:bg-[#64ffe7] hover:text-[#06172f]"
       >
         View Credential
         <FiExternalLink className="h-5 w-5" />
@@ -112,89 +105,76 @@ function CertificateCard({ certificate, state }) {
 }
 
 export default function Certificates() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-
-  const goToPrevious = () => {
-    setActiveIndex(
-      (currentIndex) =>
-        (currentIndex - 1 + certificates.length) % certificates.length,
-    );
-  };
-
-  const goToNext = () => {
-    setActiveIndex((currentIndex) => (currentIndex + 1) % certificates.length);
-  };
-
-  useEffect(() => {
-    if (isPaused) {
-      return undefined;
-    }
-
-    const intervalId = window.setInterval(goToNext, 2000);
-
-    return () => window.clearInterval(intervalId);
-  }, [isPaused]);
-
-  const getCardState = (index) => {
-    const previousIndex =
-      (activeIndex - 1 + certificates.length) % certificates.length;
-    const nextIndex = (activeIndex + 1) % certificates.length;
-
-    if (index === activeIndex) {
-      return "active";
-    }
-
-    if (index === previousIndex) {
-      return "previous";
-    }
-
-    if (index === nextIndex) {
-      return "next";
-    }
-
-    return "hidden";
-  };
+  const swiperRef = useRef(null);
 
   return (
     <section
       id="certificates"
-      className="relative z-10 mx-auto min-h-[100svh] w-full scroll-mt-20 overflow-hidden px-5 pb-24 pt-24 sm:px-8 md:pt-28 lg:px-12"
+      className="relative z-10 mx-auto flex min-h-[100svh] w-full scroll-mt-20 flex-col justify-center overflow-hidden px-5 pb-5 pt-20 sm:px-8 md:pt-22 lg:px-12 lg:pb-6 lg:pt-20"
     >
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(100,255,231,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(100,255,231,0.06)_1px,transparent_1px)] [background-size:64px_64px]" />
 
       <div className="text-center">
-        <h2 className="text-3xl font-black tracking-[0] sm:text-5xl lg:text-6xl">
+        <h2 className="text-2xl font-black tracking-[0] sm:text-4xl lg:text-5xl">
           <span className="animate-pulse bg-gradient-to-r from-[#64ffe7] via-[#ff6fd8] to-[#ffd36a] bg-clip-text text-transparent">
             Professional Credentials
           </span>
         </h2>
-        <div className="mx-auto mt-8 h-1 w-32 bg-[#64ffe7]/55" />
-        <p className="mx-auto mt-8 max-w-4xl text-sm font-semibold uppercase leading-8 tracking-[0.32em] text-slate-300/65 sm:text-base">
+        <div className="mx-auto mt-4 h-1 w-28 bg-[#64ffe7]/55" />
+        <p className="mx-auto mt-4 max-w-4xl text-xs font-semibold uppercase leading-6 tracking-[0.28em] text-slate-300/65 sm:text-sm">
           Verified expertise in artificial intelligence and neural architectures
         </p>
       </div>
 
-      <div className="relative mx-auto mt-24 h-[36.5rem] max-w-7xl">
-        <div
-          className="absolute left-1/2 top-0 h-full w-full -translate-x-1/2"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
+      <div className="relative mx-auto mt-7 h-[27rem] w-full max-w-7xl">
+        <Swiper
+          effect="coverflow"
+          grabCursor
+          centeredSlides
+          loop
+          slidesPerView={1}
+          spaceBetween={18}
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          coverflowEffect={{
+            rotate: 42,
+            stretch: 0,
+            depth: 120,
+            modifier: 1,
+            slideShadows: true,
+          }}
+          pagination={{ clickable: true }}
+          breakpoints={{
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 18,
+            },
+            1280: {
+              slidesPerView: 3,
+              spaceBetween: 28,
+            },
+          }}
+          modules={[Autoplay, EffectCoverflow, Pagination]}
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
+          className="certificates-coverflow h-full w-full overflow-visible pb-12"
         >
-          {certificates.map((certificate, index) => (
-            <CertificateCard
-              key={certificate.title}
-              certificate={certificate}
-              state={getCardState(index)}
-            />
+          {certificates.map((certificate) => (
+            <SwiperSlide key={certificate.title}>
+              <CertificateCard certificate={certificate} />
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
 
         <button
           type="button"
           aria-label="Previous certificate"
-          onClick={goToPrevious}
-          className="absolute left-0 top-1/2 z-30 flex h-16 w-16 -translate-y-1/2 items-center justify-center rounded-[10px] border border-cyan-300/45 bg-[#0d213f]/90 text-[#64ffe7] transition hover:bg-[#64ffe7] hover:text-[#06172f] sm:h-20 sm:w-20"
+          onClick={() => swiperRef.current?.slidePrev()}
+          className="absolute left-0 top-1/2 z-30 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-[10px] border border-cyan-300/45 bg-[#0d213f]/90 text-[#64ffe7] transition hover:bg-[#64ffe7] hover:text-[#06172f] sm:h-14 sm:w-14"
         >
           <FiChevronLeft className="h-9 w-9" />
         </button>
@@ -202,28 +182,13 @@ export default function Certificates() {
         <button
           type="button"
           aria-label="Next certificate"
-          onClick={goToNext}
-          className="absolute right-0 top-1/2 z-30 flex h-16 w-16 -translate-y-1/2 items-center justify-center rounded-[10px] border border-cyan-300/45 bg-[#0d213f]/90 text-[#64ffe7] transition hover:bg-[#64ffe7] hover:text-[#06172f] sm:h-20 sm:w-20"
+          onClick={() => swiperRef.current?.slideNext()}
+          className="absolute right-0 top-1/2 z-30 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-[10px] border border-cyan-300/45 bg-[#0d213f]/90 text-[#64ffe7] transition hover:bg-[#64ffe7] hover:text-[#06172f] sm:h-14 sm:w-14"
         >
           <FiChevronRight className="h-9 w-9" />
         </button>
       </div>
 
-      <div className="mt-10 flex justify-center gap-4">
-        {certificates.map((certificate, index) => (
-          <button
-            key={certificate.title}
-            type="button"
-            aria-label={`Show certificate ${index + 1}`}
-            onClick={() => setActiveIndex(index)}
-            className={`h-2.5 rounded-full transition-all ${
-              index === activeIndex
-                ? "w-16 bg-[#64ffe7]"
-                : "w-10 bg-[#1c6b78]/70 hover:bg-[#64ffe7]/70"
-            }`}
-          />
-        ))}
-      </div>
     </section>
   );
 }

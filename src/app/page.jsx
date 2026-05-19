@@ -5,6 +5,8 @@ import Project from "../components/Project";
 import Skills from "../components/Skills";
 import Certificates from "../components/Certificates";
 import Experience from "../components/Experience";
+import Education from "../components/Education";
+import Contact from "../components/Contact";
 
 export default function Page() {
   return (
@@ -19,6 +21,8 @@ export default function Page() {
       <Skills />
       <Certificates />
       <Experience />
+      <Education />
+      <Contact />
     </main>
   );
 }
