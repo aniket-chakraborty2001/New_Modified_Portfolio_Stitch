@@ -173,6 +173,7 @@ export default function Certificates() {
         <button
           type="button"
           aria-label="Previous certificate"
+          suppressHydrationWarning
           onClick={() => swiperRef.current?.slidePrev()}
           className="absolute left-0 top-1/2 z-30 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-[10px] border border-cyan-300/45 bg-[#0d213f]/90 text-[#64ffe7] transition hover:bg-[#64ffe7] hover:text-[#06172f] sm:h-14 sm:w-14"
         >
@@ -182,6 +183,7 @@ export default function Certificates() {
         <button
           type="button"
           aria-label="Next certificate"
+          suppressHydrationWarning
           onClick={() => swiperRef.current?.slideNext()}
           className="absolute right-0 top-1/2 z-30 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-[10px] border border-cyan-300/45 bg-[#0d213f]/90 text-[#64ffe7] transition hover:bg-[#64ffe7] hover:text-[#06172f] sm:h-14 sm:w-14"
         >

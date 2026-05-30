@@ -176,6 +176,7 @@ export default function Contact() {
                 value={formData.from_name}
                 onChange={updateField}
                 required
+                suppressHydrationWarning
                 placeholder="ENTER YOUR FULL NAME"
                 className="mt-2 h-10 w-full border border-transparent bg-white px-4 text-xs font-semibold tracking-[0.12em] text-[#06172f] outline-none transition placeholder:text-slate-300 focus:border-[#64ffe7]"
               />
@@ -191,6 +192,7 @@ export default function Contact() {
                 value={formData.from_email}
                 onChange={updateField}
                 required
+                suppressHydrationWarning
                 placeholder="YOUR@DOMAIN.COM"
                 className="mt-2 h-10 w-full border border-transparent bg-white px-4 text-xs font-semibold tracking-[0.12em] text-[#06172f] outline-none transition placeholder:text-slate-300 focus:border-[#64ffe7]"
               />
@@ -205,6 +207,7 @@ export default function Contact() {
                 value={formData.message}
                 onChange={updateField}
                 required
+                suppressHydrationWarning
                 rows={3}
                 placeholder="DESCRIBE YOUR PROJECT OR INQUIRY..."
                 className="mt-2 w-full resize-none border-b border-slate-500/70 bg-transparent py-2 text-xs font-semibold text-slate-100 outline-none transition placeholder:text-slate-300 focus:border-[#64ffe7]"
@@ -215,6 +218,7 @@ export default function Contact() {
           <button
             type="submit"
             disabled={status === "sending"}
+            suppressHydrationWarning
             className="mt-5 flex h-10 w-full items-center justify-center gap-3 border border-[#64ffe7] text-xs font-black uppercase tracking-[0.16em] text-[#64ffe7] transition hover:bg-[#64ffe7] hover:text-[#06172f] disabled:cursor-not-allowed disabled:opacity-60 sm:w-56"
           >
             {status === "sending" ? "Sending" : "Send Message"}

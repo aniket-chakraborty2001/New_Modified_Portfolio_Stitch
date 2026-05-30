@@ -1,7 +1,9 @@
 @import "tailwindcss";
 @import "swiper/css";
 @import "swiper/css/effect-coverflow";
+@import "swiper/css/effect-flip";
 @import "swiper/css/pagination";
+@import "swiper/css/navigation";
 
 :root {
   --background: #ffffff;
@@ -56,4 +58,29 @@ body {
 .certificates-coverflow .swiper-pagination-bullet-active {
   width: 4rem;
   background: #64ffe7;
+}
+
+.projects-flip .swiper-pagination {
+  bottom: 0;
+}
+
+.projects-flip .swiper-pagination-bullet {
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 1px solid #ffffff;
+  background: #ffffff !important;
+  opacity: 1 !important;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.55);
+  transition:
+    transform 220ms ease,
+    background-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.projects-flip .swiper-pagination-bullet-active {
+  transform: scale(1.35);
+  background: #ffffff !important;
+  box-shadow:
+    0 0 0 3px rgba(100, 255, 231, 0.35),
+    0 0 22px rgba(255, 255, 255, 0.95);
 }

@@ -30,41 +30,57 @@ const EXPERIENCE_META = {
 
 const CARD_SLOTS = [
   {
+    delayClass: "delay-[0ms]",
     className:
-      "left-[2%] top-[60%] z-10 w-[18%] -translate-y-1/2 -rotate-[18deg] scale-[0.82] opacity-55",
+      "left-[-3%] top-[78%] z-0 w-[16%] -translate-y-1/2 -rotate-[34deg] scale-[0.56] opacity-0 blur-[2px]",
   },
   {
+    delayClass: "delay-[20ms]",
     className:
-      "left-[20%] top-[46%] z-20 w-[19%] -translate-y-1/2 -rotate-[9deg] scale-90 opacity-80",
+      "left-[4%] top-[65%] z-10 w-[17%] -translate-y-1/2 -rotate-[24deg] scale-[0.72] opacity-35 blur-[0.5px]",
   },
   {
+    delayClass: "delay-[40ms]",
     className:
-      "left-1/2 top-[38%] z-30 w-[21%] -translate-x-1/2 -translate-y-1/2 rotate-0 scale-100 opacity-100",
+      "left-[20%] top-[48%] z-20 w-[19%] -translate-y-1/2 -rotate-[13deg] scale-[0.88] opacity-75",
   },
   {
+    delayClass: "delay-[60ms]",
     className:
-      "left-[61%] top-[46%] z-20 w-[19%] -translate-y-1/2 rotate-[9deg] scale-90 opacity-80",
+      "left-1/2 top-[34%] z-40 w-[21%] -translate-x-1/2 -translate-y-1/2 rotate-0 scale-100 opacity-100",
   },
   {
+    delayClass: "delay-[80ms]",
     className:
-      "left-[80%] top-[60%] z-10 w-[18%] -translate-y-1/2 rotate-[18deg] scale-[0.82] opacity-55",
+      "left-[61%] top-[48%] z-20 w-[19%] -translate-y-1/2 rotate-[13deg] scale-[0.88] opacity-75",
+  },
+  {
+    delayClass: "delay-[100ms]",
+    className:
+      "left-[79%] top-[65%] z-10 w-[17%] -translate-y-1/2 rotate-[24deg] scale-[0.72] opacity-35 blur-[0.5px]",
+  },
+  {
+    delayClass: "delay-[120ms]",
+    className:
+      "left-[88%] top-[78%] z-0 w-[16%] -translate-y-1/2 rotate-[34deg] scale-[0.56] opacity-0 blur-[2px]",
   },
 ];
 
 const CENTER_SLOT_INDEX = Math.floor(CARD_SLOTS.length / 2);
-const STEP_COOLDOWN_MS = 520;
-const WHEEL_STEP_THRESHOLD = 70;
-const TOUCH_STEP_THRESHOLD = 42;
+const STEP_COOLDOWN_MS = 190;
+const WHEEL_STEP_THRESHOLD = 34;
+const TOUCH_STEP_THRESHOLD = 34;
+const CARD_TRACK_RADIUS = CENTER_SLOT_INDEX;
 
-function SkillCard({ skill, className = "", slotIndex = 0 }) {
+function SkillCard({ skill, className = "", delayClass = "" }) {
   const meta = EXPERIENCE_META[skill.experience] ?? EXPERIENCE_META.medium;
 
   return (
     <article
-      className={`skill-scroll-card group flex min-h-52 flex-col rounded-[6px] border border-cyan-300/15 bg-[#0d213f]/95 p-6 shadow-[0_0_0_rgba(100,255,231,0)] transition-[left,top,width,transform,opacity,box-shadow,border-color,filter] duration-700 ease-out hover:border-cyan-300/45 hover:shadow-[0_18px_45px_rgba(100,255,231,0.18)] ${className}`}
-      style={{ transitionDelay: `${slotIndex * 45}ms` }}
+      className={`group absolute flex min-h-52 flex-col overflow-hidden rounded-[6px] border border-cyan-300/15 bg-[#0d213f]/95 p-6 shadow-[0_0_0_rgba(100,255,231,0)] transition-[left,top,width,transform,opacity,box-shadow,border-color,filter] duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-cyan-300/45 hover:shadow-[0_18px_45px_rgba(100,255,231,0.18)] ${delayClass} ${className}`}
     >
       <span className="pointer-events-none absolute inset-0 rounded-[6px] bg-[radial-gradient(circle_at_25%_0%,rgba(100,255,231,0.18),transparent_36%),radial-gradient(circle_at_85%_18%,rgba(255,111,216,0.12),transparent_34%)] opacity-0 transition duration-500 group-hover:opacity-100" />
+      <span className="pointer-events-none absolute inset-0 rounded-[6px] border border-cyan-200/20 bg-[linear-gradient(145deg,rgba(100,255,231,0.18),transparent_34%,rgba(255,111,216,0.12))] opacity-55 transition-opacity duration-500 group-hover:opacity-100" />
       <div className="flex items-start justify-between gap-4">
         <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-[6px] bg-[#07131e] ring-1 ring-cyan-300/15">
           <Image
@@ -249,14 +265,23 @@ export default function Skills() {
     };
   }, []);
 
-  const visibleSkills = CARD_SLOTS.map((slot, slotIndex) => ({
-    ...slot,
-    skill:
-      SKILLS[
-        (activeIndex + slotIndex - CENTER_SLOT_INDEX + SKILLS.length) %
-          SKILLS.length
-      ],
-  }));
+  const trackedSkills = SKILLS.map((skill, index) => {
+    const distanceFromActive = index - activeIndex;
+    const slotIndex = distanceFromActive + CENTER_SLOT_INDEX;
+    const isOnTrack = Math.abs(distanceFromActive) <= CARD_TRACK_RADIUS;
+    const slot = CARD_SLOTS[slotIndex] ?? CARD_SLOTS[0];
+
+    return {
+      skill,
+      className: isOnTrack
+        ? slot.className
+        : distanceFromActive < 0
+          ? CARD_SLOTS[0].className
+          : CARD_SLOTS[CARD_SLOTS.length - 1].className,
+      delayClass: isOnTrack ? slot.delayClass : "delay-[0ms]",
+      isOnTrack,
+    };
+  });
 
   return (
     <section
@@ -264,61 +289,6 @@ export default function Skills() {
       ref={sectionRef}
       className="relative z-10 mx-auto w-full max-w-[92rem] scroll-mt-20 px-5 pb-12 pt-20 sm:px-8 md:pt-24 lg:px-12"
     >
-      <style>{`
-        @keyframes skill-orbit-glow {
-          0%, 100% {
-            opacity: 0.18;
-            transform: rotate(0deg) scale(0.96);
-          }
-          50% {
-            opacity: 0.42;
-            transform: rotate(-180deg) scale(1.04);
-          }
-        }
-
-        @keyframes skill-hint-pulse {
-          0%, 100% {
-            opacity: 0.55;
-            transform: translateY(0);
-          }
-          50% {
-            opacity: 1;
-            transform: translateY(5px);
-          }
-        }
-
-        .skill-scroll-card {
-          position: absolute;
-          overflow: hidden;
-          filter: saturate(0.86);
-        }
-
-        .skill-scroll-card::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-          border: 1px solid transparent;
-          background: linear-gradient(145deg, rgba(100,255,231,0.55), transparent 35%, rgba(255,111,216,0.28)) border-box;
-          -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-          -webkit-mask-composite: xor;
-          mask-composite: exclude;
-          opacity: 0.4;
-          transition: opacity 400ms ease;
-        }
-
-        .skill-scroll-card:hover::before {
-          opacity: 1;
-        }
-
-        .skill-orbit-glow {
-          animation: skill-orbit-glow 14s ease-in-out infinite;
-        }
-
-        .skill-scroll-hint {
-          animation: skill-hint-pulse 1.6s ease-in-out infinite;
-        }
-      `}</style>
       <div className="text-center">
         <h2 className="text-3xl font-black tracking-[0] sm:text-5xl lg:text-6xl">
           <span className="animate-pulse bg-gradient-to-r from-[#64ffe7] via-[#ff6fd8] to-[#ffd36a] bg-clip-text text-transparent">
@@ -337,14 +307,15 @@ export default function Skills() {
         className="relative mt-6 flex min-h-[33rem] flex-col justify-center overflow-hidden md:min-h-[35rem]"
       >
         <div ref={cardsStageRef} className="relative h-[28rem]">
-          <div className="skill-orbit-glow pointer-events-none absolute left-1/2 top-[41%] h-[21rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-300/15" />
+          <div className="pointer-events-none absolute left-1/2 top-[46%] h-[24rem] w-[45rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-300/15 opacity-35 shadow-[0_0_70px_rgba(100,255,231,0.08)] animate-[spin_26s_linear_infinite]" />
+          <div className="pointer-events-none absolute left-1/2 top-[46%] h-[18rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-fuchsia-300/10 opacity-40 animate-[spin_32s_linear_infinite_reverse]" />
           <div className="pointer-events-none absolute left-1/2 top-[41%] h-px w-[72%] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#64ffe7]/25 to-transparent" />
-          {visibleSkills.map(({ skill, className }, slotIndex) => (
+          {trackedSkills.map(({ skill, className, delayClass, isOnTrack }) => (
             <SkillCard
               key={skill.name}
               skill={skill}
-              slotIndex={slotIndex}
-              className={className}
+              delayClass={delayClass}
+              className={`${className} ${isOnTrack ? "" : "pointer-events-none"}`}
             />
           ))}
         </div>
