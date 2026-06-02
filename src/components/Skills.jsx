@@ -1,334 +1,249 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
+
+// ─── Data ─────────────────────────────────────────────────────────────────────
 const SKILLS = [
-    { name: "Numpy", icon: "/icons/numpy.png", timeline: "3+ Years", experience: "high" },
-    { name: "Pandas", icon: "/icons/pandas.png", timeline: "3+ Years", experience: "high" },
-    { name: "Matplotlib", icon: "/icons/matplotlib.png", timeline: "3+ Years", experience: "high" },
-    { name: "Scikit-learn", icon: "/icons/scikitlearn.png", timeline: "3+ Years", experience: "high" },
-    { name: "Opencv", icon: "/icons/opencv.png", timeline: "1.5+ Years", experience: "high" },
-    { name: "Pillow", icon: "/icons/pillow.png", timeline: "1+ Years", experience: "high" },
-    { name: "Tensorflow", icon: "/icons/tensorFlow.png", timeline: "1.5+ Years", experience: "high" },
-    { name: "Pytorch", icon: "/icons/pytorch.png", timeline: "1+ Years", experience: "high" },
-    { name: "Hugging face", icon: "/icons/hf.png", timeline: "1+ Years", experience: "high" },
-    { name: "Langchain", icon: "/icons/langchain.png", timeline: "1+ Years", experience: "medium" }
-  ];
-
-const EXPERIENCE_META = {
-  high: {
-    label: "Advanced",
-  },
-  medium: {
-    label: "Intermediate",
-  },
-  basic: {
-    label: "Foundational",
-  },
-};
-
-const CARD_SLOTS = [
-  {
-    delayClass: "delay-[0ms]",
-    className:
-      "left-[-3%] top-[78%] z-0 w-[16%] -translate-y-1/2 -rotate-[34deg] scale-[0.56] opacity-0 blur-[2px]",
-  },
-  {
-    delayClass: "delay-[20ms]",
-    className:
-      "left-[4%] top-[65%] z-10 w-[17%] -translate-y-1/2 -rotate-[24deg] scale-[0.72] opacity-35 blur-[0.5px]",
-  },
-  {
-    delayClass: "delay-[40ms]",
-    className:
-      "left-[20%] top-[48%] z-20 w-[19%] -translate-y-1/2 -rotate-[13deg] scale-[0.88] opacity-75",
-  },
-  {
-    delayClass: "delay-[60ms]",
-    className:
-      "left-1/2 top-[34%] z-40 w-[21%] -translate-x-1/2 -translate-y-1/2 rotate-0 scale-100 opacity-100",
-  },
-  {
-    delayClass: "delay-[80ms]",
-    className:
-      "left-[61%] top-[48%] z-20 w-[19%] -translate-y-1/2 rotate-[13deg] scale-[0.88] opacity-75",
-  },
-  {
-    delayClass: "delay-[100ms]",
-    className:
-      "left-[79%] top-[65%] z-10 w-[17%] -translate-y-1/2 rotate-[24deg] scale-[0.72] opacity-35 blur-[0.5px]",
-  },
-  {
-    delayClass: "delay-[120ms]",
-    className:
-      "left-[88%] top-[78%] z-0 w-[16%] -translate-y-1/2 rotate-[34deg] scale-[0.56] opacity-0 blur-[2px]",
-  },
+  { name: "Numpy",        icon: "/icons/numpy.png",       timeline: "3+ Years",   experience: "Advanced"     },
+  { name: "Pandas",       icon: "/icons/pandas.png",      timeline: "3+ Years",   experience: "Advanced"     },
+  { name: "Matplotlib",   icon: "/icons/matplotlib.png",  timeline: "3+ Years",   experience: "Advanced"     },
+  { name: "Scikit-learn", icon: "/icons/scikitlearn.png", timeline: "3+ Years",   experience: "Advanced"     },
+  { name: "Opencv",       icon: "/icons/opencv.png",      timeline: "1.5+ Years", experience: "Advanced"     },
+  { name: "Pillow",       icon: "/icons/pillow.png",      timeline: "1+ Years",   experience: "Advanced"     },
+  { name: "Tensorflow",   icon: "/icons/tensorFlow.png",  timeline: "1.5+ Years", experience: "Advanced"     },
+  { name: "Pytorch",      icon: "/icons/pytorch.png",     timeline: "1+ Years",   experience: "Advanced"     },
+  { name: "Hugging face", icon: "/icons/hf.png",          timeline: "1+ Years",   experience: "Advanced"     },
+  { name: "Langchain",    icon: "/icons/langchain.png",   timeline: "1+ Years",   experience: "Intermediate" },
 ];
 
-const CENTER_SLOT_INDEX = Math.floor(CARD_SLOTS.length / 2);
-const STEP_COOLDOWN_MS = 190;
-const WHEEL_STEP_THRESHOLD = 34;
-const TOUCH_STEP_THRESHOLD = 34;
-const CARD_TRACK_RADIUS = CENTER_SLOT_INDEX;
+/**
+ * Each card starts at a unique scattered offset (position + rotation + scale)
+ * and animates into its grid slot as the scroll progresses.
+ * Offsets are tuned so cards feel "thrown" from different directions.
+ */
+const SCATTER_OFFSETS = [
+  { x: -420, y: -180, rotation: -32, scale: 0.52 },
+  { x:  220, y: -260, rotation:  24, scale: 0.48 },
+  { x: -300, y:  110, rotation: -20, scale: 0.58 },
+  { x:  360, y: -100, rotation:  34, scale: 0.50 },
+  { x: -180, y:  240, rotation: -14, scale: 0.56 },
+  { x:  300, y:  200, rotation:  22, scale: 0.48 },
+  { x: -460, y:   30, rotation: -38, scale: 0.46 },
+  { x:  420, y:   70, rotation:  28, scale: 0.52 },
+  { x:  -70, y: -300, rotation:  -9, scale: 0.60 },
+  { x:  130, y:  280, rotation:  16, scale: 0.54 },
+];
 
-function SkillCard({ skill, className = "", delayClass = "" }) {
-  const meta = EXPERIENCE_META[skill.experience] ?? EXPERIENCE_META.medium;
+// easeInOutQuad in JS (mirrors GSAP power2.inOut)
+function easeInOut(t) {
+  return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+}
+
+// ─── Single card ──────────────────────────────────────────────────────────────
+function SkillCard({ skill, index, cardRef }) {
+  const glareRef = useRef(null);
+
+  useEffect(() => {
+    const card  = cardRef.current;
+    const glare = glareRef.current;
+    if (!card || !glare) return;
+
+    const onMove = (e) => {
+      const { left, top, width, height } = card.getBoundingClientRect();
+      const x = (e.clientX - left) / width  - 0.5;
+      const y = (e.clientY - top)  / height - 0.5;
+      gsap.to(card, {
+        rotateY: x * 18, rotateX: -y * 18, duration: 0.2,
+        ease: "power2.out", transformPerspective: 650,
+      });
+      gsap.set(glare, {
+        background: `radial-gradient(circle at ${e.clientX - left}px ${e.clientY - top}px, rgba(100,255,231,0.20) 0%, transparent 60%)`,
+        opacity: 1,
+      });
+    };
+
+    const onLeave = () => {
+      gsap.to(card, {
+        rotateY: 0, rotateX: 0, duration: 0.65,
+        ease: "elastic.out(1, 0.55)", transformPerspective: 650,
+      });
+      gsap.to(glare, { opacity: 0, duration: 0.3 });
+    };
+
+    card.addEventListener("mousemove",  onMove);
+    card.addEventListener("mouseleave", onLeave);
+    return () => {
+      card.removeEventListener("mousemove",  onMove);
+      card.removeEventListener("mouseleave", onLeave);
+    };
+  }, [cardRef]);
 
   return (
-    <article
-      className={`group absolute flex min-h-52 flex-col overflow-hidden rounded-[6px] border border-cyan-300/15 bg-[#0d213f]/95 p-6 shadow-[0_0_0_rgba(100,255,231,0)] transition-[left,top,width,transform,opacity,box-shadow,border-color,filter] duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-cyan-300/45 hover:shadow-[0_18px_45px_rgba(100,255,231,0.18)] ${delayClass} ${className}`}
+    <div
+      ref={cardRef}
+      style={{ transformStyle: "preserve-3d", willChange: "transform, opacity" }}
+      className="group relative flex h-[11.5rem] flex-col overflow-hidden rounded-[12px] border border-cyan-300/[0.13] bg-[#0d213f] p-4 transition-[border-color] duration-300 hover:border-cyan-300/45"
     >
-      <span className="pointer-events-none absolute inset-0 rounded-[6px] bg-[radial-gradient(circle_at_25%_0%,rgba(100,255,231,0.18),transparent_36%),radial-gradient(circle_at_85%_18%,rgba(255,111,216,0.12),transparent_34%)] opacity-0 transition duration-500 group-hover:opacity-100" />
-      <span className="pointer-events-none absolute inset-0 rounded-[6px] border border-cyan-200/20 bg-[linear-gradient(145deg,rgba(100,255,231,0.18),transparent_34%,rgba(255,111,216,0.12))] opacity-55 transition-opacity duration-500 group-hover:opacity-100" />
-      <div className="flex items-start justify-between gap-4">
-        <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-[6px] bg-[#07131e] ring-1 ring-cyan-300/15">
-          <Image
-            src={skill.icon}
-            alt={`${skill.name} icon`}
-            fill
-            sizes="3.5rem"
-            className="object-contain p-2.5"
-          />
-        </div>
+      {/* spotlight glare */}
+      <span ref={glareRef} className="pointer-events-none absolute inset-0 rounded-[12px] opacity-0" />
 
-        <span className="max-w-[6.5rem] break-words text-right text-xs font-black uppercase leading-5 tracking-[0.14em] text-[#64ffe7]">
-          {skill.timeline}
-        </span>
+      {/* accent bar */}
+      <span className="absolute bottom-0 left-0 right-0 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-[#64ffe7] to-[#ff6fd8] transition-transform duration-[360ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100" />
+
+      {/* icon */}
+      <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-[8px] bg-[#07131e] ring-1 ring-cyan-300/[0.12]">
+        <Image src={skill.icon} alt={`${skill.name} icon`} fill sizes="2.5rem" className="object-contain p-1.5" />
       </div>
 
-      <h3 className="mt-7 break-words text-xl font-black leading-tight tracking-[0] text-[#dce7ff] drop-shadow-[0_3px_0_rgba(0,0,0,0.45)]">
+      {/* timeline */}
+      <span className="absolute right-3.5 top-3.5 text-[10px] font-black uppercase tracking-[0.13em] text-[#64ffe7]">
+        {skill.timeline}
+      </span>
+
+      {/* name */}
+      <h3 className="mt-auto text-[0.95rem] font-black leading-tight tracking-tight text-[#dce7ff]">
         {skill.name}
       </h3>
 
-      <div className="mt-auto pt-7">
-        <p className="break-words text-xs font-semibold uppercase leading-5 tracking-[0.18em] text-slate-300/70">
-          {meta.label}
-        </p>
-      </div>
-    </article>
+      {/* level */}
+      <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-300/40">
+        {skill.experience}
+      </p>
+    </div>
   );
 }
 
+// ─── Section ──────────────────────────────────────────────────────────────────
 export default function Skills() {
-  const sectionRef = useRef(null);
-  const deckRef = useRef(null);
-  const cardsStageRef = useRef(null);
-  const activeIndexRef = useRef(0);
-  const lastStepAtRef = useRef(0);
-  const wheelDeltaRef = useRef(0);
-  const touchStartYRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const sectionRef  = useRef(null);
+  const stickyRef   = useRef(null);
+  const headingRef  = useRef(null);
+  const subtitleRef = useRef(null);
+  const cardRefs    = useRef(SKILLS.map(() => ({ current: null })));
 
   useEffect(() => {
-    activeIndexRef.current = activeIndex;
-  }, [activeIndex]);
+    const ctx = gsap.context(() => {
+      const cards = cardRefs.current.map((r) => r.current).filter(Boolean);
 
-  useEffect(() => {
-    const isDeckInFocus = () => {
-      const cardsStage = cardsStageRef.current;
-      const certificatesHeader = document.querySelector("#certificates h2");
-
-      if (!cardsStage) {
-        return false;
-      }
-
-      if (certificatesHeader) {
-        const headerRect = certificatesHeader.getBoundingClientRect();
-        const isCertificatesHeaderVisible =
-          headerRect.top < window.innerHeight && headerRect.bottom > 0;
-
-        if (isCertificatesHeaderVisible) {
-          return false;
-        }
-      }
-
-      const rect = cardsStage.getBoundingClientRect();
-      const focusStart = window.innerHeight * 0.28;
-      const focusEnd = window.innerHeight * 0.72;
-      const hasVisibleCards = rect.top < window.innerHeight && rect.bottom > 0;
-
-      return hasVisibleCards && rect.top < focusEnd && rect.bottom > focusStart;
-    };
-
-    const stepSkills = (direction) => {
-      const currentIndex = activeIndexRef.current;
-      const isMovingForward = direction > 0;
-      const isMovingBackward = direction < 0;
-
-      if (
-        (isMovingForward && currentIndex >= SKILLS.length - 1) ||
-        (isMovingBackward && currentIndex <= 0)
-      ) {
-        return false;
-      }
-
-      const now = window.performance.now();
-
-      if (now - lastStepAtRef.current < STEP_COOLDOWN_MS) {
-        return true;
-      }
-
-      lastStepAtRef.current = now;
-      setActiveIndex((index) => {
-        const nextIndex = Math.min(
-          Math.max(index + direction, 0),
-          SKILLS.length - 1,
-        );
-        activeIndexRef.current = nextIndex;
-        return nextIndex;
+      // 1. Set every card to its scattered starting state
+      cards.forEach((card, i) => {
+        const o = SCATTER_OFFSETS[i];
+        gsap.set(card, { x: o.x, y: o.y, rotation: o.rotation, scale: o.scale, opacity: 0 });
       });
 
-      return true;
-    };
+      // 2. Heading + subtitle entrance
+      gsap.fromTo(
+        [headingRef.current, subtitleRef.current],
+        { opacity: 0, y: 28 },
+        {
+          opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power3.out",
+          scrollTrigger: { trigger: sectionRef.current, start: "top 80%", once: true },
+        }
+      );
 
-    const handleWheel = (event) => {
-      if (!isDeckInFocus()) {
-        wheelDeltaRef.current = 0;
-        return;
-      }
+      // 3. Master scroll-scrub — cards fly into their grid slots
+      //    Each card has a staggered window within the overall scrub.
+      const STAGGER_SHARE = 0.08; // fraction of total progress per card offset
+      const CARD_WINDOW   = 0.32; // fraction of total progress each card's tween spans
 
-      const currentIndex = activeIndexRef.current;
-      const isAtStart = currentIndex <= 0;
-      const isAtEnd = currentIndex >= SKILLS.length - 1;
-      const wantsForward = event.deltaY > 0;
-      const wantsBackward = event.deltaY < 0;
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start:   "top top",
+        end:     "bottom bottom",
+        scrub:   1.2,
+        onUpdate(self) {
+          const p = self.progress; // 0 → 1
 
-      if ((wantsForward && isAtEnd) || (wantsBackward && isAtStart)) {
-        wheelDeltaRef.current = 0;
-        return;
-      }
+          cards.forEach((card, i) => {
+            const start = i * STAGGER_SHARE;
+            const end   = start + CARD_WINDOW;
+            const raw   = Math.max(0, Math.min(1, (p - start) / (end - start)));
+            const ease  = easeInOut(raw);
+            const o     = SCATTER_OFFSETS[i];
 
-      event.preventDefault();
-      wheelDeltaRef.current += event.deltaY;
+            gsap.set(card, {
+              x:        o.x        * (1 - ease),
+              y:        o.y        * (1 - ease),
+              rotation: o.rotation * (1 - ease),
+              scale:    o.scale    + (1 - o.scale) * ease,
+              opacity:  ease,
+            });
+          });
+        },
+      });
+    }, sectionRef);
 
-      if (Math.abs(wheelDeltaRef.current) < WHEEL_STEP_THRESHOLD) {
-        return;
-      }
-
-      const direction = wheelDeltaRef.current > 0 ? 1 : -1;
-      const didHandle = stepSkills(direction);
-
-      if (didHandle) {
-        wheelDeltaRef.current = 0;
-      }
-    };
-
-    const handleTouchStart = (event) => {
-      touchStartYRef.current = event.touches[0]?.clientY ?? null;
-    };
-
-    const handleTouchMove = (event) => {
-      if (!isDeckInFocus() || touchStartYRef.current === null) {
-        return;
-      }
-
-      const currentY = event.touches[0]?.clientY;
-
-      if (typeof currentY !== "number") {
-        return;
-      }
-
-      const deltaY = touchStartYRef.current - currentY;
-      const currentIndex = activeIndexRef.current;
-      const isAtStart = currentIndex <= 0;
-      const isAtEnd = currentIndex >= SKILLS.length - 1;
-      const wantsForward = deltaY > 0;
-      const wantsBackward = deltaY < 0;
-
-      if ((wantsForward && isAtEnd) || (wantsBackward && isAtStart)) {
-        return;
-      }
-
-      event.preventDefault();
-
-      if (Math.abs(deltaY) < TOUCH_STEP_THRESHOLD) {
-        return;
-      }
-
-      const direction = deltaY > 0 ? 1 : -1;
-      const didHandle = stepSkills(direction);
-
-      if (didHandle) {
-        touchStartYRef.current = currentY;
-      }
-    };
-
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    window.addEventListener("touchstart", handleTouchStart, { passive: true });
-    window.addEventListener("touchmove", handleTouchMove, { passive: false });
-
-    return () => {
-      window.removeEventListener("wheel", handleWheel);
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchmove", handleTouchMove);
-    };
+    return () => ctx.revert();
   }, []);
 
-  const trackedSkills = SKILLS.map((skill, index) => {
-    const distanceFromActive = index - activeIndex;
-    const slotIndex = distanceFromActive + CENTER_SLOT_INDEX;
-    const isOnTrack = Math.abs(distanceFromActive) <= CARD_TRACK_RADIUS;
-    const slot = CARD_SLOTS[slotIndex] ?? CARD_SLOTS[0];
-
-    return {
-      skill,
-      className: isOnTrack
-        ? slot.className
-        : distanceFromActive < 0
-          ? CARD_SLOTS[0].className
-          : CARD_SLOTS[CARD_SLOTS.length - 1].className,
-      delayClass: isOnTrack ? slot.delayClass : "delay-[0ms]",
-      isOnTrack,
-    };
-  });
-
   return (
+    /**
+     * The section is tall (300vh) so the sticky panel has plenty of scroll room.
+     * The sticky inner div stays centered on screen while the user scrolls,
+     * and the cards animate into place driven by scroll progress.
+     */
     <section
       id="skills"
       ref={sectionRef}
-      className="relative z-10 mx-auto w-full max-w-[92rem] scroll-mt-20 px-5 pb-12 pt-20 sm:px-8 md:pt-24 lg:px-12"
+      className="relative z-10 mx-auto w-full max-w-[92rem] scroll-mt-20"
+      style={{ height: "300vh" }}
     >
-      <div className="text-center">
-        <h2 className="text-3xl font-black tracking-[0] sm:text-5xl lg:text-6xl">
+      <div
+        ref={stickyRef}
+        className="sticky top-0 flex min-h-screen flex-col items-center justify-center overflow-hidden px-5 sm:px-8 lg:px-12"
+      >
+        {/* decorative rings */}
+        <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 h-[44rem] w-[44rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-300/[0.07] animate-[spin_32s_linear_infinite]" />
+        <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-fuchsia-300/[0.05] animate-[spin_42s_linear_infinite_reverse]" />
+
+        {/* heading */}
+        <h2
+          ref={headingRef}
+          className="mb-3 text-center text-3xl font-black tracking-tight opacity-0 sm:text-5xl lg:text-6xl"
+        >
           <span className="animate-pulse bg-gradient-to-r from-[#64ffe7] via-[#ff6fd8] to-[#ffd36a] bg-clip-text text-transparent">
             Technical Expertise
           </span>
         </h2>
-        <p className="mx-auto mt-4 max-w-3xl text-lg leading-8 text-slate-300/70 sm:text-xl">
+        <p
+          ref={subtitleRef}
+          className="mx-auto mb-12 max-w-2xl text-center text-base leading-7 text-slate-300/60 opacity-0 sm:text-lg"
+        >
           A quantitative breakdown of my technical capabilities, engineering
-          proficiency, and the stack I leverage to solve complex
-          problems in artificial intelligence.
+          proficiency, and the stack I leverage to solve complex problems in AI.
         </p>
-      </div>
 
-      <div
-        ref={deckRef}
-        className="relative mt-6 flex min-h-[33rem] flex-col justify-center overflow-hidden md:min-h-[35rem]"
-      >
-        <div ref={cardsStageRef} className="relative h-[28rem]">
-          <div className="pointer-events-none absolute left-1/2 top-[46%] h-[24rem] w-[45rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-300/15 opacity-35 shadow-[0_0_70px_rgba(100,255,231,0.08)] animate-[spin_26s_linear_infinite]" />
-          <div className="pointer-events-none absolute left-1/2 top-[46%] h-[18rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-fuchsia-300/10 opacity-40 animate-[spin_32s_linear_infinite_reverse]" />
-          <div className="pointer-events-none absolute left-1/2 top-[41%] h-px w-[72%] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#64ffe7]/25 to-transparent" />
-          {trackedSkills.map(({ skill, className, delayClass, isOnTrack }) => (
+        {/* card grid — 5 columns × 2 rows */}
+        <div className="grid w-full max-w-[860px] grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5 lg:grid-rows-2">
+          {SKILLS.map((skill, i) => (
             <SkillCard
               key={skill.name}
               skill={skill}
-              delayClass={delayClass}
-              className={`${className} ${isOnTrack ? "" : "pointer-events-none"}`}
+              index={i}
+              cardRef={cardRefs.current[i]}
             />
           ))}
         </div>
 
-        <div className="mx-auto mt-2 flex max-w-xl items-center gap-4">
-          <span className="h-px flex-1 bg-cyan-300/15" />
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-300/65">
-            {activeIndex + 1} / {SKILLS.length}
+        {/* counter */}
+        <div className="mt-8 flex items-center gap-4">
+          <span className="h-px w-16 bg-cyan-300/15" />
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-300/50">
+            {SKILLS.length} skills
           </p>
-          <span className="h-px flex-1 bg-cyan-300/15" />
+          <span className="h-px w-16 bg-cyan-300/15" />
         </div>
-      </div>
 
+        {/* scroll nudge — fades out once scrolled */}
+        <p className="absolute bottom-10 text-xs font-medium uppercase tracking-[0.2em] text-slate-300/30 animate-bounce">
+          scroll to reveal
+        </p>
+      </div>
     </section>
   );
 }
