@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { createRef, useEffect, useMemo, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -45,7 +45,7 @@ function easeInOut(t) {
 }
 
 // ─── Single card ──────────────────────────────────────────────────────────────
-function SkillCard({ skill, index, cardRef }) {
+function SkillCard({ skill, cardRef }) {
   const glareRef = useRef(null);
 
   useEffect(() => {
@@ -62,7 +62,7 @@ function SkillCard({ skill, index, cardRef }) {
         ease: "power2.out", transformPerspective: 650,
       });
       gsap.set(glare, {
-        background: `radial-gradient(circle at ${e.clientX - left}px ${e.clientY - top}px, rgba(100,255,231,0.20) 0%, transparent 60%)`,
+        background: `radial-gradient(circle at ${e.clientX - left}px ${e.clientY - top}px, rgba(14,165,233,0.20) 0%, transparent 60%)`,
         opacity: 1,
       });
     };
@@ -87,31 +87,31 @@ function SkillCard({ skill, index, cardRef }) {
     <div
       ref={cardRef}
       style={{ transformStyle: "preserve-3d", willChange: "transform, opacity" }}
-      className="group relative flex h-[11.5rem] flex-col overflow-hidden rounded-[12px] border border-cyan-300/[0.13] bg-[#0d213f] p-4 transition-[border-color] duration-300 hover:border-cyan-300/45"
+      className="group relative flex h-[11.5rem] flex-col overflow-hidden rounded-[12px] border border-sky-200/80 bg-white/92 p-4 shadow-[0_18px_44px_rgba(14,165,233,0.1)] transition-[border-color] duration-300 hover:border-sky-300"
     >
       {/* spotlight glare */}
       <span ref={glareRef} className="pointer-events-none absolute inset-0 rounded-[12px] opacity-0" />
 
       {/* accent bar */}
-      <span className="absolute bottom-0 left-0 right-0 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-[#64ffe7] to-[#ff6fd8] transition-transform duration-[360ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100" />
+      <span className="absolute bottom-0 left-0 right-0 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-[#0ea5e9] via-[#14b8a6] to-[#d946ef] transition-transform duration-[360ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100" />
 
       {/* icon */}
-      <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-[8px] bg-[#07131e] ring-1 ring-cyan-300/[0.12]">
+      <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-[8px] bg-gradient-to-br from-sky-50 via-white to-fuchsia-50 ring-1 ring-sky-200/80">
         <Image src={skill.icon} alt={`${skill.name} icon`} fill sizes="2.5rem" className="object-contain p-1.5" />
       </div>
 
       {/* timeline */}
-      <span className="absolute right-3.5 top-3.5 text-[10px] font-black uppercase tracking-[0.13em] text-[#64ffe7]">
+      <span className="absolute right-3.5 top-3.5 text-[10px] font-black uppercase tracking-[0.13em] text-[#0ea5e9]">
         {skill.timeline}
       </span>
 
       {/* name */}
-      <h3 className="mt-auto text-[0.95rem] font-black leading-tight tracking-tight text-[#dce7ff]">
+      <h3 className="mt-auto text-[0.95rem] font-black leading-tight tracking-tight text-[#172033]">
         {skill.name}
       </h3>
 
       {/* level */}
-      <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-300/40">
+      <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
         {skill.experience}
       </p>
     </div>
@@ -124,11 +124,11 @@ export default function Skills() {
   const stickyRef   = useRef(null);
   const headingRef  = useRef(null);
   const subtitleRef = useRef(null);
-  const cardRefs    = useRef(SKILLS.map(() => ({ current: null })));
+  const cardRefs = useMemo(() => SKILLS.map(() => createRef()), []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const cards = cardRefs.current.map((r) => r.current).filter(Boolean);
+      const cards = cardRefs.map((r) => r.current).filter(Boolean);
 
       // 1. Set every card to its scattered starting state
       cards.forEach((card, i) => {
@@ -179,7 +179,7 @@ export default function Skills() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [cardRefs]);
 
   return (
     /**
@@ -198,21 +198,21 @@ export default function Skills() {
         className="sticky top-0 flex min-h-screen flex-col items-center justify-center overflow-hidden px-5 sm:px-8 lg:px-12"
       >
         {/* decorative rings */}
-        <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 h-[44rem] w-[44rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-300/[0.07] animate-[spin_32s_linear_infinite]" />
-        <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-fuchsia-300/[0.05] animate-[spin_42s_linear_infinite_reverse]" />
+        <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 h-[44rem] w-[44rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-sky-300/[0.16] animate-[spin_32s_linear_infinite]" />
+        <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-fuchsia-300/[0.13] animate-[spin_42s_linear_infinite_reverse]" />
 
         {/* heading */}
         <h2
           ref={headingRef}
           className="mb-3 text-center text-3xl font-black tracking-tight opacity-0 sm:text-5xl lg:text-6xl"
         >
-          <span className="animate-pulse bg-gradient-to-r from-[#64ffe7] via-[#ff6fd8] to-[#ffd36a] bg-clip-text text-transparent">
+          <span className="animate-pulse bg-gradient-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
             Technical Expertise
           </span>
         </h2>
         <p
           ref={subtitleRef}
-          className="mx-auto mb-12 max-w-2xl text-center text-base leading-7 text-slate-300/60 opacity-0 sm:text-lg"
+          className="mx-auto mb-12 max-w-2xl text-center text-base leading-7 text-slate-700 opacity-0 sm:text-lg"
         >
           A quantitative breakdown of my technical capabilities, engineering
           proficiency, and the stack I leverage to solve complex problems in AI.
@@ -224,23 +224,22 @@ export default function Skills() {
             <SkillCard
               key={skill.name}
               skill={skill}
-              index={i}
-              cardRef={cardRefs.current[i]}
+              cardRef={cardRefs[i]}
             />
           ))}
         </div>
 
         {/* counter */}
         <div className="mt-8 flex items-center gap-4">
-          <span className="h-px w-16 bg-cyan-300/15" />
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-300/50">
+          <span className="h-px w-16 bg-sky-300/45" />
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
             {SKILLS.length} skills
           </p>
-          <span className="h-px w-16 bg-cyan-300/15" />
+          <span className="h-px w-16 bg-sky-300/45" />
         </div>
 
         {/* scroll nudge — fades out once scrolled */}
-        <p className="absolute bottom-10 text-xs font-medium uppercase tracking-[0.2em] text-slate-300/30 animate-bounce">
+        <p className="absolute bottom-10 text-xs font-medium uppercase tracking-[0.2em] text-slate-500 animate-bounce">
           scroll to reveal
         </p>
       </div>

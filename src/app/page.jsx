@@ -11,10 +11,10 @@ import Welcome from "../components/Welcome";
 
 export default function Page() {
   return (
-    <main className="relative min-h-screen overflow-x-clip scroll-smooth bg-[#03162d] font-sans text-slate-100">
+    <main className="relative min-h-screen overflow-x-clip scroll-smooth bg-white font-sans text-[#172033]">
       <Welcome />
-      <div className="fixed inset-0 bg-[radial-gradient(circle,rgba(32,202,218,0.12)_1px,transparent_1px)] [background-size:50px_50px]" />
-      <div className="fixed inset-0 bg-[linear-gradient(180deg,rgba(3,22,45,0.2),rgba(3,22,45,0.95))]" />
+      <div className="fixed inset-0 bg-[radial-gradient(circle,rgba(14,165,233,0.13)_1px,transparent_1px)] [background-size:50px_50px]" />
+      <div className="fixed inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.94),rgba(236,253,245,0.78)_34%,rgba(239,246,255,0.78)_68%,rgba(253,244,255,0.82))]" />
 
       <Navbar />
       <Home />

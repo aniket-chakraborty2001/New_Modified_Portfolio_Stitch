@@ -17,11 +17,11 @@ const profileDetails = [
 
 function ProfileCard() {
   return (
-    <aside className="about-card about-reveal flex items-center justify-center border border-cyan-300/15 bg-[#0c1d3a]/85 px-5 py-5 sm:px-7 lg:px-7 lg:py-6">
+    <aside className="about-card about-reveal flex items-center justify-center border border-sky-200/80 bg-white/86 px-5 py-5 backdrop-blur sm:px-7 lg:px-7 lg:py-6">
       <div className="relative mx-auto h-[28rem] w-full max-w-[24rem] overflow-hidden">
-        <div className="absolute inset-10 rounded-full bg-[#64ffe7]/10 blur-3xl" />
-        <div className="about-orbit absolute inset-8 rounded-full border border-cyan-300/15" />
-        <div className="about-orbit about-orbit-reverse absolute inset-16 rounded-full border border-[#ff6fd8]/15" />
+        <div className="absolute inset-10 rounded-full bg-[#0ea5e9]/14 blur-3xl" />
+        <div className="about-orbit absolute inset-8 rounded-full border border-sky-300/25" />
+        <div className="about-orbit about-orbit-reverse absolute inset-16 rounded-full border border-[#d946ef]/22" />
 
         <div className="relative z-10 grid h-full grid-cols-2 gap-x-5">
           {[0, 1].map((columnIndex) => (
@@ -36,9 +36,9 @@ function ProfileCard() {
                 .map((image, index) => (
                   <div
                     key={image.alt}
-                    className={`aspect-square w-full overflow-hidden rounded-[8px] border-2 border-[#45a3ff]/90 bg-[#06172f] p-1.5 shadow-[0_16px_34px_rgba(0,0,0,0.3),0_0_22px_rgba(69,163,255,0.2)] ${image.className}`}
+                    className={`aspect-square w-full overflow-hidden rounded-[8px] border-2 border-[#0ea5e9]/80 bg-gradient-to-br from-sky-50 via-white to-fuchsia-50 p-1.5 shadow-[0_16px_34px_rgba(14,165,233,0.16),0_0_22px_rgba(217,70,239,0.12)] ${image.className}`}
                   >
-                    <div className="relative h-full overflow-hidden rounded-[6px] bg-[#07131e]">
+                    <div className="relative h-full overflow-hidden rounded-[6px] bg-white">
                       <Image
                         src={image.src}
                         alt={image.alt}
@@ -60,19 +60,19 @@ function ProfileCard() {
 
 function SummaryPanel() {
   return (
-    <section className="about-card about-reveal border border-cyan-300/15 bg-[#0c1d3a]/85 px-6 py-6 [animation-delay:120ms] sm:px-8 lg:px-8 lg:py-7">
+    <section className="about-card about-reveal border border-sky-200/80 bg-white/88 px-6 py-6 backdrop-blur [animation-delay:120ms] sm:px-8 lg:px-8 lg:py-7">
       <div className="about-reveal flex items-center gap-3 [animation-delay:200ms]">
-        <span className="h-px w-10 bg-[#64ffe7]" />
-        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#64ffe7]">
+        <span className="h-px w-10 bg-[#0ea5e9]" />
+        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#0ea5e9]">
           Executive Summary
         </p>
       </div>
 
-      <h2 className="about-reveal mt-4 max-w-5xl text-2xl font-black leading-[1.12] tracking-[0] text-[#dce7ff] drop-shadow-[0_3px_0_rgba(0,0,0,0.38)] [animation-delay:280ms] sm:text-3xl xl:text-[2.25rem]">
+      <h2 className="about-reveal mt-4 max-w-5xl text-2xl font-black leading-[1.12] tracking-[0] text-[#172033] drop-shadow-[0_3px_0_rgba(14,165,233,0.12)] [animation-delay:280ms] sm:text-3xl xl:text-[2.25rem]">
         Pushing the boundaries of Manual Human work to Intelligent solutions
       </h2>
 
-      <p className="about-reveal mt-4 max-w-5xl text-sm leading-6 text-slate-200/85 [animation-delay:360ms] sm:text-base sm:leading-7">
+      <p className="about-reveal mt-4 max-w-5xl text-sm leading-6 text-slate-700 [animation-delay:360ms] sm:text-base sm:leading-7">
         As a AI Researcher at Webbies, I specialize in developing
         novel AI ML based architectures and optimizing large-scale generative
         AI models. My work bridges the gap between theoretical deep learning and
@@ -80,24 +80,24 @@ function SummaryPanel() {
         interaction.
       </p>
 
-      <div className="about-reveal mt-5 flex flex-wrap items-center justify-between gap-4 border-y border-cyan-300/10 py-4 [animation-delay:420ms]">
+      <div className="about-reveal mt-5 flex flex-wrap items-center justify-between gap-4 border-y border-sky-200/80 py-4 [animation-delay:420ms]">
         <div>
-          <h1 className="text-2xl font-black leading-none tracking-[0] text-[#dce7ff] drop-shadow-[0_4px_0_rgba(0,0,0,0.45)] sm:text-3xl">
+          <h1 className="text-2xl font-black leading-none tracking-[0] text-[#172033] drop-shadow-[0_4px_0_rgba(14,165,233,0.12)] sm:text-3xl">
             Aniket Chakraborty
           </h1>
-          <p className="mt-2 text-xs font-semibold tracking-[0.3em] text-[#64ffe7] sm:text-sm">
+          <p className="mt-2 text-xs font-semibold tracking-[0.3em] text-[#d946ef] sm:text-sm">
             AI Researcher
           </p>
         </div>
 
-        <div className="grid gap-2 text-sm text-slate-200/85 sm:grid-cols-3">
+        <div className="grid gap-2 text-sm text-slate-700 sm:grid-cols-3">
           {profileDetails.map(({ icon: Icon, text }, index) => (
             <div
               key={text}
               className="about-reveal flex items-center gap-3"
               style={{ animationDelay: `${500 + index * 80}ms` }}
             >
-              <Icon className="h-5 w-5 shrink-0 text-[#42f2dc]" />
+              <Icon className="h-5 w-5 shrink-0 text-[#0ea5e9]" />
               <span>{text}</span>
             </div>
           ))}
@@ -106,23 +106,23 @@ function SummaryPanel() {
 
       <div className="mt-5 grid gap-5 lg:grid-cols-[1fr_0.95fr]">
         <div className="about-reveal [animation-delay:440ms]">
-          <h3 className="text-sm font-semibold uppercase tracking-[0.28em] text-slate-400">
+          <h3 className="text-sm font-semibold uppercase tracking-[0.28em] text-slate-500">
             Core Area
           </h3>
-          <p className="mt-2 max-w-lg text-sm leading-6 text-slate-100 sm:text-base">
+          <p className="mt-2 max-w-lg text-sm leading-6 text-slate-800 sm:text-base">
             Gen AI, Transformers, Diffusers, NLP, Machine Learning, Deep Learning, ViTs, Computer Vision
           </p>
         </div>
 
         <div className="about-reveal [animation-delay:520ms]">
-          <h3 className="text-sm font-semibold uppercase tracking-[0.28em] text-slate-400">
+          <h3 className="text-sm font-semibold uppercase tracking-[0.28em] text-slate-500">
             Technical Stack
           </h3>
           <div className="mt-2 flex flex-wrap gap-3">
             {["PyTorch", "TensorFlow", "CUDA", "OpenCV", "PILLOW", "Transformers"].map((skill, index) => (
               <span
                 key={skill}
-                className="about-skill bg-[#132a4d] px-3 py-1.5 text-xs font-medium text-[#64ffe7]"
+                className="about-skill bg-gradient-to-r from-sky-50 via-white to-fuchsia-50 px-3 py-1.5 text-xs font-medium text-[#0ea5e9] ring-1 ring-sky-200/80"
                 style={{ animationDelay: `${620 + index * 80}ms` }}
               >
                 {skill}
@@ -197,7 +197,7 @@ export default function About() {
         .about-card {
           position: relative;
           overflow: hidden;
-          box-shadow: 0 18px 60px rgba(0,0,0,0.16);
+          box-shadow: 0 18px 60px rgba(14,165,233,0.12);
         }
 
         .about-card::before {
@@ -205,7 +205,7 @@ export default function About() {
           position: absolute;
           inset: 0;
           pointer-events: none;
-          background: linear-gradient(120deg, transparent 18%, rgba(100,255,231,0.08) 46%, transparent 72%);
+          background: linear-gradient(120deg, transparent 18%, rgba(14,165,233,0.12) 46%, transparent 72%);
           transform: translateX(-100%);
           animation: about-panel-sheen 6s ease-in-out infinite;
         }
@@ -228,8 +228,8 @@ export default function About() {
           height: 6px;
           width: 6px;
           border-radius: 9999px;
-          background: #64ffe7;
-          box-shadow: 0 0 18px rgba(100,255,231,0.9);
+          background: #0ea5e9;
+          box-shadow: 0 0 18px rgba(14,165,233,0.7);
           transform: translateX(-50%);
         }
 
@@ -261,12 +261,12 @@ export default function About() {
 
         .about-skill:hover {
           transform: translateY(-3px);
-          box-shadow: 0 10px 26px rgba(100,255,231,0.16);
-          background-color: #17345d;
+          box-shadow: 0 10px 26px rgba(14,165,233,0.18);
+          background-color: #eef9ff;
         }
       `}</style>
       <h2 className="about-reveal text-center text-2xl font-black uppercase tracking-[0.18em] sm:text-3xl lg:text-4xl">
-        <span className="animate-pulse bg-gradient-to-r from-[#64ffe7] via-[#ff6fd8] to-[#ffd36a] bg-clip-text text-transparent">
+        <span className="animate-pulse bg-gradient-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
           About Me
         </span>
       </h2>

@@ -125,7 +125,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed left-0 top-0 z-50 w-full border-b border-cyan-100/10 bg-[#06172f]/90 backdrop-blur-md">
+    <header className="fixed left-0 top-0 z-50 w-full border-b border-sky-200/70 bg-white/86 shadow-[0_10px_34px_rgba(14,165,233,0.09)] backdrop-blur-md">
       <style>{`
         @keyframes nav-glass-pop {
           0% {
@@ -163,7 +163,7 @@ export default function Navbar() {
         <a
           href="#home"
           onClick={(event) => handleNavClick(event, "home")}
-          className="shrink-0 text-xl font-black tracking-[-0.04em] text-[#64ffe7] sm:text-2xl"
+          className="shrink-0 bg-gradient-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-xl font-black tracking-[-0.04em] text-transparent sm:text-2xl"
         >
           A(I)NIKET
         </a>
@@ -179,14 +179,14 @@ export default function Navbar() {
                 key={item}
                 href={`#${id}`}
                 onClick={(event) => handleNavClick(event, id)}
-                className={`group relative isolate overflow-hidden rounded-full px-3 py-2 text-xs font-medium uppercase tracking-[0.2em] transition duration-300 hover:text-[#64ffe7] xl:px-3.5 xl:text-sm xl:tracking-[0.24em] ${
+                className={`group relative isolate overflow-hidden rounded-full px-3 py-2 text-xs font-medium uppercase tracking-[0.2em] transition duration-300 hover:text-[#0ea5e9] xl:px-3.5 xl:text-sm xl:tracking-[0.24em] ${
                   isActive
-                    ? "border border-white/20 bg-white/10 text-[#64ffe7] shadow-[0_8px_30px_rgba(100,255,231,0.14),inset_0_1px_0_rgba(255,255,255,0.22)] backdrop-blur-xl"
-                    : "text-slate-300/75 hover:bg-white/[0.055] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] hover:backdrop-blur-md"
+                    ? "border border-sky-200 bg-sky-50/90 text-[#0ea5e9] shadow-[0_8px_30px_rgba(14,165,233,0.16),inset_0_1px_0_rgba(255,255,255,0.82)] backdrop-blur-xl"
+                    : "text-slate-600 hover:bg-sky-50/80 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] hover:backdrop-blur-md"
                 } ${isClicked ? "animate-[nav-glass-pop_620ms_cubic-bezier(0.22,1,0.36,1)]" : ""}`}
               >
                 <span
-                  className={`pointer-events-none absolute inset-0 -z-10 rounded-full bg-[radial-gradient(circle_at_35%_20%,rgba(255,255,255,0.34),rgba(255,255,255,0.08)_34%,rgba(100,255,231,0.08)_62%,transparent_76%)] transition duration-300 ${
+                  className={`pointer-events-none absolute inset-0 -z-10 rounded-full bg-[radial-gradient(circle_at_35%_20%,rgba(14,165,233,0.22),rgba(217,70,239,0.1)_34%,rgba(245,158,11,0.08)_62%,transparent_76%)] transition duration-300 ${
                     isActive ? "opacity-100" : "opacity-0 group-hover:opacity-70"
                   }`}
                 />
@@ -196,13 +196,13 @@ export default function Navbar() {
                   }`}
                 />
                 <span
-                  className={`pointer-events-none absolute inset-x-3 bottom-1 -z-10 h-px bg-[#64ffe7]/70 transition duration-300 ${
+                  className={`pointer-events-none absolute inset-x-3 bottom-1 -z-10 h-px bg-[#0ea5e9]/70 transition duration-300 ${
                     isActive ? "opacity-100" : "opacity-0 group-hover:opacity-60"
                   }`}
                 />
                 <span
                   className={`relative transition duration-300 ${
-                    isClicked ? "drop-shadow-[0_0_12px_rgba(100,255,231,0.75)]" : ""
+                    isClicked ? "drop-shadow-[0_0_12px_rgba(14,165,233,0.55)]" : ""
                   }`}
                 >
                   {item}
@@ -212,13 +212,13 @@ export default function Navbar() {
           })}
         </div>
 
-        <div className="flex shrink-0 items-center gap-2 text-slate-300/80 sm:gap-3">
+        <div className="flex shrink-0 items-center gap-2 text-slate-600 sm:gap-3">
           <a
             href="https://github.com/aniket-chakraborty2001/"
             aria-label="GitHub profile"
             target="_blank"
             rel="noreferrer"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] shadow-[inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-md transition hover:border-[#64ffe7]/60 hover:bg-[#64ffe7]/15 hover:text-[#64ffe7]"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-sky-200 bg-white/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.86)] backdrop-blur-md transition hover:border-[#0ea5e9]/70 hover:bg-sky-50 hover:text-[#0ea5e9]"
           >
             <FaGithub className="h-5 w-5" />
           </a>
@@ -227,14 +227,14 @@ export default function Navbar() {
             aria-label="LinkedIn profile"
             target="_blank"
             rel="noreferrer"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] shadow-[inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-md transition hover:border-[#64ffe7]/60 hover:bg-[#64ffe7]/15 hover:text-[#64ffe7]"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-sky-200 bg-white/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.86)] backdrop-blur-md transition hover:border-[#0ea5e9]/70 hover:bg-sky-50 hover:text-[#0ea5e9]"
           >
             <FaLinkedin className="h-5 w-5" />
           </a>
           <a
             href="/resume.pdf"
             aria-label="Download resume"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] shadow-[inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-md transition hover:border-[#64ffe7]/60 hover:bg-[#64ffe7]/15 hover:text-[#64ffe7]"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-sky-200 bg-white/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.86)] backdrop-blur-md transition hover:border-[#0ea5e9]/70 hover:bg-sky-50 hover:text-[#0ea5e9]"
           >
             <HiOutlineDownload className="h-5 w-5" />
           </a>

@@ -38,37 +38,37 @@ function EducationCard({ item }) {
   const Icon = item.icon;
 
   return (
-    <article className="flex min-h-[18rem] flex-col rounded-[8px] border border-cyan-300/15 bg-[#0d213f]/90 p-4 transition duration-300 hover:-translate-y-1 hover:border-cyan-300/45 hover:shadow-[0_18px_42px_rgba(100,255,231,0.16)] sm:p-5">
+    <article className="flex min-h-[18rem] flex-col rounded-[8px] border border-sky-200/80 bg-white/92 p-4 shadow-[0_18px_48px_rgba(14,165,233,0.1)] transition duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-[0_18px_42px_rgba(217,70,239,0.16)] sm:p-5">
       <div className="flex items-start justify-between gap-4">
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-cyan-300/35 bg-[#071d38] text-[#64ffe7] sm:h-14 sm:w-14">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-sky-200/80 bg-gradient-to-br from-sky-100 via-white to-fuchsia-100 text-[#0ea5e9] sm:h-14 sm:w-14">
           <Icon className="h-6 w-6 sm:h-7 sm:w-7" />
         </div>
 
         <div className="text-right">
-          <p className="rounded-full border border-cyan-300/20 bg-[#133a53]/85 px-3 py-1 text-[0.68rem] font-semibold tracking-[0.16em] text-[#64ffe7] sm:text-xs">
+          <p className="rounded-full border border-sky-200/80 bg-sky-50/90 px-3 py-1 text-[0.68rem] font-semibold tracking-[0.16em] text-[#0ea5e9] sm:text-xs">
             {item.period}
           </p>
-          <p className="mt-2 max-w-40 text-[0.7rem] font-black leading-4 text-slate-200/90 sm:text-xs">
+          <p className="mt-2 max-w-40 text-[0.7rem] font-black leading-4 text-slate-600 sm:text-xs">
             {item.grade}
           </p>
         </div>
       </div>
 
       <div className="mt-4 max-w-xl">
-        <h3 className="break-words text-xl font-black leading-tight tracking-[0] text-[#64ffe7] sm:text-2xl">
+        <h3 className="break-words text-xl font-black leading-tight tracking-[0] text-[#0ea5e9] sm:text-2xl">
           {item.institution}
         </h3>
-        <p className="mt-2 break-words text-base font-black leading-tight text-[#dce7ff] drop-shadow-[0_3px_0_rgba(0,0,0,0.42)] sm:text-lg">
+        <p className="mt-2 break-words text-base font-black leading-tight text-[#172033] drop-shadow-[0_3px_0_rgba(14,165,233,0.12)] sm:text-lg">
           {item.degree}
         </p>
       </div>
 
       <div className="mt-4">
-        <p className="text-xs font-black uppercase tracking-[0.24em] text-[#64ffe7]">
+        <p className="text-xs font-black uppercase tracking-[0.24em] text-[#d946ef]">
           Learned Concepts
         </p>
 
-        <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-xs leading-5 text-slate-200/90 sm:text-sm">
+        <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-xs leading-5 text-slate-700 sm:text-sm">
           {item.concepts.map((concept) => (
             <span key={concept}>{concept}</span>
           ))}
@@ -79,7 +79,7 @@ function EducationCard({ item }) {
         href={item.certificateUrl}
         target="_blank"
         rel="noreferrer"
-        className="mt-5 flex h-10 w-full items-center justify-center gap-2 border border-[#64ffe7] px-5 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[#64ffe7] transition hover:bg-[#64ffe7] hover:text-[#06172f] sm:ml-auto sm:w-auto sm:min-w-52 sm:text-xs"
+        className="mt-5 flex h-10 w-full items-center justify-center gap-2 border border-[#0ea5e9] px-5 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[#0ea5e9] transition hover:bg-[#0ea5e9] hover:text-white sm:ml-auto sm:w-auto sm:min-w-52 sm:text-xs"
       >
         View Certificate
         <FiExternalLink className="h-4 w-4" />
@@ -94,16 +94,16 @@ export default function Education() {
       id="education"
       className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-[92rem] scroll-mt-20 flex-col justify-center px-5 pb-5 pt-20 sm:px-8 md:pt-22 lg:px-12 lg:pb-6 lg:pt-20"
     >
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(100,255,231,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(100,255,231,0.045)_1px,transparent_1px)] [background-size:64px_64px]" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(14,165,233,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(217,70,239,0.05)_1px,transparent_1px)] [background-size:64px_64px]" />
 
       <div className="text-center">
         <h2 className="text-2xl font-black uppercase tracking-[0] sm:text-4xl lg:text-5xl">
-          <span className="animate-pulse bg-gradient-to-r from-[#64ffe7] via-[#ff6fd8] to-[#ffd36a] bg-clip-text text-transparent">
+          <span className="animate-pulse bg-gradient-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
             Academic_Trajectory
           </span>
         </h2>
-        <div className="mx-auto mt-4 h-1 w-28 bg-[#64ffe7]/75" />
-        <p className="mx-auto mt-4 max-w-4xl text-sm leading-6 text-slate-200/90 sm:text-base">
+        <div className="mx-auto mt-4 h-1 w-28 bg-gradient-to-r from-[#0ea5e9] to-[#d946ef]" />
+        <p className="mx-auto mt-4 max-w-4xl text-sm leading-6 text-slate-700 sm:text-base">
           A rigorous foundation in computational science and artificial
           intelligence, mapped through institutions of technical excellence.
         </p>

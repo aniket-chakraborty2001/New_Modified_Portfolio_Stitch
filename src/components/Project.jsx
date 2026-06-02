@@ -45,40 +45,52 @@ const projects = [
   }
 ];
 
+// Gradient colors per dot index — cycles through the brand palette
+const DOT_COLORS = [
+  "#0ea5e9",
+  "#7c3aed",
+  "#d946ef",
+  "#f59e0b",
+  "#0ea5e9",
+  "#d946ef",
+];
+
 function ProjectCard({ project }) {
   return (
-    <article
-      className="group relative isolate flex h-[31rem] w-full flex-col overflow-hidden rounded-[4px] border border-cyan-300/15 bg-[#0d213f] shadow-[0_22px_56px_rgba(3,22,45,0.42)] transition duration-500 ease-out hover:border-cyan-300/55 hover:shadow-[0_24px_58px_rgba(100,255,231,0.2)] sm:h-[25rem]"
-    >
-      <span className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_0%,rgba(100,255,231,0.16),transparent_34%),radial-gradient(circle_at_85%_18%,rgba(255,111,216,0.12),transparent_32%)] opacity-0 transition duration-500 group-hover:opacity-100" />
-      <span className="pointer-events-none absolute inset-y-0 -left-1/2 z-20 w-1/2 -skew-x-[18deg] bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 transition duration-700 group-hover:translate-x-[310%] group-hover:opacity-100" />
-      <span className="pointer-events-none absolute inset-0 rounded-[4px] border border-cyan-200/20 bg-[linear-gradient(135deg,rgba(100,255,231,0.16),transparent_30%,transparent_70%,rgba(255,111,216,0.12))] opacity-55 transition-opacity duration-500 group-hover:opacity-100" />
-      <span className="pointer-events-none absolute left-4 top-4 z-20 h-8 w-8 border-l border-t border-[#64ffe7]/0 transition duration-500 group-hover:border-[#64ffe7]/80" />
-      <span className="pointer-events-none absolute bottom-4 right-4 z-20 h-8 w-8 border-b border-r border-[#64ffe7]/0 transition duration-500 group-hover:border-[#64ffe7]/80" />
+    <article className="group relative isolate flex h-[23rem] w-full flex-col overflow-hidden rounded-[4px] border border-sky-200/80 bg-white/92 shadow-[0_22px_56px_rgba(14,165,233,0.14)] transition duration-500 ease-out hover:border-sky-300 hover:shadow-[0_24px_58px_rgba(217,70,239,0.16)] sm:h-[20rem] sm:flex-row">
+      <span className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_0%,rgba(14,165,233,0.14),transparent_34%),radial-gradient(circle_at_85%_18%,rgba(217,70,239,0.12),transparent_32%)] opacity-0 transition duration-500 group-hover:opacity-100" />
+      <span className="pointer-events-none absolute inset-y-0 -left-1/2 z-20 w-1/2 -skew-x-[18deg] bg-gradient-to-r from-transparent via-white/60 to-transparent opacity-0 transition duration-700 group-hover:translate-x-[310%] group-hover:opacity-100" />
+      <span className="pointer-events-none absolute inset-0 rounded-[4px] border border-sky-200/55 bg-[linear-gradient(135deg,rgba(14,165,233,0.12),transparent_30%,transparent_70%,rgba(217,70,239,0.1))] opacity-55 transition-opacity duration-500 group-hover:opacity-100" />
+      <span className="pointer-events-none absolute left-4 top-4 z-20 h-8 w-8 border-l border-t border-[#0ea5e9]/0 transition duration-500 group-hover:border-[#0ea5e9]/80" />
+      <span className="pointer-events-none absolute bottom-4 right-4 z-20 h-8 w-8 border-b border-r border-[#0ea5e9]/0 transition duration-500 group-hover:border-[#0ea5e9]/80" />
 
-      <div className="relative h-40 shrink-0 overflow-hidden bg-[#101820] sm:h-44">
+      {/* Image */}
+      <div className="relative h-44 w-full shrink-0 overflow-hidden bg-gradient-to-br from-sky-50 via-white to-fuchsia-50 sm:h-full sm:w-[55%]">
         <Image
           src={project.image}
           alt={`${project.title} project visual`}
           fill
-          sizes="(min-width: 1024px) 42rem, (min-width: 640px) 70vw, 100vw"
-          className="object-contain p-2 grayscale transition duration-700 ease-out group-hover:scale-[1.03] group-hover:grayscale-0"
+          sizes="(min-width: 640px) 55%, 100vw"
+          className="object-contain transition duration-700 ease-out group-hover:scale-[1.03] group-hover:grayscale-0 grayscale"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#06172f]/45 via-[#06172f]/10 to-transparent opacity-70 transition duration-500 group-hover:opacity-35" />
-        <div className="absolute inset-x-0 top-0 h-16 -translate-y-full bg-gradient-to-b from-[#64ffe7]/20 via-[#64ffe7]/5 to-transparent opacity-0 transition duration-700 group-hover:translate-y-[330%] group-hover:opacity-100" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white/40 via-white/5 to-transparent opacity-60 transition duration-500 group-hover:opacity-20 sm:bg-gradient-to-r" />
       </div>
-      <div className="relative flex flex-1 flex-col p-5">
-        <h3 className="text-lg font-black uppercase leading-tight tracking-[0] text-[#dce7ff] drop-shadow-[0_3px_0_rgba(0,0,0,0.45)] transition duration-500 group-hover:text-[#64ffe7] sm:text-xl">
-          {project.title}
-        </h3>
-        <p className="mt-3 text-sm leading-6 text-slate-100/90">
-          {project.description}
-        </p>
-        <div className="mt-auto flex flex-wrap gap-x-4 gap-y-2 pt-4">
+
+      {/* Content */}
+      <div className="relative flex flex-1 flex-col justify-between p-4 sm:p-5">
+        <div>
+          <h3 className="text-base font-black uppercase leading-tight tracking-[0] text-[#172033] drop-shadow-[0_3px_0_rgba(14,165,233,0.12)] transition duration-500 group-hover:text-[#0ea5e9] sm:text-lg">
+            {project.title}
+          </h3>
+          <p className="mt-2 text-xs leading-5 text-slate-600 sm:text-sm sm:leading-6">
+            {project.description}
+          </p>
+        </div>
+        <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1.5">
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="inline-block text-[0.68rem] font-black uppercase tracking-[0.12em] text-[#64ffe7] transition duration-300 group-hover:-translate-y-1 group-hover:text-[#9ffff0] group-hover:drop-shadow-[0_0_14px_rgba(100,255,231,0.55)] sm:text-xs"
+              className="inline-block text-[0.62rem] font-black uppercase tracking-[0.12em] text-[#0ea5e9] transition duration-300 group-hover:-translate-y-0.5 group-hover:text-[#d946ef] group-hover:drop-shadow-[0_0_14px_rgba(217,70,239,0.28)] sm:text-[0.68rem]"
             >
               {tag}
             </span>
@@ -97,13 +109,45 @@ export default function Project() {
       id="projects"
       className="relative z-10 mx-auto w-full max-w-[92rem] scroll-mt-20 px-5 pb-20 pt-24 sm:px-8 md:pt-28 lg:px-12"
     >
+      {/* Pagination dot styles — scoped to this section only */}
+      <style>{`
+        .projects-flip .swiper-pagination {
+          position: relative;
+          bottom: auto;
+          margin-top: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+        }
+        .projects-flip .swiper-pagination-bullet {
+          width: 10px;
+          height: 10px;
+          border-radius: 9999px;
+          opacity: 0.35;
+          background: #0ea5e9;
+          transition: opacity 0.3s, transform 0.3s, background 0.3s;
+          margin: 0 !important;
+        }
+        .projects-flip .swiper-pagination-bullet:nth-child(1) { background: #0ea5e9; }
+        .projects-flip .swiper-pagination-bullet:nth-child(2) { background: #7c3aed; }
+        .projects-flip .swiper-pagination-bullet:nth-child(3) { background: #d946ef; }
+        .projects-flip .swiper-pagination-bullet:nth-child(4) { background: #f59e0b; }
+        .projects-flip .swiper-pagination-bullet:nth-child(5) { background: #0ea5e9; }
+        .projects-flip .swiper-pagination-bullet:nth-child(6) { background: #d946ef; }
+        .projects-flip .swiper-pagination-bullet-active {
+          opacity: 1;
+          transform: scale(1.4);
+        }
+      `}</style>
+
       <div className="text-center">
         <h2 className="text-3xl font-black uppercase tracking-[0] sm:text-4xl lg:text-5xl">
-          <span className="animate-pulse bg-gradient-to-r from-[#64ffe7] via-[#ff6fd8] to-[#ffd36a] bg-clip-text text-transparent">
+          <span className="animate-pulse bg-gradient-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
             Engineering Archive
           </span>
         </h2>
-        <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-300/75">
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-700">
           A curated selection of experiments in Generative Artificial Intelligence, computer
           vision, and autonomous systems development.
         </p>
@@ -118,7 +162,7 @@ export default function Project() {
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
           }}
-          className="projects-flip h-[34rem] w-full overflow-visible pb-12 sm:h-[32rem]"
+          className="projects-flip w-full overflow-visible"
         >
           {projects.map((project) => (
             <SwiperSlide key={project.title} className="flex items-stretch">
@@ -132,7 +176,7 @@ export default function Project() {
           aria-label="Previous project"
           suppressHydrationWarning
           onClick={() => swiperRef.current?.slidePrev()}
-          className="absolute left-0 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-[6px] border border-cyan-300/45 bg-[#0d213f]/90 text-[#64ffe7] transition hover:bg-[#64ffe7] hover:text-[#06172f] sm:h-12 sm:w-12"
+          className="absolute left-0 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-[6px] border border-sky-300/70 bg-white/92 text-[#0ea5e9] shadow-[0_12px_28px_rgba(14,165,233,0.12)] transition hover:bg-[#0ea5e9] hover:text-white sm:h-12 sm:w-12"
         >
           <FiChevronLeft className="h-7 w-7" />
         </button>
@@ -142,7 +186,7 @@ export default function Project() {
           aria-label="Next project"
           suppressHydrationWarning
           onClick={() => swiperRef.current?.slideNext()}
-          className="absolute right-0 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-[6px] border border-cyan-300/45 bg-[#0d213f]/90 text-[#64ffe7] transition hover:bg-[#64ffe7] hover:text-[#06172f] sm:h-12 sm:w-12"
+          className="absolute right-0 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-[6px] border border-sky-300/70 bg-white/92 text-[#0ea5e9] shadow-[0_12px_28px_rgba(14,165,233,0.12)] transition hover:bg-[#0ea5e9] hover:text-white sm:h-12 sm:w-12"
         >
           <FiChevronRight className="h-7 w-7" />
         </button>
