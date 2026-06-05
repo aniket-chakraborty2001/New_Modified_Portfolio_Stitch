@@ -62,7 +62,7 @@ function SkillCard({ skill, cardRef }) {
         ease: "power2.out", transformPerspective: 650,
       });
       gsap.set(glare, {
-        background: `radial-gradient(circle at ${e.clientX - left}px ${e.clientY - top}px, rgba(14,165,233,0.20) 0%, transparent 60%)`,
+        background: `radial-gradient(circle at ${e.clientX - left}px ${e.clientY - top}px, rgba(32,178,170,0.24) 0%, transparent 60%)`,
         opacity: 1,
       });
     };
@@ -87,7 +87,7 @@ function SkillCard({ skill, cardRef }) {
     <div
       ref={cardRef}
       style={{ transformStyle: "preserve-3d", willChange: "transform, opacity" }}
-      className="group relative flex h-[11.5rem] flex-col overflow-hidden rounded-[12px] border border-sky-200/80 bg-white/92 p-4 shadow-[0_18px_44px_rgba(14,165,233,0.1)] transition-[border-color] duration-300 hover:border-sky-300"
+      className="group relative flex h-[11.5rem] flex-col overflow-hidden rounded-[12px] border border-[#20b2aa]/55 bg-[#20b2aa]/18 p-4 shadow-[0_18px_44px_rgba(32,178,170,0.16)] backdrop-blur-[2px] transition-[border-color] duration-300 hover:border-[#20b2aa]/80"
     >
       {/* spotlight glare */}
       <span ref={glareRef} className="pointer-events-none absolute inset-0 rounded-[12px] opacity-0" />
@@ -96,7 +96,7 @@ function SkillCard({ skill, cardRef }) {
       <span className="absolute bottom-0 left-0 right-0 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-[#0ea5e9] via-[#14b8a6] to-[#d946ef] transition-transform duration-[360ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100" />
 
       {/* icon */}
-      <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-[8px] bg-gradient-to-br from-sky-50 via-white to-fuchsia-50 ring-1 ring-sky-200/80">
+      <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-[8px] bg-[#20b2aa]/12 ring-1 ring-[#20b2aa]/45">
         <Image src={skill.icon} alt={`${skill.name} icon`} fill sizes="2.5rem" className="object-contain p-1.5" />
       </div>
 

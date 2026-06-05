@@ -60,10 +60,10 @@ const certificates = [
 function CertificateCard({ certificate }) {
   return (
     <article
-      className="flex min-h-[23rem] w-full flex-col rounded-[10px] border border-sky-200/80 bg-white/94 p-5 shadow-[0_22px_70px_rgba(14,165,233,0.14)] transition-all duration-700 sm:p-6"
+      className="flex h-full w-full flex-col rounded-[10px] border border-[#20b2aa]/55 bg-[#20b2aa]/18 p-5 shadow-[0_22px_70px_rgba(32,178,170,0.18)] backdrop-blur-[2px] transition-all duration-700 sm:p-6"
     >
       <div className="flex items-start justify-between gap-5">
-        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[6px] bg-gradient-to-br from-sky-100 via-white to-fuchsia-100 text-[#0ea5e9]">
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[6px] bg-[#20b2aa]/12 text-[#0ea5e9] ring-1 ring-[#20b2aa]/45">
           <TbCertificate className="h-8 w-8" />
         </div>
         <p className="text-right text-xs font-semibold uppercase tracking-[0.22em] text-[#d946ef]">
@@ -84,7 +84,7 @@ function CertificateCard({ certificate }) {
         {certificate.skills.map((skill) => (
           <span
             key={skill}
-            className="rounded-[3px] border border-sky-200/80 bg-sky-50/70 px-2.5 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-slate-700"
+            className="rounded-[3px] border border-[#20b2aa]/45 bg-[#20b2aa]/10 px-2.5 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-slate-700"
           >
             {skill}
           </span>
@@ -126,7 +126,7 @@ export default function Certificates() {
         </p>
       </div>
 
-      <div className="relative mx-auto mt-7 h-[27rem] w-full max-w-7xl">
+      <div className="relative mx-auto mt-7 h-[25.5rem] w-full max-w-7xl">
         <Swiper
           effect="coverflow"
           grabCursor
@@ -144,7 +144,7 @@ export default function Certificates() {
             stretch: 0,
             depth: 120,
             modifier: 1,
-            slideShadows: true,
+            slideShadows: false,
           }}
           pagination={{ clickable: true }}
           breakpoints={{
@@ -161,10 +161,10 @@ export default function Certificates() {
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
           }}
-          className="certificates-coverflow h-full w-full overflow-visible pb-12"
+          className="certificates-coverflow h-full w-full overflow-visible pb-10"
         >
           {certificates.map((certificate) => (
-            <SwiperSlide key={certificate.title}>
+            <SwiperSlide key={certificate.title} className="flex h-full items-stretch">
               <CertificateCard certificate={certificate} />
             </SwiperSlide>
           ))}

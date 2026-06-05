@@ -17,7 +17,7 @@ const profileDetails = [
 
 function ProfileCard() {
   return (
-    <aside className="about-card about-reveal flex items-center justify-center border border-sky-200/80 bg-white/86 px-5 py-5 backdrop-blur sm:px-7 lg:px-7 lg:py-6">
+    <aside className="about-card about-reveal flex items-center justify-center border border-[#20b2aa]/55 bg-[#20b2aa]/18 px-5 py-5 backdrop-blur-[2px] sm:px-7 lg:px-7 lg:py-6">
       <div className="relative mx-auto h-[28rem] w-full max-w-[24rem] overflow-hidden">
         <div className="absolute inset-10 rounded-full bg-[#0ea5e9]/14 blur-3xl" />
         <div className="about-orbit absolute inset-8 rounded-full border border-sky-300/25" />
@@ -36,9 +36,9 @@ function ProfileCard() {
                 .map((image, index) => (
                   <div
                     key={image.alt}
-                    className={`aspect-square w-full overflow-hidden rounded-[8px] border-2 border-[#0ea5e9]/80 bg-gradient-to-br from-sky-50 via-white to-fuchsia-50 p-1.5 shadow-[0_16px_34px_rgba(14,165,233,0.16),0_0_22px_rgba(217,70,239,0.12)] ${image.className}`}
+                    className={`aspect-square w-full overflow-hidden rounded-[8px] border-2 border-[#20b2aa]/70 bg-[#20b2aa]/12 p-1.5 shadow-[0_16px_34px_rgba(32,178,170,0.16),0_0_22px_rgba(14,165,233,0.12)] ${image.className}`}
                   >
-                    <div className="relative h-full overflow-hidden rounded-[6px] bg-white">
+                    <div className="relative h-full overflow-hidden rounded-[6px] bg-[#bff3ef]/80">
                       <Image
                         src={image.src}
                         alt={image.alt}
@@ -60,7 +60,7 @@ function ProfileCard() {
 
 function SummaryPanel() {
   return (
-    <section className="about-card about-reveal border border-sky-200/80 bg-white/88 px-6 py-6 backdrop-blur [animation-delay:120ms] sm:px-8 lg:px-8 lg:py-7">
+    <section className="about-card about-reveal border border-[#20b2aa]/55 bg-[#20b2aa]/18 px-6 py-6 backdrop-blur-[2px] [animation-delay:120ms] sm:px-8 lg:px-8 lg:py-7">
       <div className="about-reveal flex items-center gap-3 [animation-delay:200ms]">
         <span className="h-px w-10 bg-[#0ea5e9]" />
         <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#0ea5e9]">
@@ -80,7 +80,7 @@ function SummaryPanel() {
         interaction.
       </p>
 
-      <div className="about-reveal mt-5 flex flex-wrap items-center justify-between gap-4 border-y border-sky-200/80 py-4 [animation-delay:420ms]">
+      <div className="about-reveal mt-5 flex flex-wrap items-center justify-between gap-4 border-y border-[#20b2aa]/45 py-4 [animation-delay:420ms]">
         <div>
           <h1 className="text-2xl font-black leading-none tracking-[0] text-[#172033] drop-shadow-[0_4px_0_rgba(14,165,233,0.12)] sm:text-3xl">
             Aniket Chakraborty
@@ -122,7 +122,7 @@ function SummaryPanel() {
             {["PyTorch", "TensorFlow", "CUDA", "OpenCV", "PILLOW", "Transformers"].map((skill, index) => (
               <span
                 key={skill}
-                className="about-skill bg-gradient-to-r from-sky-50 via-white to-fuchsia-50 px-3 py-1.5 text-xs font-medium text-[#0ea5e9] ring-1 ring-sky-200/80"
+                className="about-skill bg-[#20b2aa]/10 px-3 py-1.5 text-xs font-medium text-[#0ea5e9] ring-1 ring-[#20b2aa]/45"
                 style={{ animationDelay: `${620 + index * 80}ms` }}
               >
                 {skill}
@@ -197,7 +197,7 @@ export default function About() {
         .about-card {
           position: relative;
           overflow: hidden;
-          box-shadow: 0 18px 60px rgba(14,165,233,0.12);
+          box-shadow: 0 18px 60px rgba(32,178,170,0.16);
         }
 
         .about-card::before {
@@ -205,7 +205,7 @@ export default function About() {
           position: absolute;
           inset: 0;
           pointer-events: none;
-          background: linear-gradient(120deg, transparent 18%, rgba(14,165,233,0.12) 46%, transparent 72%);
+          background: linear-gradient(120deg, transparent 18%, rgba(32,178,170,0.16) 46%, transparent 72%);
           transform: translateX(-100%);
           animation: about-panel-sheen 6s ease-in-out infinite;
         }
@@ -261,8 +261,8 @@ export default function About() {
 
         .about-skill:hover {
           transform: translateY(-3px);
-          box-shadow: 0 10px 26px rgba(14,165,233,0.18);
-          background-color: #eef9ff;
+          box-shadow: 0 10px 26px rgba(32,178,170,0.18);
+          background-color: rgba(32,178,170,0.18);
         }
       `}</style>
       <h2 className="about-reveal text-center text-2xl font-black uppercase tracking-[0.18em] sm:text-3xl lg:text-4xl">

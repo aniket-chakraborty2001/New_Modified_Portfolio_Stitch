@@ -38,14 +38,16 @@ function EducationCard({ item }) {
   const Icon = item.icon;
 
   return (
-    <article className="flex min-h-[18rem] flex-col rounded-[8px] border border-sky-200/80 bg-white/92 p-4 shadow-[0_18px_48px_rgba(14,165,233,0.1)] transition duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-[0_18px_42px_rgba(217,70,239,0.16)] sm:p-5">
+    <article
+      className="flex min-h-[18rem] flex-col rounded-[8px] border border-[#20b2aa]/55 bg-[#20b2aa]/18 p-4 shadow-[0_18px_48px_rgba(32,178,170,0.16)] outline-none backdrop-blur-[2px] transition duration-300 hover:-translate-y-1 hover:border-[#20b2aa]/80 hover:shadow-[0_18px_42px_rgba(32,178,170,0.22)] sm:p-5"
+    >
       <div className="flex items-start justify-between gap-4">
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-sky-200/80 bg-gradient-to-br from-sky-100 via-white to-fuchsia-100 text-[#0ea5e9] sm:h-14 sm:w-14">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-[#20b2aa]/45 bg-[#20b2aa]/12 text-[#0ea5e9] sm:h-14 sm:w-14">
           <Icon className="h-6 w-6 sm:h-7 sm:w-7" />
         </div>
 
         <div className="text-right">
-          <p className="rounded-full border border-sky-200/80 bg-sky-50/90 px-3 py-1 text-[0.68rem] font-semibold tracking-[0.16em] text-[#0ea5e9] sm:text-xs">
+          <p className="rounded-full border border-[#20b2aa]/45 bg-[#20b2aa]/10 px-3 py-1 text-[0.68rem] font-semibold tracking-[0.16em] text-[#0ea5e9] sm:text-xs">
             {item.period}
           </p>
           <p className="mt-2 max-w-40 text-[0.7rem] font-black leading-4 text-slate-600 sm:text-xs">

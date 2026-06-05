@@ -45,27 +45,17 @@ const projects = [
   }
 ];
 
-// Gradient colors per dot index — cycles through the brand palette
-const DOT_COLORS = [
-  "#0ea5e9",
-  "#7c3aed",
-  "#d946ef",
-  "#f59e0b",
-  "#0ea5e9",
-  "#d946ef",
-];
-
 function ProjectCard({ project }) {
   return (
-    <article className="group relative isolate flex h-[23rem] w-full flex-col overflow-hidden rounded-[4px] border border-sky-200/80 bg-white/92 shadow-[0_22px_56px_rgba(14,165,233,0.14)] transition duration-500 ease-out hover:border-sky-300 hover:shadow-[0_24px_58px_rgba(217,70,239,0.16)] sm:h-[20rem] sm:flex-row">
+    <article className="group relative isolate flex h-[24.5rem] w-full flex-col overflow-hidden rounded-[4px] border border-[#20b2aa]/55 bg-[#20b2aa]/18 shadow-[0_22px_56px_rgba(32,178,170,0.18)] backdrop-blur-[2px] transition duration-500 ease-out hover:border-[#20b2aa]/80 hover:shadow-[0_24px_58px_rgba(32,178,170,0.24)] sm:h-[21.5rem] sm:flex-row">
       <span className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_0%,rgba(14,165,233,0.14),transparent_34%),radial-gradient(circle_at_85%_18%,rgba(217,70,239,0.12),transparent_32%)] opacity-0 transition duration-500 group-hover:opacity-100" />
       <span className="pointer-events-none absolute inset-y-0 -left-1/2 z-20 w-1/2 -skew-x-[18deg] bg-gradient-to-r from-transparent via-white/60 to-transparent opacity-0 transition duration-700 group-hover:translate-x-[310%] group-hover:opacity-100" />
-      <span className="pointer-events-none absolute inset-0 rounded-[4px] border border-sky-200/55 bg-[linear-gradient(135deg,rgba(14,165,233,0.12),transparent_30%,transparent_70%,rgba(217,70,239,0.1))] opacity-55 transition-opacity duration-500 group-hover:opacity-100" />
+      <span className="pointer-events-none absolute inset-0 rounded-[4px] border border-white/35 bg-[linear-gradient(135deg,rgba(32,178,170,0.16),transparent_32%,transparent_70%,rgba(255,255,255,0.14))] opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
       <span className="pointer-events-none absolute left-4 top-4 z-20 h-8 w-8 border-l border-t border-[#0ea5e9]/0 transition duration-500 group-hover:border-[#0ea5e9]/80" />
       <span className="pointer-events-none absolute bottom-4 right-4 z-20 h-8 w-8 border-b border-r border-[#0ea5e9]/0 transition duration-500 group-hover:border-[#0ea5e9]/80" />
 
       {/* Image */}
-      <div className="relative h-44 w-full shrink-0 overflow-hidden bg-gradient-to-br from-sky-50 via-white to-fuchsia-50 sm:h-full sm:w-[55%]">
+      <div className="relative h-48 w-full shrink-0 overflow-hidden bg-[#20b2aa]/10 sm:h-full sm:w-[55%]">
         <Image
           src={project.image}
           alt={`${project.title} project visual`}
@@ -73,7 +63,7 @@ function ProjectCard({ project }) {
           sizes="(min-width: 640px) 55%, 100vw"
           className="object-contain transition duration-700 ease-out group-hover:scale-[1.03] group-hover:grayscale-0 grayscale"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-white/40 via-white/5 to-transparent opacity-60 transition duration-500 group-hover:opacity-20 sm:bg-gradient-to-r" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-white/0 to-transparent opacity-45 transition duration-500 group-hover:opacity-10 sm:bg-gradient-to-r" />
       </div>
 
       {/* Content */}
@@ -153,7 +143,7 @@ export default function Project() {
         </p>
       </div>
 
-      <div className="relative mx-auto mt-12 max-w-3xl px-10 sm:px-16">
+      <div className="relative mx-auto mt-12 max-w-4xl px-10 sm:px-16">
         <Swiper
           effect="flip"
           grabCursor

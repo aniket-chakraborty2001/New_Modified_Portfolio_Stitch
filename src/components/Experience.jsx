@@ -38,8 +38,7 @@ const experiences = [
       "Prepared datasets for experimental and analytical workflows.",
       "Implemented Python scripts for Data Analytics, Statistical Analytics",
       "Documented insights, methods, and reproducible experiment outputs.",
-      "Gone through different medical reports like HRCT chest scans to know about different dimensions of heart, lung",
-      "Created a research paper and presented the same in conference",
+      "Got to know HRCT chest reports and present my findings in seminar"
     ],
     stack: ["Python", "Research", "EDA", "Numpy", "Scipy", "Pandas", "Reports"],
   },
@@ -49,7 +48,7 @@ const experiences = [
     period: "2019 - Present",
     location: "Remote",
     summary:
-      "Tutoring Mathematics to students from class 7 to class 10",
+      "Provided Mathematics and Science tutoring to groups of students from Classes 7–10. Developed lesson plans, explained complex concepts, and supported students in achieving their academic goals.",
     highlights: [
       "Covering basic to advanced concepts with hands on experience",
       "Integrated python programming for visualizing some mathematical plots",
@@ -67,8 +66,8 @@ function ExperienceImage({ experience, index }) {
 
   if (!experience.image) {
     return (
-      <div className="relative flex h-full min-h-32 items-center justify-center overflow-hidden rounded-lg border border-sky-200/80 bg-gradient-to-br from-sky-50 via-white to-fuchsia-50">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.18),transparent_52%)]" />
+      <div className="relative flex h-full min-h-32 items-center justify-center overflow-hidden rounded-lg border border-[#20b2aa]/45 bg-[#bff3ef]/95">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(32,178,170,0.18),transparent_52%)]" />
         <HiOutlineBriefcase className="relative h-12 w-12 text-[#0ea5e9]/80 sm:h-16 sm:w-16" />
         <span className="absolute bottom-3 left-3 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-[#0ea5e9]">
           {label}
@@ -78,7 +77,7 @@ function ExperienceImage({ experience, index }) {
   }
 
   const image = (
-    <div className="relative flex h-full min-h-32 items-center justify-center overflow-hidden rounded-lg border border-sky-200/80 bg-gradient-to-br from-sky-50 via-white to-fuchsia-50">
+    <div className="relative flex h-full min-h-32 items-center justify-center overflow-hidden rounded-lg border border-[#20b2aa]/45 bg-[#bff3ef]/95">
       <Image
         src={experience.image}
         alt={`${experience.company} experience visual`}
@@ -93,7 +92,7 @@ function ExperienceImage({ experience, index }) {
         {label}
       </span>
       {experience.link && (
-        <div className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-md border border-sky-300/70 bg-white/90 text-[#0ea5e9] backdrop-blur-sm transition group-hover:bg-[#0ea5e9] group-hover:text-white">
+        <div className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-md border border-[#20b2aa]/55 bg-[#bff3ef]/95 text-[#0ea5e9] backdrop-blur-sm transition group-hover:bg-[#0ea5e9] group-hover:text-white">
           <FiExternalLink className="h-5 w-5" />
         </div>
       )}
@@ -140,16 +139,18 @@ function ExperienceCard({ experience, index, isOpen, canOpen, onOpen, style }) {
       aria-disabled={!canOpen}
       onClick={requestOpen}
       onKeyDown={handleKeyDown}
-      className={`experience-stack-card group absolute left-1/2 top-1/2 grid w-(--experience-card-width) cursor-pointer grid-cols-[minmax(8rem,40%)_1fr] gap-4 overflow-hidden rounded-lg border bg-white/94 p-3 outline-none transition-[height,transform,opacity,border-color,box-shadow,filter] duration-500 ease-out focus-visible:border-[#0ea5e9] focus-visible:shadow-[0_0_0_3px_rgba(14,165,233,0.18)] sm:grid-cols-[12rem_1fr] sm:gap-5 sm:p-5 ${
+      className={`experience-stack-card group absolute left-1/2 top-1/2 isolate grid w-(--experience-card-width) grid-cols-[minmax(8rem,40%)_1fr] gap-4 overflow-hidden rounded-lg border bg-[#bff3ef]/95 p-3 shadow-[0_18px_48px_rgba(32,178,170,0.16)] outline-none backdrop-blur-[2px] transition-[height,transform,opacity,border-color,box-shadow,filter] duration-500 ease-out focus-visible:border-[#20b2aa] focus-visible:shadow-[0_0_0_3px_rgba(32,178,170,0.18)] sm:grid-cols-[12rem_1fr] sm:gap-5 sm:p-5 ${
+        canOpen ? "cursor-pointer" : "cursor-default"
+      } ${
         isOpen
-          ? "h-(--experience-card-open-height) border-sky-300 shadow-[0_26px_90px_rgba(217,70,239,0.18)]"
-          : "h-(--experience-card-height) border-sky-200/80 shadow-[0_18px_48px_rgba(14,165,233,0.12)] hover:border-sky-300"
+          ? "h-(--experience-card-open-height) border-[#20b2aa]/80 shadow-[0_26px_90px_rgba(32,178,170,0.24)]"
+          : "h-(--experience-card-height) border-[#20b2aa]/55 hover:border-[#20b2aa]/80"
       }`}
       style={style}
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 rounded-lg border border-transparent bg-[linear-gradient(145deg,rgba(14,165,233,0.42),transparent_34%,rgba(217,70,239,0.26))] opacity-40 transition-opacity duration-400 [-webkit-mask:linear-gradient(#fff_0_0)_padding-box,linear-gradient(#fff_0_0)] [-webkit-mask-composite:xor] [mask-composite:exclude] group-hover:opacity-100 group-focus-visible:opacity-100"
+        className="pointer-events-none absolute inset-0 rounded-lg border border-transparent bg-[linear-gradient(145deg,rgba(32,178,170,0.42),transparent_34%,rgba(255,255,255,0.2))] opacity-40 transition-opacity duration-400 [-webkit-mask:linear-gradient(#fff_0_0)_padding-box,linear-gradient(#fff_0_0)] [-webkit-mask-composite:xor] [mask-composite:exclude] group-hover:opacity-100 group-focus-visible:opacity-100"
       />
       <ExperienceImage experience={experience} index={index} />
 
@@ -293,7 +294,7 @@ export default function Experience() {
                   style={{
                     zIndex: openIndex === index ? 50 : 10 + index,
                     opacity: isVisibleCard ? 1 : 0,
-                    pointerEvents: stackIsComplete && isVisibleCard ? "auto" : "none",
+                    pointerEvents: isVisibleCard ? "auto" : "none",
                     transform: `translate(-50%, -50%) translateY(calc(${finalOffset}px + ${incomingOffset}svh)) scale(${scale})`,
                   }}
                 />
