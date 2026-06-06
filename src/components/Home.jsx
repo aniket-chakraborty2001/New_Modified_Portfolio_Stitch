@@ -22,7 +22,7 @@ const techChips = [
 
 function WorkbenchPanel() {
   return (
-    <div className="home-artwork relative mx-auto aspect-square w-full max-w-[18rem] overflow-hidden rounded-lg border border-sky-200/80 bg-white/82 shadow-[0_28px_90px_rgba(14,165,233,0.16),0_0_70px_rgba(217,70,239,0.08)_inset] backdrop-blur sm:max-w-88 xl:max-w-100">
+    <div className="home-artwork relative mx-auto aspect-[1/1.15] w-full max-w-[18rem] overflow-hidden rounded-lg border border-sky-200/80 bg-white/82 shadow-[0_28px_90px_rgba(14,165,233,0.16),0_0_70px_rgba(217,70,239,0.08)_inset] backdrop-blur sm:max-w-88 xl:max-w-100">
       <div className="absolute inset-0 bg-[linear-gradient(120deg,transparent_22%,rgba(14,165,233,0.18)_48%,transparent_74%)] opacity-0" />
       <div className="home-scan absolute inset-x-0 top-0 h-24 bg-linear-to-b from-[#0ea5e9]/22 via-[#d946ef]/8 to-transparent" />
       <div className="home-orbit absolute inset-7 rounded-full border border-sky-300/25" />

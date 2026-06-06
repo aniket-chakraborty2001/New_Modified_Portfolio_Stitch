@@ -78,7 +78,7 @@ export default function Contact() {
       <div className="relative mx-auto flex min-h-[calc(100svh-6.5rem)] w-full flex-col justify-center py-8">
         <div className="text-center">
           <h2 className="mt-3 text-3xl font-black uppercase tracking-normal sm:text-4xl lg:text-5xl">
-            <span className="animate-pulse bg-linear-to-r from-[#0ea5e9] via-[#14b8a6] to-[#d946ef] bg-clip-text text-transparent">
+            <span className="animate-pulse bg-linear-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
               Contact Node
             </span>
           </h2>

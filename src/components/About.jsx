@@ -61,12 +61,6 @@ function ProfileCard() {
 function SummaryPanel() {
   return (
     <section className="about-card about-reveal border border-[#20b2aa]/55 bg-[#20b2aa]/18 px-6 py-6 backdrop-blur-[2px] [animation-delay:120ms] sm:px-8 lg:px-8 lg:py-7">
-      <div className="about-reveal flex items-center gap-3 [animation-delay:200ms]">
-        <span className="h-px w-10 bg-[#0ea5e9]" />
-        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#0ea5e9]">
-          Executive Summary
-        </p>
-      </div>
 
       <h2 className="about-reveal mt-4 max-w-5xl text-2xl font-black leading-[1.12] tracking-normal text-[#172033] drop-shadow-[0_3px_0_rgba(14,165,233,0.12)] [animation-delay:280ms] sm:text-3xl xl:text-[2.25rem]">
         Pushing the boundaries of Manual Human work to Intelligent solutions
@@ -104,31 +98,15 @@ function SummaryPanel() {
         </div>
       </div>
 
-      <div className="mt-5 grid gap-5 lg:grid-cols-[1fr_0.95fr]">
+      <div className="mt-5">
         <div className="about-reveal [animation-delay:440ms]">
           <h3 className="text-sm font-semibold uppercase tracking-[0.28em] text-slate-500">
             Core Area
           </h3>
-          <p className="mt-2 max-w-lg text-sm leading-6 text-slate-800 sm:text-base">
-            Gen AI, Transformers, Diffusers, NLP, Machine Learning, Deep Learning, ViTs, Computer Vision
+          <p className="mt-2 w-full max-w-none text-sm leading-6 text-red-800 sm:text-base">
+            Gen AI, Transformers, Diffusers, NLP, Machine Learning, Deep Learning, ViTs, Computer Vision, FastAPIs, 
+            OpenAI, Gemini, Claude, HuggingFace, Github
           </p>
-        </div>
-
-        <div className="about-reveal [animation-delay:520ms]">
-          <h3 className="text-sm font-semibold uppercase tracking-[0.28em] text-slate-500">
-            Technical Stack
-          </h3>
-          <div className="mt-2 flex flex-wrap gap-3">
-            {["PyTorch", "TensorFlow", "CUDA", "OpenCV", "PILLOW", "Transformers"].map((skill, index) => (
-              <span
-                key={skill}
-                className="about-skill bg-[#20b2aa]/10 px-3 py-1.5 text-xs font-medium text-[#0ea5e9] ring-1 ring-[#20b2aa]/45"
-                style={{ animationDelay: `${620 + index * 80}ms` }}
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
         </div>
       </div>
     </section>
