@@ -63,7 +63,7 @@ function CertificateCard({ certificate }) {
       className="flex h-full w-full flex-col rounded-[10px] border border-[#20b2aa]/55 bg-[#20b2aa]/18 p-5 shadow-[0_22px_70px_rgba(32,178,170,0.18)] backdrop-blur-[2px] transition-all duration-700 sm:p-6"
     >
       <div className="flex items-start justify-between gap-5">
-        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[6px] bg-[#20b2aa]/12 text-[#0ea5e9] ring-1 ring-[#20b2aa]/45">
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-md bg-[#20b2aa]/12 text-[#0ea5e9] ring-1 ring-[#20b2aa]/45">
           <TbCertificate className="h-8 w-8" />
         </div>
         <p className="text-right text-xs font-semibold uppercase tracking-[0.22em] text-[#d946ef]">
@@ -72,10 +72,10 @@ function CertificateCard({ certificate }) {
       </div>
 
       <div className="mt-6">
-        <h3 className="break-words text-2xl font-black leading-tight tracking-[0] text-[#172033] drop-shadow-[0_3px_0_rgba(14,165,233,0.12)] sm:text-3xl">
+        <h3 className="wrap-break-word text-2xl font-black leading-tight tracking-normal text-[#172033] drop-shadow-[0_3px_0_rgba(14,165,233,0.12)] sm:text-3xl">
           {certificate.title}
         </h3>
-        <p className="mt-3 break-words text-sm font-semibold tracking-[0.12em] text-[#0ea5e9] sm:text-base">
+        <p className="mt-3 wrap-break-word text-sm font-semibold tracking-[0.12em] text-[#0ea5e9] sm:text-base">
           {certificate.issuer}
         </p>
       </div>
@@ -110,23 +110,23 @@ export default function Certificates() {
   return (
     <section
       id="certificates"
-      className="relative z-10 mx-auto flex min-h-[100svh] w-full scroll-mt-20 flex-col justify-center overflow-hidden px-5 pb-5 pt-20 sm:px-8 md:pt-22 lg:px-12 lg:pb-6 lg:pt-20"
+      className="relative z-10 mx-auto flex min-h-svh w-full scroll-mt-20 flex-col justify-center overflow-hidden px-5 pb-5 pt-20 sm:px-8 md:pt-22 lg:px-12 lg:pb-6 lg:pt-20"
     >
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(14,165,233,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(217,70,239,0.06)_1px,transparent_1px)] [background-size:64px_64px]" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(14,165,233,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(217,70,239,0.06)_1px,transparent_1px)] bg-size-[64px_64px]" />
 
       <div className="text-center">
-        <h2 className="text-2xl font-black tracking-[0] sm:text-4xl lg:text-5xl">
-          <span className="animate-pulse bg-gradient-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
+        <h2 className="text-2xl font-black tracking-normal sm:text-4xl lg:text-5xl">
+          <span className="animate-pulse bg-linear-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
             Professional Credentials
           </span>
         </h2>
-        <div className="mx-auto mt-4 h-1 w-28 bg-gradient-to-r from-[#0ea5e9] to-[#d946ef]" />
+        <div className="mx-auto mt-4 h-1 w-28 bg-linear-to-r from-[#0ea5e9] to-[#d946ef]" />
         <p className="mx-auto mt-4 max-w-4xl text-xs font-semibold uppercase leading-6 tracking-[0.28em] text-slate-600 sm:text-sm">
           Verified expertise in artificial intelligence and neural architectures
         </p>
       </div>
 
-      <div className="relative mx-auto mt-7 h-[25.5rem] w-full max-w-7xl">
+      <div className="relative mx-auto mt-7 h-102 w-full max-w-7xl">
         <Swiper
           effect="coverflow"
           grabCursor

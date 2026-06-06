@@ -22,12 +22,12 @@ const techChips = [
 
 function WorkbenchPanel() {
   return (
-    <div className="home-artwork relative mx-auto aspect-square w-full max-w-[18rem] overflow-hidden rounded-[8px] border border-sky-200/80 bg-white/82 shadow-[0_28px_90px_rgba(14,165,233,0.16),0_0_70px_rgba(217,70,239,0.08)_inset] backdrop-blur sm:max-w-[22rem] xl:max-w-[25rem]">
+    <div className="home-artwork relative mx-auto aspect-square w-full max-w-[18rem] overflow-hidden rounded-lg border border-sky-200/80 bg-white/82 shadow-[0_28px_90px_rgba(14,165,233,0.16),0_0_70px_rgba(217,70,239,0.08)_inset] backdrop-blur sm:max-w-88 xl:max-w-100">
       <div className="absolute inset-0 bg-[linear-gradient(120deg,transparent_22%,rgba(14,165,233,0.18)_48%,transparent_74%)] opacity-0" />
-      <div className="home-scan absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#0ea5e9]/22 via-[#d946ef]/8 to-transparent" />
+      <div className="home-scan absolute inset-x-0 top-0 h-24 bg-linear-to-b from-[#0ea5e9]/22 via-[#d946ef]/8 to-transparent" />
       <div className="home-orbit absolute inset-7 rounded-full border border-sky-300/25" />
       <div className="home-orbit home-orbit-reverse absolute inset-14 rounded-full border border-[#d946ef]/20" />
-      <div className="absolute inset-10 rounded-[8px] bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.24),rgba(236,253,245,0.72)_45%,rgba(255,255,255,0.94)_75%)]" />
+      <div className="absolute inset-10 rounded-lg bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.24),rgba(236,253,245,0.72)_45%,rgba(255,255,255,0.94)_75%)]" />
       <span className="home-satellite absolute left-1/2 top-7 h-2 w-2 -translate-x-1/2 rounded-full bg-[#0ea5e9] shadow-[0_0_18px_rgba(14,165,233,0.75)]" />
       <span className="home-satellite home-satellite-two absolute bottom-10 left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-[#ff6fd8] shadow-[0_0_18px_rgba(255,111,216,0.85)]" />
 
@@ -37,7 +37,7 @@ function WorkbenchPanel() {
             <p className="text-[0.58rem] font-black uppercase tracking-[0.22em] text-[#0ea5e9] sm:text-[0.64rem]">
               AI Workbench
             </p>
-            <h3 className="mt-1 text-lg font-black uppercase leading-none tracking-[0] text-[#172033] sm:text-2xl">
+            <h3 className="mt-1 text-lg font-black uppercase leading-none tracking-normal text-[#172033] sm:text-2xl">
               Build Console
             </h3>
           </div>
@@ -53,10 +53,10 @@ function WorkbenchPanel() {
           {workbenchMetrics.map((metric, index) => (
             <div
               key={metric.label}
-              className="home-workbench-card rounded-[8px] border border-sky-200/80 bg-white/86 p-2 shadow-[0_12px_28px_rgba(14,165,233,0.1)]"
+              className="home-workbench-card rounded-lg border border-sky-200/80 bg-white/86 p-2 shadow-[0_12px_28px_rgba(14,165,233,0.1)]"
               style={{ animationDelay: `${index * 160}ms` }}
             >
-              <span className={`mb-2 block h-1.5 rounded-full bg-gradient-to-r ${metric.color}`} />
+              <span className={`mb-2 block h-1.5 rounded-full bg-linear-to-r ${metric.color}`} />
               <p className="text-[0.55rem] font-black uppercase tracking-[0.16em] text-slate-500">
                 {metric.label}
               </p>
@@ -67,7 +67,7 @@ function WorkbenchPanel() {
           ))}
         </div>
 
-        <div className="mt-4 rounded-[8px] border border-sky-200/80 bg-white/88 p-3 shadow-[0_12px_34px_rgba(217,70,239,0.08)]">
+        <div className="mt-4 rounded-lg border border-sky-200/80 bg-white/88 p-3 shadow-[0_12px_34px_rgba(217,70,239,0.08)]">
           <div className="flex items-center justify-between gap-2">
             <p className="text-[0.58rem] font-black uppercase tracking-[0.2em] text-slate-500">
               Pipeline
@@ -81,25 +81,25 @@ function WorkbenchPanel() {
             {pipelineSteps.map((step, index) => (
               <div key={step} className="relative">
                 <div
-                  className="home-pipeline-step flex h-12 items-center justify-center rounded-[6px] border border-sky-100 bg-gradient-to-br from-white to-sky-50 text-center text-[0.52rem] font-black uppercase leading-3 tracking-[0.1em] text-slate-700"
+                  className="home-pipeline-step flex h-12 items-center justify-center rounded-md border border-sky-100 bg-linear-to-br from-white to-sky-50 text-center text-[0.52rem] font-black uppercase leading-3 tracking-widest text-slate-700"
                   style={{ animationDelay: `${index * 220}ms` }}
                 >
                   {step}
                 </div>
                 {index < pipelineSteps.length - 1 && (
-                  <span className="absolute left-[calc(100%-0.125rem)] top-1/2 z-10 h-px w-2 -translate-y-1/2 bg-gradient-to-r from-[#0ea5e9] to-[#d946ef]" />
+                  <span className="absolute left-[calc(100%-0.125rem)] top-1/2 z-10 h-px w-2 -translate-y-1/2 bg-linear-to-r from-[#0ea5e9] to-[#d946ef]" />
                 )}
               </div>
             ))}
           </div>
 
           <div className="mt-3 h-2 overflow-hidden rounded-full bg-sky-100">
-            <span className="home-progress block h-full w-[94%] rounded-full bg-gradient-to-r from-[#0ea5e9] via-[#14b8a6] to-[#d946ef]" />
+            <span className="home-progress block h-full w-[94%] rounded-full bg-linear-to-r from-[#0ea5e9] via-[#14b8a6] to-[#d946ef]" />
           </div>
         </div>
 
         <div className="mt-4 grid flex-1 grid-cols-[1fr_0.8fr] gap-3">
-          <div className="rounded-[8px] border border-sky-200/80 bg-[#172033] p-3 text-white shadow-[0_16px_34px_rgba(23,32,51,0.16)]">
+          <div className="rounded-lg border border-sky-200/80 bg-[#172033] p-3 text-white shadow-[0_16px_34px_rgba(23,32,51,0.16)]">
             <div className="mb-3 flex gap-1.5">
               <span className="h-2 w-2 rounded-full bg-[#fb7185]" />
               <span className="h-2 w-2 rounded-full bg-[#f59e0b]" />
@@ -112,7 +112,7 @@ function WorkbenchPanel() {
             </div>
           </div>
 
-          <div className="flex flex-col justify-between gap-2 rounded-[8px] border border-sky-200/80 bg-white/88 p-3">
+          <div className="flex flex-col justify-between gap-2 rounded-lg border border-sky-200/80 bg-white/88 p-3">
             <p className="text-[0.56rem] font-black uppercase tracking-[0.18em] text-slate-500">
               Stack
             </p>
@@ -120,7 +120,7 @@ function WorkbenchPanel() {
               {techChips.map((chip, index) => (
                 <span
                   key={chip}
-                  className="home-tech-chip rounded-full bg-gradient-to-r from-sky-50 to-fuchsia-50 px-2 py-1 text-[0.52rem] font-black uppercase tracking-[0.1em] text-[#0ea5e9] ring-1 ring-sky-200/80"
+                  className="home-tech-chip rounded-full bg-linear-to-r from-sky-50 to-fuchsia-50 px-2 py-1 text-[0.52rem] font-black uppercase tracking-widest text-[#0ea5e9] ring-1 ring-sky-200/80"
                   style={{ animationDelay: `${index * 120}ms` }}
                 >
                   {chip}
@@ -138,7 +138,7 @@ export default function Home() {
   return (
     <section
       id="home"
-      className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-[92rem] scroll-mt-20 flex-col justify-center gap-5 px-5 pb-5 pt-20 sm:px-8 md:pt-22 lg:px-12 lg:pb-6 lg:pt-20"
+      className="relative z-10 mx-auto flex min-h-svh w-full max-w-368 scroll-mt-20 flex-col justify-center gap-5 px-5 pb-5 pt-20 sm:px-8 md:pt-22 lg:px-12 lg:pb-6 lg:pt-20"
     >
       <style>{`
         @keyframes home-rise {
@@ -301,16 +301,16 @@ export default function Home() {
         }
       `}</style>
       <h2 className="home-reveal text-center text-2xl font-black uppercase tracking-[0.18em] sm:text-3xl lg:text-4xl">
-        <span className="animate-pulse bg-gradient-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
+        <span className="animate-pulse bg-linear-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
           Home
         </span>
       </h2>
 
       <div className="grid w-full items-center gap-6 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="max-w-3xl text-center lg:text-left">
-            <h1 className="home-reveal text-[clamp(1.85rem,5.2vw,3.55rem)] font-black uppercase leading-[1.04] tracking-[0] text-[#172033] drop-shadow-[0_4px_0_rgba(14,165,233,0.13)] [animation-delay:120ms]">
+            <h1 className="home-reveal text-[clamp(1.85rem,5.2vw,3.55rem)] font-black uppercase leading-[1.04] tracking-normal text-[#172033] drop-shadow-[0_4px_0_rgba(14,165,233,0.13)] [animation-delay:120ms]">
               Pioneering the next frontier of{" "}
-              <span className="home-highlight bg-gradient-to-r from-[#14b8a6] via-[#0ea5e9] to-[#d946ef] bg-clip-text text-transparent">Intelligent Applications.</span>
+              <span className="home-highlight bg-linear-to-r from-[#14b8a6] via-[#0ea5e9] to-[#d946ef] bg-clip-text text-transparent">Intelligent Applications.</span>
             </h1>
 
             <p className="home-reveal mt-4 text-xs font-medium uppercase tracking-[0.38em] text-[#0ea5e9] [animation-delay:220ms] sm:text-sm">
@@ -325,7 +325,7 @@ export default function Home() {
 
             <a
               href="#about"
-              className="home-reveal mt-5 inline-flex h-11 items-center justify-center overflow-hidden bg-gradient-to-r from-[#0ea5e9] via-[#14b8a6] to-[#d946ef] px-7 text-xs font-medium uppercase tracking-[0.24em] text-white shadow-[0_16px_34px_rgba(14,165,233,0.24)] transition hover:shadow-[0_18px_42px_rgba(217,70,239,0.26)] [animation-delay:420ms] sm:h-12 sm:px-8 sm:text-sm"
+              className="home-reveal mt-5 inline-flex h-11 items-center justify-center overflow-hidden bg-linear-to-r from-[#0ea5e9] via-[#14b8a6] to-[#d946ef] px-7 text-xs font-medium uppercase tracking-[0.24em] text-white shadow-[0_16px_34px_rgba(14,165,233,0.24)] transition hover:shadow-[0_18px_42px_rgba(217,70,239,0.26)] [animation-delay:420ms] sm:h-12 sm:px-8 sm:text-sm"
             >
               Learn More About Me
             </a>

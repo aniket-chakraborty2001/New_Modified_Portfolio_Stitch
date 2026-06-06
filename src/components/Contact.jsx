@@ -59,7 +59,7 @@ function ContactLinkCard({ link }) {
           <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-slate-600">
             {link.label}
           </p>
-          <p className="mt-1.5 break-words text-sm font-black text-[#172033] sm:text-base">
+          <p className="mt-1.5 wrap-break-word text-sm font-black text-[#172033] sm:text-base">
             {link.value}
           </p>
         </div>
@@ -73,20 +73,12 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative z-10 mx-auto min-h-[100svh] w-full max-w-[92rem] scroll-mt-20 px-5 pb-6 pt-20 sm:px-8 lg:px-12"
+      className="relative z-10 mx-auto min-h-svh w-full max-w-368 scroll-mt-20 px-5 pb-6 pt-20 sm:px-8 lg:px-12"
     >
       <div className="relative mx-auto flex min-h-[calc(100svh-6.5rem)] w-full flex-col justify-center py-8">
         <div className="text-center">
-          {/* <div className="flex items-center justify-center gap-3">
-            <span className="h-px w-10 bg-[#0ea5e9]" />
-            <p className="text-[0.68rem] font-black uppercase tracking-[0.24em] text-[#0ea5e9]">
-              Open Channel
-            </p>
-            <span className="h-px w-10 bg-[#0ea5e9]" />
-          </div> */}
-
-          <h2 className="mt-3 text-3xl font-black uppercase tracking-[0] sm:text-4xl lg:text-5xl">
-            <span className="animate-pulse bg-gradient-to-r from-[#0ea5e9] via-[#14b8a6] to-[#d946ef] bg-clip-text text-transparent">
+          <h2 className="mt-3 text-3xl font-black uppercase tracking-normal sm:text-4xl lg:text-5xl">
+            <span className="animate-pulse bg-linear-to-r from-[#0ea5e9] via-[#14b8a6] to-[#d946ef] bg-clip-text text-transparent">
               Contact Node
             </span>
           </h2>
@@ -98,7 +90,7 @@ export default function Contact() {
         </div>
 
         <div className="relative mt-6 overflow-hidden border border-[#20b2aa]/35 bg-[#bff3ef]/72 p-3 shadow-[0_22px_70px_rgba(32,178,170,0.16)] sm:p-4 lg:p-5">
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(14,165,233,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(32,178,170,0.14)_1px,transparent_1px)] [background-size:56px_56px]" />
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(14,165,233,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(32,178,170,0.14)_1px,transparent_1px)] bg-size-[56px_56px]" />
 
           <div className="relative grid gap-4 lg:grid-cols-[0.95fr_1.05fr]">
           <aside className="border border-[#20b2aa]/45 bg-white/12 p-4 shadow-[0_14px_38px_rgba(15,118,110,0.1)] backdrop-blur-[2px] sm:p-5">
@@ -107,7 +99,7 @@ export default function Contact() {
                 <p className="text-[0.68rem] font-black uppercase tracking-[0.2em] text-[#0ea5e9]">
                   Collaboration Profile
                 </p>
-                <h3 className="mt-2 text-xl font-black uppercase leading-tight tracking-[0] text-[#172033] drop-shadow-[0_3px_0_rgba(14,165,233,0.12)] sm:text-2xl">
+                <h3 className="mt-2 text-xl font-black uppercase leading-tight tracking-normal text-[#172033] drop-shadow-[0_3px_0_rgba(14,165,233,0.12)] sm:text-2xl">
                   Build serious AI into useful products.
                 </h3>
               </div>

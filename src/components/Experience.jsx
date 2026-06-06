@@ -150,7 +150,7 @@ function ExperienceCard({ experience, index, isOpen, canOpen, onOpen, style }) {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 rounded-lg border border-transparent bg-[linear-gradient(145deg,rgba(32,178,170,0.42),transparent_34%,rgba(255,255,255,0.2))] opacity-40 transition-opacity duration-400 [-webkit-mask:linear-gradient(#fff_0_0)_padding-box,linear-gradient(#fff_0_0)] [-webkit-mask-composite:xor] [mask-composite:exclude] group-hover:opacity-100 group-focus-visible:opacity-100"
+        className="pointer-events-none absolute inset-0 rounded-lg border border-transparent bg-[linear-gradient(145deg,rgba(32,178,170,0.42),transparent_34%,rgba(255,255,255,0.2))] opacity-40 transition-opacity duration-400 [-webkit-mask:linear-gradient(#fff_0_0)_padding-box,linear-gradient(#fff_0_0)] [-webkit-mask-composite:xor] [mask-exclude] group-hover:opacity-100 group-focus-visible:opacity-100"
       />
       <ExperienceImage experience={experience} index={index} />
 
@@ -242,11 +242,11 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative z-10 mx-auto w-full max-w-[92rem] scroll-mt-20 px-5 pb-5 pt-20 sm:px-8 md:pt-22 lg:px-12 lg:pb-6 lg:pt-20"
+      className="relative z-10 mx-auto w-full max-w-368 scroll-mt-20 px-5 pb-5 pt-20 sm:px-8 md:pt-22 lg:px-12 lg:pb-6 lg:pt-20"
     >
       <div className="text-center">
-        <h2 className="text-2xl font-black tracking-[0] sm:text-4xl lg:text-5xl">
-          <span className="animate-pulse bg-gradient-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
+        <h2 className="text-2xl font-black tracking-normal sm:text-4xl lg:text-5xl">
+          <span className="animate-pulse bg-linear-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
             Experience History
           </span>
         </h2>
