@@ -87,16 +87,16 @@ function SkillCard({ skill, cardRef }) {
     <div
       ref={cardRef}
       style={{ transformStyle: "preserve-3d", willChange: "transform, opacity" }}
-      className="group relative flex h-[11.5rem] flex-col overflow-hidden rounded-[12px] border border-[#20b2aa]/55 bg-[#20b2aa]/18 p-4 shadow-[0_18px_44px_rgba(32,178,170,0.16)] backdrop-blur-[2px] transition-[border-color] duration-300 hover:border-[#20b2aa]/80"
+      className="group relative flex h-46 flex-col overflow-hidden rounded-xl border border-[#20b2aa]/55 bg-[#20b2aa]/18 p-4 shadow-[0_18px_44px_rgba(32,178,170,0.16)] backdrop-blur-[2px] transition-[border-color] duration-300 hover:border-[#20b2aa]/80"
     >
       {/* spotlight glare */}
-      <span ref={glareRef} className="pointer-events-none absolute inset-0 rounded-[12px] opacity-0" />
+      <span ref={glareRef} className="pointer-events-none absolute inset-0 rounded-xl opacity-0" />
 
       {/* accent bar */}
-      <span className="absolute bottom-0 left-0 right-0 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-[#0ea5e9] via-[#14b8a6] to-[#d946ef] transition-transform duration-[360ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100" />
+      <span className="absolute bottom-0 left-0 right-0 h-0.5 origin-left scale-x-0 bg-linear-to-r from-[#0ea5e9] via-[#14b8a6] to-[#d946ef] transition-transform duration-360ms ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100" />
 
       {/* icon */}
-      <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-[8px] bg-[#20b2aa]/12 ring-1 ring-[#20b2aa]/45">
+      <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg bg-[#20b2aa]/12 ring-1 ring-[#20b2aa]/45">
         <Image src={skill.icon} alt={`${skill.name} icon`} fill sizes="2.5rem" className="object-contain p-1.5" />
       </div>
 
@@ -182,15 +182,10 @@ export default function Skills() {
   }, [cardRefs]);
 
   return (
-    /**
-     * The section is tall (300vh) so the sticky panel has plenty of scroll room.
-     * The sticky inner div stays centered on screen while the user scrolls,
-     * and the cards animate into place driven by scroll progress.
-     */
     <section
       id="skills"
       ref={sectionRef}
-      className="relative z-10 mx-auto w-full max-w-[92rem] scroll-mt-20"
+      className="relative z-10 mx-auto w-full max-w-368 scroll-mt-20"
       style={{ height: "300vh" }}
     >
       <div
@@ -198,28 +193,28 @@ export default function Skills() {
         className="sticky top-0 flex min-h-screen flex-col items-center justify-center overflow-hidden px-5 sm:px-8 lg:px-12"
       >
         {/* decorative rings */}
-        <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 h-[44rem] w-[44rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-sky-300/[0.16] animate-[spin_32s_linear_infinite]" />
-        <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-fuchsia-300/[0.13] animate-[spin_42s_linear_infinite_reverse]" />
+        <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 h-176 w-176 -translate-x-1/2 -translate-y-1/2 rounded-full border border-sky-300/16 animate-[spin_32s_linear_infinite]" />
+        <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 h-112 w-md -translate-x-1/2 -translate-y-1/2 rounded-full border border-fuchsia-300/13 animate-[spin_42s_linear_infinite_reverse]" />
 
         {/* heading */}
         <h2
           ref={headingRef}
-          className="mb-3 text-center text-3xl font-black tracking-tight opacity-0 sm:text-5xl lg:text-6xl"
+          className="mb-3 text-center text-3xl font-black uppercase tracking-normal opacity-0 sm:text-4xl lg:text-5xl"
         >
-          <span className="animate-pulse bg-gradient-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
+          <span className="animate-pulse bg-linear-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
             Technical Expertise
           </span>
         </h2>
         <p
           ref={subtitleRef}
-          className="mx-auto mb-12 max-w-2xl text-center text-base leading-7 text-slate-700 opacity-0 sm:text-lg"
+          className="mx-auto mb-12 mt-4 max-w-3xl text-center text-sm font-semibold leading-6 text-slate-700 opacity-0 sm:text-base"
         >
           A quantitative breakdown of my technical capabilities, engineering
           proficiency, and the stack I leverage to solve complex problems in AI.
         </p>
 
         {/* card grid — 5 columns × 2 rows */}
-        <div className="grid w-full max-w-[860px] grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5 lg:grid-rows-2">
+        <div className="grid w-full max-w-215 grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5 lg:grid-rows-2">
           {SKILLS.map((skill, i) => (
             <SkillCard
               key={skill.name}
@@ -230,7 +225,7 @@ export default function Skills() {
         </div>
 
         {/* counter */}
-        <div className="mt-8 flex items-center gap-4">
+        <div className="mt-6 flex items-center gap-4">
           <span className="h-px w-16 bg-sky-300/45" />
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
             {SKILLS.length} skills
@@ -239,7 +234,7 @@ export default function Skills() {
         </div>
 
         {/* scroll nudge — fades out once scrolled */}
-        <p className="absolute bottom-10 text-xs font-medium uppercase tracking-[0.2em] text-slate-500 animate-bounce">
+        <p className="mt-4 text-xs font-medium uppercase tracking-[0.2em] text-slate-500 animate-bounce">
           scroll to reveal
         </p>
       </div>

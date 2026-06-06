@@ -125,7 +125,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed left-0 top-0 z-50 w-full border-b border-sky-200/70 bg-white/86 shadow-[0_10px_34px_rgba(14,165,233,0.09)] backdrop-blur-md">
+    <header className="fixed left-0 top-0 z-50 w-full border-b border-white/40 bg-linear-to-r from-red-100/58 via-green-100/64 to-yellow-100/78 shadow-[0_12px_42px_rgba(20,184,166,0.12),inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-xl">
       <style>{`
         @keyframes nav-glass-pop {
           0% {
@@ -181,8 +181,8 @@ export default function Navbar() {
                 onClick={(event) => handleNavClick(event, id)}
                 className={`group relative isolate overflow-hidden rounded-full px-3 py-2 text-xs font-medium uppercase tracking-[0.2em] transition duration-300 hover:text-[#0ea5e9] xl:px-3.5 xl:text-sm xl:tracking-[0.24em] ${
                   isActive
-                    ? "border border-sky-200 bg-sky-50/90 text-[#0ea5e9] shadow-[0_8px_30px_rgba(14,165,233,0.16),inset_0_1px_0_rgba(255,255,255,0.82)] backdrop-blur-xl"
-                    : "text-slate-600 hover:bg-sky-50/80 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] hover:backdrop-blur-md"
+                    ? "border border-white/55 bg-white/34 text-green-500 shadow-[0_8px_30px_rgba(20,184,166,0.14),inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-xl"
+                    : "text-pink-600 hover:bg-white/24 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.62)] hover:backdrop-blur-md"
                 } ${isClicked ? "animate-[nav-glass-pop_620ms_cubic-bezier(0.22,1,0.36,1)]" : ""}`}
               >
                 <span
@@ -218,7 +218,7 @@ export default function Navbar() {
             aria-label="GitHub profile"
             target="_blank"
             rel="noreferrer"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-sky-200 bg-white/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.86)] backdrop-blur-md transition hover:border-[#0ea5e9]/70 hover:bg-sky-50 hover:text-[#0ea5e9]"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/50 bg-white/26 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-lg transition hover:border-[#0ea5e9]/70 hover:bg-white/38 hover:text-[#0ea5e9]"
           >
             <FaGithub className="h-5 w-5" />
           </a>
@@ -227,14 +227,14 @@ export default function Navbar() {
             aria-label="LinkedIn profile"
             target="_blank"
             rel="noreferrer"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-sky-200 bg-white/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.86)] backdrop-blur-md transition hover:border-[#0ea5e9]/70 hover:bg-sky-50 hover:text-[#0ea5e9]"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/50 bg-white/26 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-lg transition hover:border-[#0ea5e9]/70 hover:bg-white/38 hover:text-[#0ea5e9]"
           >
             <FaLinkedin className="h-5 w-5" />
           </a>
           <a
             href="/resume.pdf"
             aria-label="Download resume"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-sky-200 bg-white/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.86)] backdrop-blur-md transition hover:border-[#0ea5e9]/70 hover:bg-sky-50 hover:text-[#0ea5e9]"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/50 bg-white/26 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-lg transition hover:border-[#0ea5e9]/70 hover:bg-white/38 hover:text-[#0ea5e9]"
           >
             <HiOutlineDownload className="h-5 w-5" />
           </a>

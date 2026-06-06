@@ -115,13 +115,12 @@ export default function Certificates() {
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(14,165,233,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(217,70,239,0.06)_1px,transparent_1px)] bg-size-[64px_64px]" />
 
       <div className="text-center">
-        <h2 className="text-2xl font-black tracking-normal sm:text-4xl lg:text-5xl">
+        <h2 className="text-3xl font-black uppercase tracking-normal sm:text-4xl lg:text-5xl">
           <span className="animate-pulse bg-linear-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
             Professional Credentials
           </span>
         </h2>
-        <div className="mx-auto mt-4 h-1 w-28 bg-linear-to-r from-[#0ea5e9] to-[#d946ef]" />
-        <p className="mx-auto mt-4 max-w-4xl text-xs font-semibold uppercase leading-6 tracking-[0.28em] text-slate-600 sm:text-sm">
+        <p className="mx-auto mt-4 max-w-3xl text-center text-sm font-semibold leading-6 text-slate-700 sm:text-base">
           Verified expertise in artificial intelligence and neural architectures
         </p>
       </div>

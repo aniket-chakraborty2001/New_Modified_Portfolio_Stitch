@@ -300,7 +300,7 @@ export default function Home() {
           }
         }
       `}</style>
-      <h2 className="home-reveal text-center text-2xl font-black uppercase tracking-[0.18em] sm:text-3xl lg:text-4xl">
+      <h2 className="home-reveal text-center text-3xl font-black uppercase tracking-normal sm:text-4xl lg:text-5xl">
         <span className="animate-pulse bg-linear-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
           Home
         </span>

@@ -83,7 +83,7 @@ export default function Contact() {
             </span>
           </h2>
 
-          <p className="mx-auto mt-4 max-w-3xl text-sm font-semibold leading-6 text-slate-700 sm:text-base">
+          <p className="mx-auto mt-4 max-w-3xl text-center text-sm font-semibold leading-6 text-slate-700 sm:text-base">
             Reach out directly for applied AI research, production prototypes,
             computer vision workflows, or technical collaboration.
           </p>

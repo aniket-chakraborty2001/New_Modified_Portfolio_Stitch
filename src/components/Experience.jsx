@@ -245,12 +245,12 @@ export default function Experience() {
       className="relative z-10 mx-auto w-full max-w-368 scroll-mt-20 px-5 pb-5 pt-20 sm:px-8 md:pt-22 lg:px-12 lg:pb-6 lg:pt-20"
     >
       <div className="text-center">
-        <h2 className="text-2xl font-black tracking-normal sm:text-4xl lg:text-5xl">
+        <h2 className="text-3xl font-black uppercase tracking-normal sm:text-4xl lg:text-5xl">
           <span className="animate-pulse bg-linear-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
             Experience History
           </span>
         </h2>
-        <p className="mx-auto mt-3 max-w-3xl text-sm leading-6 text-slate-700 sm:text-base">
+        <p className="mx-auto mt-4 max-w-3xl text-center text-sm font-semibold leading-6 text-slate-700 sm:text-base">
           A focused timeline of applied AI research, engineering work, and
           production-oriented experimentation.
         </p>

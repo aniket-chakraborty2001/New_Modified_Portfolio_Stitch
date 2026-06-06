@@ -202,13 +202,13 @@ export default function Education() {
 
       <div className="sticky top-0 flex min-h-screen flex-col justify-center overflow-hidden py-20">
         <div className="text-center">
-          <h2 className="education-heading text-2xl font-black uppercase tracking-normal sm:text-4xl lg:text-5xl">
+          <h2 className="education-heading text-3xl font-black uppercase tracking-normal sm:text-4xl lg:text-5xl">
             <span className="animate-pulse bg-linear-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
               Academic Trajectory
             </span>
           </h2>
           <div className="mx-auto mt-4 h-1 w-28 bg-linear-to-r from-[#0ea5e9] to-[#d946ef]" />
-          <p className="education-intro mx-auto mt-4 max-w-4xl text-sm leading-6 text-slate-700 sm:text-base">
+          <p className="education-intro mx-auto mt-4 max-w-3xl text-center text-sm font-semibold leading-6 text-slate-700 sm:text-base">
             A rigorous foundation in computational science and artificial
             intelligence, mapped through institutions of technical excellence.
           </p>

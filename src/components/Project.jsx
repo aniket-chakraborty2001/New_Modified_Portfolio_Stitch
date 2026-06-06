@@ -132,12 +132,12 @@ export default function Project() {
       `}</style>
 
       <div className="text-center">
-        <h2 className="text-3xl font-black uppercase tracking-[0] sm:text-4xl lg:text-5xl">
+        <h2 className="text-3xl font-black uppercase tracking-normal sm:text-4xl lg:text-5xl">
           <span className="animate-pulse bg-gradient-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
             Engineering Archive
           </span>
         </h2>
-        <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-700">
+        <p className="mx-auto mt-4 max-w-3xl text-center text-sm font-semibold leading-6 text-slate-700 sm:text-base">
           A curated selection of experiments in Generative Artificial Intelligence, computer
           vision, and autonomous systems development.
         </p>
