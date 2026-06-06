@@ -23,7 +23,7 @@ function ProfileCard() {
         <div className="about-orbit absolute inset-8 rounded-full border border-sky-300/25" />
         <div className="about-orbit about-orbit-reverse absolute inset-16 rounded-full border border-[#d946ef]/22" />
 
-        <div className="relative z-10 grid h-full grid-cols-2 gap-x-5">
+        <div className="relative z-10 grid h-full grid-cols-2 gap-x-5 pt-6">
           {[0, 1].map((columnIndex) => (
             <div
               key={columnIndex}
@@ -103,7 +103,7 @@ function SummaryPanel() {
           <h3 className="text-sm font-semibold uppercase tracking-[0.28em] text-slate-500">
             Core Area
           </h3>
-          <p className="mt-2 w-full max-w-none text-sm leading-6 text-red-800 sm:text-base">
+          <p className="mt-2 w-full max-w-none text-sm leading-6 text-yellow-800 sm:text-base">
             Gen AI, Transformers, Diffusers, NLP, Machine Learning, Deep Learning, ViTs, Computer Vision, FastAPIs, 
             OpenAI, Gemini, Claude, HuggingFace, Github
           </p>

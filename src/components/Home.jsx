@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 const workbenchMetrics = [
   { label: "GenAI", value: "LLM Ops", color: "from-[#0ea5e9] to-[#14b8a6]" },
   { label: "Vision", value: "CV Models", color: "from-[#d946ef] to-[#fb7185]" },
@@ -20,9 +24,24 @@ const techChips = [
   "Gemini",
 ];
 
+const splitMetricTransforms = [
+  "-translate-x-4 -translate-y-1 rotate-[-2deg]",
+  "translate-y-2 scale-[1.02]",
+  "translate-x-4 -translate-y-1 rotate-[2deg]",
+];
+
 function WorkbenchPanel() {
+  const [isSplit, setIsSplit] = useState(false);
+
   return (
-    <div className="home-artwork relative mx-auto aspect-[1/1.15] w-full max-w-[18rem] overflow-hidden rounded-lg border border-sky-200/80 bg-white/82 shadow-[0_28px_90px_rgba(14,165,233,0.16),0_0_70px_rgba(217,70,239,0.08)_inset] backdrop-blur sm:max-w-88 xl:max-w-100">
+    <div
+      onMouseEnter={() => setIsSplit(true)}
+      onMouseLeave={() => setIsSplit(false)}
+      onFocus={() => setIsSplit(true)}
+      onBlur={() => setIsSplit(false)}
+      tabIndex={0}
+      className="home-artwork relative mx-auto aspect-[1/1.15] w-full max-w-[18rem] overflow-visible rounded-lg border border-sky-200/80 bg-white/82 shadow-[0_28px_90px_rgba(14,165,233,0.16),0_0_70px_rgba(217,70,239,0.08)_inset] outline-none backdrop-blur focus-visible:border-[#0ea5e9] focus-visible:shadow-[0_0_0_4px_rgba(14,165,233,0.18),0_28px_90px_rgba(14,165,233,0.16)] sm:max-w-88 xl:max-w-100"
+    >
       <div className="absolute inset-0 bg-[linear-gradient(120deg,transparent_22%,rgba(14,165,233,0.18)_48%,transparent_74%)] opacity-0" />
       <div className="home-scan absolute inset-x-0 top-0 h-24 bg-linear-to-b from-[#0ea5e9]/22 via-[#d946ef]/8 to-transparent" />
       <div className="home-orbit absolute inset-7 rounded-full border border-sky-300/25" />
@@ -32,7 +51,11 @@ function WorkbenchPanel() {
       <span className="home-satellite home-satellite-two absolute bottom-10 left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-[#ff6fd8] shadow-[0_0_18px_rgba(255,111,216,0.85)]" />
 
       <div className="relative z-10 flex h-full flex-col p-4 sm:p-5">
-        <div className="flex items-center justify-between">
+        <div
+          className={`flex items-center justify-between transition duration-500 ease-out ${
+            isSplit ? "-translate-y-3 scale-[0.98]" : "translate-y-0 scale-100"
+          }`}
+        >
           <div>
             <p className="text-[0.58rem] font-black uppercase tracking-[0.22em] text-[#0ea5e9] sm:text-[0.64rem]">
               AI Workbench
@@ -53,7 +76,9 @@ function WorkbenchPanel() {
           {workbenchMetrics.map((metric, index) => (
             <div
               key={metric.label}
-              className="home-workbench-card rounded-lg border border-sky-200/80 bg-white/86 p-2 shadow-[0_12px_28px_rgba(14,165,233,0.1)]"
+              className={`home-workbench-card rounded-lg border border-sky-200/80 bg-white/86 p-2 shadow-[0_12px_28px_rgba(14,165,233,0.1)] transition duration-500 ease-out ${
+                isSplit ? splitMetricTransforms[index] : "translate-x-0 translate-y-0 rotate-0 scale-100"
+              }`}
               style={{ animationDelay: `${index * 160}ms` }}
             >
               <span className={`mb-2 block h-1.5 rounded-full bg-linear-to-r ${metric.color}`} />
@@ -67,7 +92,11 @@ function WorkbenchPanel() {
           ))}
         </div>
 
-        <div className="mt-4 rounded-lg border border-sky-200/80 bg-white/88 p-3 shadow-[0_12px_34px_rgba(217,70,239,0.08)]">
+        <div
+          className={`mt-4 rounded-lg border border-sky-200/80 bg-white/88 p-3 shadow-[0_12px_34px_rgba(217,70,239,0.08)] transition duration-500 ease-out ${
+            isSplit ? "translate-x-4 scale-[0.98]" : "translate-x-0 scale-100"
+          }`}
+        >
           <div className="flex items-center justify-between gap-2">
             <p className="text-[0.58rem] font-black uppercase tracking-[0.2em] text-slate-500">
               Pipeline
@@ -99,7 +128,11 @@ function WorkbenchPanel() {
         </div>
 
         <div className="mt-4 grid flex-1 grid-cols-[1fr_0.8fr] gap-3">
-          <div className="rounded-lg border border-sky-200/80 bg-[#172033] p-3 text-white shadow-[0_16px_34px_rgba(23,32,51,0.16)]">
+          <div
+            className={`rounded-lg border border-sky-200/80 bg-[#172033] p-3 text-white shadow-[0_16px_34px_rgba(23,32,51,0.16)] transition duration-500 ease-out ${
+              isSplit ? "-translate-x-5 translate-y-3 rotate-[-1deg]" : "translate-x-0 translate-y-0 rotate-0"
+            }`}
+          >
             <div className="mb-3 flex gap-1.5">
               <span className="h-2 w-2 rounded-full bg-[#fb7185]" />
               <span className="h-2 w-2 rounded-full bg-[#f59e0b]" />
@@ -112,7 +145,11 @@ function WorkbenchPanel() {
             </div>
           </div>
 
-          <div className="flex flex-col justify-between gap-2 rounded-lg border border-sky-200/80 bg-white/88 p-3">
+          <div
+            className={`flex flex-col justify-between gap-2 rounded-lg border border-sky-200/80 bg-white/88 p-3 transition duration-500 ease-out ${
+              isSplit ? "translate-x-5 translate-y-3 rotate-[1deg]" : "translate-x-0 translate-y-0 rotate-0"
+            }`}
+          >
             <p className="text-[0.56rem] font-black uppercase tracking-[0.18em] text-slate-500">
               Stack
             </p>
@@ -130,6 +167,7 @@ function WorkbenchPanel() {
           </div>
         </div>
       </div>
+
     </div>
   );
 }
