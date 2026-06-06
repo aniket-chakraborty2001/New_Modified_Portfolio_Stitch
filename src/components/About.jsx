@@ -18,7 +18,7 @@ const profileDetails = [
 function ProfileCard() {
   return (
     <aside className="about-card about-reveal flex items-center justify-center border border-[#20b2aa]/55 bg-[#20b2aa]/18 px-5 py-5 backdrop-blur-[2px] sm:px-7 lg:px-7 lg:py-6">
-      <div className="relative mx-auto h-[28rem] w-full max-w-[24rem] overflow-hidden">
+      <div className="relative mx-auto h-112 w-full max-w-[24rem] overflow-hidden">
         <div className="absolute inset-10 rounded-full bg-[#0ea5e9]/14 blur-3xl" />
         <div className="about-orbit absolute inset-8 rounded-full border border-sky-300/25" />
         <div className="about-orbit about-orbit-reverse absolute inset-16 rounded-full border border-[#d946ef]/22" />
@@ -36,9 +36,9 @@ function ProfileCard() {
                 .map((image, index) => (
                   <div
                     key={image.alt}
-                    className={`aspect-square w-full overflow-hidden rounded-[8px] border-2 border-[#20b2aa]/70 bg-[#20b2aa]/12 p-1.5 shadow-[0_16px_34px_rgba(32,178,170,0.16),0_0_22px_rgba(14,165,233,0.12)] ${image.className}`}
+                    className={`aspect-square w-full overflow-hidden rounded-lg border-2 border-[#20b2aa]/70 bg-[#20b2aa]/12 p-1.5 shadow-[0_16px_34px_rgba(32,178,170,0.16),0_0_22px_rgba(14,165,233,0.12)] ${image.className}`}
                   >
-                    <div className="relative h-full overflow-hidden rounded-[6px] bg-[#bff3ef]/80">
+                    <div className="relative h-full overflow-hidden rounded-md bg-[#bff3ef]/80">
                       <Image
                         src={image.src}
                         alt={image.alt}
@@ -68,7 +68,7 @@ function SummaryPanel() {
         </p>
       </div>
 
-      <h2 className="about-reveal mt-4 max-w-5xl text-2xl font-black leading-[1.12] tracking-[0] text-[#172033] drop-shadow-[0_3px_0_rgba(14,165,233,0.12)] [animation-delay:280ms] sm:text-3xl xl:text-[2.25rem]">
+      <h2 className="about-reveal mt-4 max-w-5xl text-2xl font-black leading-[1.12] tracking-normal text-[#172033] drop-shadow-[0_3px_0_rgba(14,165,233,0.12)] [animation-delay:280ms] sm:text-3xl xl:text-[2.25rem]">
         Pushing the boundaries of Manual Human work to Intelligent solutions
       </h2>
 
@@ -82,7 +82,7 @@ function SummaryPanel() {
 
       <div className="about-reveal mt-5 flex flex-wrap items-center justify-between gap-4 border-y border-[#20b2aa]/45 py-4 [animation-delay:420ms]">
         <div>
-          <h1 className="text-2xl font-black leading-none tracking-[0] text-[#172033] drop-shadow-[0_4px_0_rgba(14,165,233,0.12)] sm:text-3xl">
+          <h1 className="text-2xl font-black leading-none tracking-normal text-[#172033] drop-shadow-[0_4px_0_rgba(14,165,233,0.12)] sm:text-3xl">
             Aniket Chakraborty
           </h1>
           <p className="mt-2 text-xs font-semibold tracking-[0.3em] text-[#d946ef] sm:text-sm">
@@ -139,7 +139,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-[92rem] scroll-mt-20 flex-col justify-center gap-5 px-5 pb-5 pt-20 sm:px-8 md:pt-22 lg:px-12 lg:pb-6 lg:pt-20"
+      className="relative z-10 mx-auto flex min-h-svh w-full max-w-368 scroll-mt-20 flex-col justify-center gap-5 px-5 pb-5 pt-20 sm:px-8 md:pt-22 lg:px-12 lg:pb-6 lg:pt-20"
     >
       <style>{`
         @keyframes about-rise {
@@ -266,7 +266,7 @@ export default function About() {
         }
       `}</style>
       <h2 className="about-reveal text-center text-2xl font-black uppercase tracking-[0.18em] sm:text-3xl lg:text-4xl">
-        <span className="animate-pulse bg-gradient-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
+        <span className="animate-pulse bg-linear-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
           About Me
         </span>
       </h2>
