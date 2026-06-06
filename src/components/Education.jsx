@@ -204,7 +204,7 @@ export default function Education() {
         <div className="text-center">
           <h2 className="education-heading text-2xl font-black uppercase tracking-[0] sm:text-4xl lg:text-5xl">
             <span className="animate-pulse bg-gradient-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
-              Academic_Trajectory
+              Academic Trajectory
             </span>
           </h2>
           <div className="mx-auto mt-4 h-1 w-28 bg-gradient-to-r from-[#0ea5e9] to-[#d946ef]" />

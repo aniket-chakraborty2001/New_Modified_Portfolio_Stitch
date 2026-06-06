@@ -247,7 +247,7 @@ export default function Experience() {
       <div className="text-center">
         <h2 className="text-2xl font-black tracking-[0] sm:text-4xl lg:text-5xl">
           <span className="animate-pulse bg-gradient-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
-            Experience_History
+            Experience History
           </span>
         </h2>
         <p className="mx-auto mt-3 max-w-3xl text-sm leading-6 text-slate-700 sm:text-base">

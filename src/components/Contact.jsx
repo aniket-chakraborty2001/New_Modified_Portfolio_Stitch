@@ -1,239 +1,208 @@
-"use client";
+import {
+  FiArrowUpRight,
+  FiGithub,
+  FiLinkedin,
+  FiMail,
+  FiMapPin,
+} from "react-icons/fi";
+import { HiOutlineClock, HiOutlineSparkles } from "react-icons/hi";
 
-import { useState } from "react";
-import emailjs from "@emailjs/browser";
-import { FiSend } from "react-icons/fi";
-import { HiOutlineAtSymbol, HiOutlineLocationMarker } from "react-icons/hi";
+const contactLinks = [
+  {
+    label: "Email",
+    value: "Aniket Chakraborty",
+    href: "mailto:aniket.chakraborty2001@gmail.com",
+    icon: FiMail,
+  },
+  {
+    label: "LinkedIn",
+    value: "Aniket Chakraborty",
+    href: "www.linkedin.com/in/aniket-chakraborty20022001",
+    icon: FiLinkedin,
+  },
+  {
+    label: "GitHub",
+    value: "Aniket Chakraborty",
+    href: "https://github.com/aniket-chakraborty2001",
+    icon: FiGithub,
+  },
+];
 
-const emailConfig = {
-  serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-  templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-  publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
-};
+const collaborationModes = [
+  "Applied AI prototypes",
+  "Computer vision systems",
+  "RAG and LLM workflows",
+  "Research implementation",
+];
+
+const availabilitySignals = [
+  { label: "Response Window", value: "24-48 hrs" },
+  { label: "Timezone", value: "IST (UTC+5:30)" },
+  { label: "Base", value: "Kolkata, India" },
+];
+
+function ContactLinkCard({ link }) {
+  const Icon = link.icon;
+
+  return (
+    <a
+      href={link.href}
+      target={link.href.startsWith("http") ? "_blank" : undefined}
+      rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+      className="group flex min-h-20 items-center justify-between gap-3 border border-[#20b2aa]/45 bg-white/12 p-3 shadow-[0_14px_34px_rgba(15,118,110,0.1)] backdrop-blur-[2px] transition duration-300 hover:border-[#0ea5e9]/80 hover:bg-white/24 hover:shadow-[0_18px_44px_rgba(14,165,233,0.14)] sm:p-4"
+    >
+      <div className="flex min-w-0 items-center gap-3">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-[#20b2aa]/45 bg-[#bff3ef]/35 text-[#0ea5e9] transition duration-300 group-hover:border-[#0ea5e9]/70 group-hover:bg-[#0ea5e9] group-hover:text-white">
+          <Icon className="h-5 w-5" />
+        </div>
+        <div className="min-w-0">
+          <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-slate-600">
+            {link.label}
+          </p>
+          <p className="mt-1.5 break-words text-sm font-black text-[#172033] sm:text-base">
+            {link.value}
+          </p>
+        </div>
+      </div>
+      <FiArrowUpRight className="h-5 w-5 shrink-0 text-[#0ea5e9] transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
+    </a>
+  );
+}
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    from_name: "",
-    from_email: "",
-    message: "",
-  });
-  const [status, setStatus] = useState("idle");
-
-  const updateField = (event) => {
-    const { name, value } = event.target;
-    setFormData((currentData) => ({ ...currentData, [name]: value }));
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    if (!emailConfig.serviceId || !emailConfig.templateId || !emailConfig.publicKey) {
-      setStatus("missing-config");
-      return;
-    }
-
-    setStatus("sending");
-
-    try {
-      await emailjs.send(
-        emailConfig.serviceId,
-        emailConfig.templateId,
-        {
-          from_name: formData.from_name,
-          from_email: formData.from_email,
-          message: formData.message,
-        },
-        {
-          publicKey: emailConfig.publicKey,
-        },
-      );
-
-      setStatus("success");
-      setFormData({ from_name: "", from_email: "", message: "" });
-    } catch {
-      setStatus("error");
-    }
-  };
-
   return (
     <section
       id="contact"
-      className="relative z-10 mx-auto min-h-[100svh] w-full max-w-[92rem] scroll-mt-20 px-5 pb-4 pt-20 sm:px-8 lg:px-12"
+      className="relative z-10 mx-auto min-h-[100svh] w-full max-w-[92rem] scroll-mt-20 px-5 pb-6 pt-20 sm:px-8 lg:px-12"
     >
-      <div className="text-center">
-        <div className="flex items-center justify-center gap-3">
-          <span className="h-px w-10 bg-[#0ea5e9]" />
-          <p className="text-[0.68rem] font-black uppercase tracking-[0.24em] text-[#0ea5e9]">
-            Initiate Protocol
+      <div className="relative mx-auto flex min-h-[calc(100svh-6.5rem)] w-full flex-col justify-center py-8">
+        <div className="text-center">
+          {/* <div className="flex items-center justify-center gap-3">
+            <span className="h-px w-10 bg-[#0ea5e9]" />
+            <p className="text-[0.68rem] font-black uppercase tracking-[0.24em] text-[#0ea5e9]">
+              Open Channel
+            </p>
+            <span className="h-px w-10 bg-[#0ea5e9]" />
+          </div> */}
+
+          <h2 className="mt-3 text-3xl font-black uppercase tracking-[0] sm:text-4xl lg:text-5xl">
+            <span className="animate-pulse bg-gradient-to-r from-[#0ea5e9] via-[#14b8a6] to-[#d946ef] bg-clip-text text-transparent">
+              Contact Node
+            </span>
+          </h2>
+
+          <p className="mx-auto mt-4 max-w-3xl text-sm font-semibold leading-6 text-slate-700 sm:text-base">
+            Reach out directly for applied AI research, production prototypes,
+            computer vision workflows, or technical collaboration.
           </p>
         </div>
 
-        <h2 className="mt-3 text-3xl font-black uppercase tracking-[0] sm:text-4xl">
-          <span className="animate-pulse bg-gradient-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
-            Get_in_Touch_
-          </span>
-        </h2>
+        <div className="relative mt-6 overflow-hidden border border-[#20b2aa]/35 bg-[#bff3ef]/72 p-3 shadow-[0_22px_70px_rgba(32,178,170,0.16)] sm:p-4 lg:p-5">
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(14,165,233,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(32,178,170,0.14)_1px,transparent_1px)] [background-size:56px_56px]" />
 
-        <p className="mx-auto mt-3 max-w-3xl text-xs font-semibold leading-5 text-slate-700 sm:text-sm">
-          Ready to collaborate on the next generation of intelligent
-          applications? Reach out for research inquiries, partnership
-          opportunities, or technical consulting.
-        </p>
-      </div>
-
-      <div className="mt-6 grid gap-5 lg:grid-cols-[0.82fr_1.18fr]">
-        <div className="space-y-4">
-          <aside className="border border-sky-200/80 bg-white/92 p-4 shadow-[0_18px_48px_rgba(14,165,233,0.1)] sm:p-5">
-            <h3 className="text-xl font-black uppercase tracking-[0] text-[#172033] drop-shadow-[0_3px_0_rgba(14,165,233,0.12)]">
-              Hub_Locator
-            </h3>
-
-            <div className="mt-5 space-y-5">
-              <div className="flex gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-sky-200/80 bg-sky-50 text-[#0ea5e9]">
-                  <HiOutlineLocationMarker className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-slate-600">
-                    Operational Base
-                  </p>
-                  <p className="mt-1.5 text-sm font-black text-[#172033]">
-                    Kolkata AI Research Hub
-                  </p>
-                  <p className="mt-1 text-xs leading-5 text-slate-600">
-                    Kolkata, West Bengal
-                    <br />
-                    India
-                  </p>
-                </div>
+          <div className="relative grid gap-4 lg:grid-cols-[0.95fr_1.05fr]">
+          <aside className="border border-[#20b2aa]/45 bg-white/12 p-4 shadow-[0_14px_38px_rgba(15,118,110,0.1)] backdrop-blur-[2px] sm:p-5">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-[0.68rem] font-black uppercase tracking-[0.2em] text-[#0ea5e9]">
+                  Collaboration Profile
+                </p>
+                <h3 className="mt-2 text-xl font-black uppercase leading-tight tracking-[0] text-[#172033] drop-shadow-[0_3px_0_rgba(14,165,233,0.12)] sm:text-2xl">
+                  Build serious AI into useful products.
+                </h3>
               </div>
-
-              <div className="flex gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-sky-200/80 bg-sky-50 text-[#0ea5e9]">
-                  <HiOutlineAtSymbol className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-slate-600">
-                    Direct Comms
-                  </p>
-                  <a
-                    href="mailto:architect@neural-lab.ai"
-                    className="mt-1.5 block break-words text-sm font-black text-[#172033] transition hover:text-[#0ea5e9]"
-                  >
-                    architect@neural-lab.ai
-                  </a>
-                </div>
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-[#20b2aa]/45 bg-[#bff3ef]/35 text-[#0ea5e9]">
+                <HiOutlineSparkles className="h-5 w-5" />
               </div>
             </div>
 
-            <div className="mt-5 border-t border-sky-200/80 pt-4">
-              <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-slate-600">
-                Local Timezone
-              </p>
-              <p className="mt-2.5 flex items-center gap-3 text-xs font-semibold text-slate-700">
-                <span className="h-2 w-2 rounded-full bg-[#14b8a6]" />
-                IST (UTC+5:30) // ACTIVE
-              </p>
+            <p className="mt-3 text-sm leading-6 text-slate-700">
+              The fastest path is a short brief with the problem, current
+              system, data constraints, and expected outcome. No message
+              database, no third-party form service, just direct channels.
+            </p>
+
+            <div className="mt-4 grid gap-2 sm:grid-cols-2">
+              {collaborationModes.map((mode) => (
+                <div
+                  key={mode}
+                  className="border border-[#20b2aa]/40 bg-white/10 px-3 py-2 text-[0.68rem] font-black uppercase tracking-[0.12em] text-slate-700 backdrop-blur-[2px]"
+                >
+                  {mode}
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-4 grid gap-3 border-t border-[#20b2aa]/40 pt-4 sm:grid-cols-3">
+              {availabilitySignals.map((signal) => (
+                <div key={signal.label}>
+                  <p className="text-[0.62rem] font-black uppercase tracking-[0.16em] text-slate-500">
+                    {signal.label}
+                  </p>
+                  <p className="mt-1.5 text-sm font-black text-[#172033]">
+                    {signal.value}
+                  </p>
+                </div>
+              ))}
             </div>
           </aside>
 
-          <div className="relative h-28 overflow-hidden border border-sky-200/80 bg-sky-50 shadow-[0_18px_48px_rgba(14,165,233,0.1)]">
-            <iframe
-              title="Kolkata location map"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=88.2539%2C22.4726%2C88.4739%2C22.6726&layer=mapnik&marker=22.5726%2C88.3639"
-              className="h-full w-full border-0 saturate-150"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-sky-100/20 mix-blend-multiply" />
-            <a
-              href="https://www.google.com/maps/search/?api=1&query=Kolkata%2C%20West%20Bengal%2C%20India"
-              target="_blank"
-              rel="noreferrer"
-              className="absolute bottom-3 left-3 border border-[#0ea5e9] bg-white/92 px-2.5 py-1 text-[0.58rem] font-semibold uppercase tracking-[0.12em] text-[#0ea5e9] transition hover:bg-[#0ea5e9] hover:text-white"
-            >
-              MAP_COORDINATES_22.5726_N_88.3639_E
-            </a>
+          <div className="grid gap-4">
+            <div className="grid gap-3">
+              {contactLinks.map((link) => (
+                <ContactLinkCard key={link.label} link={link} />
+              ))}
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="border border-[#20b2aa]/45 bg-white/12 p-4 shadow-[0_14px_34px_rgba(15,118,110,0.1)] backdrop-blur-[2px]">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center border border-[#20b2aa]/45 bg-[#bff3ef]/35 text-[#0ea5e9]">
+                    <FiMapPin className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-slate-600">
+                      Operational Base
+                    </p>
+                    <p className="mt-1 text-sm font-black text-[#172033]">
+                      Kolkata, West Bengal
+                    </p>
+                  </div>
+                </div>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Kolkata%2C%20West%20Bengal%2C%20India"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-4 inline-flex h-9 items-center justify-center gap-2 border border-[#0ea5e9] px-4 text-[0.68rem] font-black uppercase tracking-[0.14em] text-[#0ea5e9] transition hover:bg-[#0ea5e9] hover:text-white"
+                >
+                  View Map
+                  <FiArrowUpRight className="h-4 w-4" />
+                </a>
+              </div>
+
+              <div className="border border-[#20b2aa]/45 bg-white/12 p-4 shadow-[0_14px_34px_rgba(15,118,110,0.1)] backdrop-blur-[2px]">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center border border-[#20b2aa]/45 bg-[#bff3ef]/35 text-[#0ea5e9]">
+                    <HiOutlineClock className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-slate-600">
+                      Best Window
+                    </p>
+                    <p className="mt-1 text-sm font-black text-[#172033]">
+                      Weekdays, IST hours
+                    </p>
+                  </div>
+                </div>
+                <p className="mt-4 text-xs font-semibold uppercase leading-5 tracking-[0.14em] text-slate-600">
+                  Share a concise problem brief and relevant links for a faster,
+                  sharper first reply.
+                </p>
+              </div>
+            </div>
+          </div>
           </div>
         </div>
-
-        <form
-          onSubmit={handleSubmit}
-          className="border border-sky-200/80 bg-white/92 p-4 shadow-[0_18px_48px_rgba(14,165,233,0.1)] sm:p-5"
-        >
-          <h3 className="text-xl font-black uppercase tracking-[0] text-[#172033] drop-shadow-[0_3px_0_rgba(14,165,233,0.12)]">
-            Transmit_Data
-          </h3>
-
-          <div className="mt-5 space-y-4">
-            <label className="block">
-              <span className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-slate-600">
-                Identity_Name
-              </span>
-              <input
-                type="text"
-                name="from_name"
-                value={formData.from_name}
-                onChange={updateField}
-                required
-                suppressHydrationWarning
-                placeholder="ENTER YOUR FULL NAME"
-                className="mt-2 h-10 w-full border border-sky-200 bg-white px-4 text-xs font-semibold tracking-[0.12em] text-[#172033] outline-none transition placeholder:text-slate-400 focus:border-[#0ea5e9]"
-              />
-            </label>
-
-            <label className="block">
-              <span className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-slate-600">
-                Comm_Envelope_Email
-              </span>
-              <input
-                type="email"
-                name="from_email"
-                value={formData.from_email}
-                onChange={updateField}
-                required
-                suppressHydrationWarning
-                placeholder="YOUR@DOMAIN.COM"
-                className="mt-2 h-10 w-full border border-sky-200 bg-white px-4 text-xs font-semibold tracking-[0.12em] text-[#172033] outline-none transition placeholder:text-slate-400 focus:border-[#0ea5e9]"
-              />
-            </label>
-
-            <label className="block">
-              <span className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-slate-600">
-                Message_Payload
-              </span>
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={updateField}
-                required
-                suppressHydrationWarning
-                rows={3}
-                placeholder="DESCRIBE YOUR PROJECT OR INQUIRY..."
-                className="mt-2 w-full resize-none border-b border-slate-300 bg-transparent py-2 text-xs font-semibold text-[#172033] outline-none transition placeholder:text-slate-400 focus:border-[#0ea5e9]"
-              />
-            </label>
-          </div>
-
-          <button
-            type="submit"
-            disabled={status === "sending"}
-            suppressHydrationWarning
-            className="mt-5 flex h-10 w-full items-center justify-center gap-3 border border-[#0ea5e9] text-xs font-black uppercase tracking-[0.16em] text-[#0ea5e9] transition hover:bg-[#0ea5e9] hover:text-white disabled:cursor-not-allowed disabled:opacity-60 sm:w-56"
-          >
-            {status === "sending" ? "Sending" : "Send Message"}
-            <FiSend className="h-4 w-4" />
-          </button>
-
-          {status !== "idle" && (
-            <p className="mt-3 text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#0ea5e9]">
-              {status === "success" && "Message transmitted successfully."}
-              {status === "error" && "Transmission failed. Please try again."}
-              {status === "missing-config" &&
-                "EmailJS configuration missing. Add your public environment variables."}
-            </p>
-          )}
-        </form>
       </div>
     </section>
   );
