@@ -159,11 +159,11 @@ export default function Navbar() {
           }
         }
       `}</style>
-      <nav className="mx-auto flex min-h-20 w-full max-w-[92rem] items-center justify-between gap-4 px-5 sm:px-8 lg:px-8 xl:px-10">
+      <nav className="mx-auto flex min-h-20 w-full max-w-368 items-center justify-between gap-4 px-5 sm:px-8 lg:px-8 xl:px-10">
         <a
           href="#home"
           onClick={(event) => handleNavClick(event, "home")}
-          className="shrink-0 bg-gradient-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-xl font-black tracking-[-0.04em] text-transparent sm:text-2xl"
+          className="shrink-0 bg-linear-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-xl font-black tracking-[-0.04em] text-transparent sm:text-2xl"
         >
           A(I)NIKET
         </a>
@@ -191,7 +191,7 @@ export default function Navbar() {
                   }`}
                 />
                 <span
-                  className={`pointer-events-none absolute inset-y-0 left-0 -z-10 w-1/2 bg-gradient-to-r from-transparent via-white/35 to-transparent ${
+                  className={`pointer-events-none absolute inset-y-0 left-0 -z-10 w-1/2 bg-linear-to-r from-transparent via-white/35 to-transparent ${
                     isClicked ? "animate-[nav-glass-shine_620ms_ease-out]" : "opacity-0"
                   }`}
                 />
