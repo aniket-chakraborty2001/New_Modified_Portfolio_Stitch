@@ -4,7 +4,7 @@ import { MdOutlineWorkHistory } from "react-icons/md";
 
 const profileImages = [
   { src: "/myself.jpeg", alt: "Aniket Chakraborty portrait", className: "about-float-one" },
-  { src: "/myself.jpeg", alt: "Aniket Chakraborty profile visual 2", className: "about-float-two" },
+  { src: "/myself2.jpg", alt: "Aniket Chakraborty profile visual 2", className: "about-float-two" },
   { src: "/myself.jpeg", alt: "Aniket Chakraborty profile visual 3", className: "about-float-three" },
   { src: "/myself.jpeg", alt: "Aniket Chakraborty profile visual 4", className: "about-float-four" },
 ];

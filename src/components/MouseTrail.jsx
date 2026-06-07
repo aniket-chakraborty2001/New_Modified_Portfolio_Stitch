@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-const TRAIL_LENGTH = 18;
+const TRAIL_LENGTH = 5;
 
 export default function MouseTrail() {
   const dotRefs = useRef([]);
@@ -67,7 +67,7 @@ export default function MouseTrail() {
           ref={(element) => {
             dotRefs.current[index] = element;
           }}
-          className="absolute left-0 top-0 h-4 w-4 rounded-full bg-red-800/70 opacity-0 blur-[1px] will-change-transform"
+          className="absolute left-0 top-0 h-4 w-4 rounded-full bg-yellow-500/70 opacity-0 blur-[1px] will-change-transform"
           style={{
             boxShadow: "0 0 18px rgba(252, 165, 165, 0.38)",
           }}
