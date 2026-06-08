@@ -17,7 +17,7 @@ const contactLinks = [
   {
     label: "LinkedIn",
     value: "Aniket Chakraborty",
-    href: "www.linkedin.com/in/aniket-chakraborty20022001",
+    href: "https://www.linkedin.com/in/aniket-chakraborty20022001",
     icon: FiLinkedin,
   },
   {

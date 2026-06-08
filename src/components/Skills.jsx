@@ -86,8 +86,7 @@ function SkillCard({ skill, cardRef }) {
   return (
     <div
       ref={cardRef}
-      style={{ transformStyle: "preserve-3d", willChange: "transform, opacity" }}
-      className="group relative flex h-46 flex-col overflow-hidden rounded-xl border border-yellow-200 bg-white p-4 shadow-[0_18px_44px_rgba(0,0,0,0.16)] transition-[border-color] duration-300 hover:border-[#facc15]"
+      className="group relative flex h-46 flex-col overflow-hidden rounded-xl border border-yellow-200 bg-white p-4 shadow-[0_18px_44px_rgba(0,0,0,0.16)] [transform-style:preserve-3d] [will-change:transform,opacity] transition-[border-color] duration-300 hover:border-[#facc15]"
     >
       {/* spotlight glare */}
       <span ref={glareRef} className="pointer-events-none absolute inset-0 rounded-xl opacity-0" />
@@ -185,8 +184,7 @@ export default function Skills() {
     <section
       id="skills"
       ref={sectionRef}
-      className="relative z-10 mx-auto w-full max-w-368 scroll-mt-20 bg-[linear-gradient(135deg,#050505_0%,#111111_42%,#1d1d1d_72%,#2a2a2a_100%)]"
-      style={{ height: "300vh" }}
+      className="relative z-10 mx-auto h-[300vh] w-full max-w-368 scroll-mt-20 bg-[linear-gradient(135deg,#050505_0%,#111111_42%,#1d1d1d_72%,#2a2a2a_100%)]"
     >
       <div
         ref={stickyRef}

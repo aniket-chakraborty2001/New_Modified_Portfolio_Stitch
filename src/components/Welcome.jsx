@@ -134,8 +134,7 @@ export default function Welcome() {
               ref={(element) => {
                 letterRefs.current[index] = element;
               }}
-              style={{ visibility: "hidden" }}
-              className="inline-block px-0.5 text-[#facc15] will-change-transform"
+              className="invisible inline-block px-0.5 text-[#facc15] will-change-transform"
             >
               {letter}
             </span>
@@ -144,8 +143,7 @@ export default function Welcome() {
 
         <p
           ref={lineRef}
-          style={{ visibility: "hidden" }}
-          className="mt-6 max-w-3xl text-sm font-semibold uppercase leading-7 tracking-[0.18em] text-white sm:text-base sm:leading-8"
+          className="invisible mt-6 max-w-3xl text-sm font-semibold uppercase leading-7 tracking-[0.18em] text-white sm:text-base sm:leading-8"
         >
           Building intelligent applications across generative AI, computer vision,
           machine learning, and production-ready research systems.

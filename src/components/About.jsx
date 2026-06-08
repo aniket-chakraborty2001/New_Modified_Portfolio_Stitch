@@ -61,7 +61,6 @@ function ProfileCard() {
 function SummaryPanel() {
   return (
     <section className="about-card about-reveal border border-yellow-200 bg-white px-6 py-6 [animation-delay:120ms] sm:px-8 lg:px-8 lg:py-7">
-
       <h2 className="about-reveal mt-4 max-w-5xl text-2xl font-black leading-[1.12] tracking-normal text-[#111111] drop-shadow-[0_3px_0_rgba(250,204,21,0.12)] [animation-delay:280ms] sm:text-3xl xl:text-[2.25rem]">
         Pushing the boundaries of Manual Human work to Intelligent solutions
       </h2>
@@ -88,8 +87,13 @@ function SummaryPanel() {
           {profileDetails.map(({ icon: Icon, text }, index) => (
             <div
               key={text}
-              className="about-reveal flex items-center gap-3"
-              style={{ animationDelay: `${500 + index * 80}ms` }}
+              className={`about-reveal flex items-center gap-3 ${
+                index === 1
+                  ? "[animation-delay:580ms]"
+                  : index === 2
+                    ? "[animation-delay:660ms]"
+                    : "[animation-delay:500ms]"
+              }`}
             >
               <Icon className="h-5 w-5 shrink-0 text-[#16a34a]" />
               <span>{text}</span>
@@ -104,7 +108,7 @@ function SummaryPanel() {
             Core Area
           </h3>
           <p className="mt-2 w-full max-w-none text-sm leading-6 text-[#166534] sm:text-base">
-            Gen AI, Transformers, Diffusers, NLP, Machine Learning, Deep Learning, ViTs, Computer Vision, FastAPIs, 
+            Gen AI, Transformers, Diffusers, NLP, Machine Learning, Deep Learning, ViTs, Computer Vision, FastAPIs,
             OpenAI, Gemini, Claude, HuggingFace, Github
           </p>
         </div>
@@ -119,130 +123,6 @@ export default function About() {
       id="about"
       className="relative z-10 mx-auto flex min-h-svh w-full max-w-368 scroll-mt-20 flex-col justify-center gap-5 bg-[linear-gradient(135deg,#050505_0%,#111111_42%,#1d1d1d_72%,#2a2a2a_100%)] px-5 pb-5 pt-20 sm:px-8 md:pt-22 lg:px-12 lg:pb-6 lg:pt-20"
     >
-      <style>{`
-        @keyframes about-rise {
-          0% {
-            opacity: 0;
-            transform: translateY(18px);
-            filter: blur(8px);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0);
-            filter: blur(0);
-          }
-        }
-
-        @keyframes about-float-one {
-          0%, 100% { transform: translate3d(0, 0, 0); }
-          50% { transform: translate3d(3px, -5px, 0); }
-        }
-
-        @keyframes about-float-two {
-          0%, 100% { transform: translate3d(0, 0, 0); }
-          50% { transform: translate3d(-3px, 5px, 0); }
-        }
-
-        @keyframes about-float-three {
-          0%, 100% { transform: translate3d(0, 0, 0); }
-          50% { transform: translate3d(3px, 5px, 0); }
-        }
-
-        @keyframes about-float-four {
-          0%, 100% { transform: translate3d(0, 0, 0); }
-          50% { transform: translate3d(-3px, -5px, 0); }
-        }
-
-        @keyframes about-orbit {
-          to { transform: rotate(360deg); }
-        }
-
-        @keyframes about-skill-pop {
-          0% {
-            opacity: 0;
-            transform: translateY(10px) scale(0.92);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-          }
-        }
-
-        .about-reveal {
-          animation: about-rise 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
-        }
-
-        .about-card {
-          position: relative;
-          overflow: hidden;
-          box-shadow: 0 18px 60px rgba(0,0,0,0.18);
-        }
-
-        .about-card::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-          background: linear-gradient(120deg, transparent 18%, rgba(250,204,21,0.12) 46%, transparent 72%);
-          transform: translateX(-100%);
-          animation: about-panel-sheen 6s ease-in-out infinite;
-        }
-
-        @keyframes about-panel-sheen {
-          0%, 55% { transform: translateX(-100%); opacity: 0; }
-          70% { opacity: 1; }
-          100% { transform: translateX(100%); opacity: 0; }
-        }
-
-        .about-orbit {
-          animation: about-orbit 18s linear infinite;
-        }
-
-        .about-orbit::before {
-          content: "";
-          position: absolute;
-          left: 50%;
-          top: -3px;
-          height: 6px;
-          width: 6px;
-          border-radius: 9999px;
-          background: #facc15;
-          box-shadow: 0 0 18px rgba(250,204,21,0.7);
-          transform: translateX(-50%);
-        }
-
-        .about-orbit-reverse {
-          animation-duration: 13s;
-          animation-direction: reverse;
-        }
-
-        .about-float-one {
-          animation: about-float-one 7.5s ease-in-out infinite;
-        }
-
-        .about-float-two {
-          animation: about-float-two 8.2s ease-in-out infinite;
-        }
-
-        .about-float-three {
-          animation: about-float-three 7.8s ease-in-out infinite;
-        }
-
-        .about-float-four {
-          animation: about-float-four 8.8s ease-in-out infinite;
-        }
-
-        .about-skill {
-          animation: about-skill-pop 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
-          transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
-        }
-
-        .about-skill:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 10px 26px rgba(250,204,21,0.14);
-          background-color: rgba(250,204,21,0.08);
-        }
-      `}</style>
       <h2 className="about-reveal text-center text-3xl font-black uppercase tracking-normal sm:text-4xl lg:text-5xl">
         <span className="text-[#facc15]">About Me</span>
       </h2>

@@ -8,21 +8,9 @@ const workbenchMetrics = [
   { label: "Research", value: "ML Systems", color: "from-[#facc15] to-[#22c55e]" },
 ];
 
-const pipelineSteps = [
-  "Research",
-  "Model",
-  "API",
-  "Product",
-];
+const pipelineSteps = ["Research", "Model", "API", "Product"];
 
-const techChips = [
-  "PyTorch",
-  "OpenCV",
-  "FastAPI",
-  "RAG",
-  "ViT",
-  "Gemini",
-];
+const techChips = ["PyTorch", "OpenCV", "FastAPI", "RAG", "ViT", "Gemini"];
 
 const splitMetricTransforms = [
   "-translate-x-4 -translate-y-1 rotate-[-2deg]",
@@ -167,7 +155,6 @@ function WorkbenchPanel() {
           </div>
         </div>
       </div>
-
     </div>
   );
 }
@@ -178,198 +165,38 @@ export default function Home() {
       id="home"
       className="relative z-10 mx-auto flex min-h-svh w-full max-w-368 scroll-mt-20 flex-col justify-center gap-5 bg-[linear-gradient(135deg,#050505_0%,#111111_42%,#1d1d1d_72%,#2a2a2a_100%)] px-5 pb-5 pt-20 sm:px-8 md:pt-22 lg:px-12 lg:pb-6 lg:pt-20"
     >
-      <style>{`
-        @keyframes home-rise {
-          0% {
-            opacity: 0;
-            transform: translateY(18px);
-            filter: blur(8px);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0);
-            filter: blur(0);
-          }
-        }
-
-        @keyframes home-art-float {
-          0%, 100% {
-            transform: translateY(0) rotateX(0deg) rotateY(0deg);
-          }
-          50% {
-            transform: translateY(-10px) rotateX(2deg) rotateY(-3deg);
-          }
-        }
-
-        @keyframes home-path-flow {
-          0% {
-            stroke-dasharray: 0.08 0.92;
-            stroke-dashoffset: 1;
-            opacity: 0.24;
-          }
-          45% {
-            opacity: 0.95;
-          }
-          100% {
-            stroke-dasharray: 0.36 0.64;
-            stroke-dashoffset: 0;
-            opacity: 0.42;
-          }
-        }
-
-        @keyframes home-node-pulse {
-          0%, 100% {
-            opacity: 0.38;
-            transform: scale(0.88);
-          }
-          50% {
-            opacity: 1;
-            transform: scale(1.6);
-          }
-        }
-
-        @keyframes home-ring-pulse {
-          0%, 100% {
-            transform: scale(0.94);
-            opacity: 0.2;
-          }
-          50% {
-            transform: scale(1.06);
-            opacity: 0.54;
-          }
-        }
-
-        @keyframes home-scan {
-          0% {
-            transform: translateY(-120%);
-            opacity: 0;
-          }
-          18%, 62% {
-            opacity: 1;
-          }
-          100% {
-            transform: translateY(520%);
-            opacity: 0;
-          }
-        }
-
-        @keyframes home-orbit {
-          to {
-            transform: rotate(360deg);
-          }
-        }
-
-        @keyframes home-shimmer {
-          0%, 100% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-        }
-
-        .home-reveal {
-          animation: home-rise 720ms cubic-bezier(0.22, 1, 0.36, 1) both;
-        }
-
-        .home-artwork {
-          animation: home-art-float 8s ease-in-out infinite;
-          transform-style: preserve-3d;
-        }
-
-        .home-scan {
-          animation: home-scan 4.8s ease-in-out infinite;
-        }
-
-        .home-orbit {
-          animation: home-orbit 22s linear infinite;
-        }
-
-        .home-orbit::before {
-          content: "";
-          position: absolute;
-          left: 50%;
-          top: -3px;
-          height: 6px;
-          width: 6px;
-          border-radius: 9999px;
-          background: #facc15;
-          box-shadow: 0 0 18px rgba(250,204,21,0.78);
-          transform: translateX(-50%);
-        }
-
-        .home-orbit-reverse {
-          animation-duration: 16s;
-          animation-direction: reverse;
-        }
-
-        .home-satellite {
-          transform-origin: 0 8.7rem;
-          animation: home-orbit 12s linear infinite;
-        }
-
-        .home-satellite-two {
-          transform-origin: 0 -7.6rem;
-          animation: home-orbit 15s linear infinite reverse;
-        }
-
-        .home-highlight {
-          background-size: 220% 100%;
-          animation: home-shimmer 5s ease-in-out infinite;
-        }
-
-        .home-workbench-card,
-        .home-pipeline-step,
-        .home-tech-chip {
-          animation: home-rise 620ms cubic-bezier(0.22, 1, 0.36, 1) both;
-        }
-
-        .home-progress {
-          transform-origin: left;
-          animation: home-progress-fill 2.8s ease-in-out infinite alternate;
-        }
-
-        @keyframes home-progress-fill {
-          0% {
-            transform: scaleX(0.72);
-          }
-          100% {
-            transform: scaleX(1);
-          }
-        }
-      `}</style>
       <h2 className="home-reveal text-center text-3xl font-black uppercase tracking-normal sm:text-4xl lg:text-5xl">
-          <span className="text-[#facc15]">Home</span>
+        <span className="text-[#facc15]">Home</span>
       </h2>
 
       <div className="grid w-full items-center gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="max-w-3xl text-center lg:text-left">
-            <h1 className="home-reveal text-[clamp(1.85rem,5.2vw,3.55rem)] font-black uppercase leading-[1.04] tracking-normal text-white drop-shadow-[0_4px_0_rgba(250,204,21,0.12)] [animation-delay:120ms]">
-              Pioneering the next frontier of{" "}
-              <span className="text-[#facc15]">Intelligent Applications.</span>
-            </h1>
+        <div className="max-w-3xl text-center lg:text-left">
+          <h1 className="home-reveal text-[clamp(1.85rem,5.2vw,3.55rem)] font-black uppercase leading-[1.04] tracking-normal text-white drop-shadow-[0_4px_0_rgba(250,204,21,0.12)] [animation-delay:120ms]">
+            Pioneering the next frontier of{" "}
+            <span className="text-[#facc15]">Intelligent Applications.</span>
+          </h1>
 
-            <p className="home-reveal mt-4 text-xs font-medium uppercase tracking-[0.38em] text-white [animation-delay:220ms] sm:text-sm">
-              Developer | Researcher | Engineer
-            </p>
+          <p className="home-reveal mt-4 text-xs font-medium uppercase tracking-[0.38em] text-white [animation-delay:220ms] sm:text-sm">
+            Developer | Researcher | Engineer
+          </p>
 
-            <p className="home-reveal mx-auto mt-4 max-w-2xl text-sm leading-6 text-white/82 [animation-delay:320ms] sm:text-base sm:leading-7 lg:mx-0">
-              Dedicated to developing efficient, scalable, and interpretative
-              machine learning, deep learning models that bridge the gap between biological
-              intelligence and silicon-based computation.
-            </p>
+          <p className="home-reveal mx-auto mt-4 max-w-2xl text-sm leading-6 text-white/82 [animation-delay:320ms] sm:text-base sm:leading-7 lg:mx-0">
+            Dedicated to developing efficient, scalable, and interpretative
+            machine learning, deep learning models that bridge the gap between biological
+            intelligence and silicon-based computation.
+          </p>
 
-            <a
-              href="#about"
-              className="home-reveal mt-5 inline-flex h-11 items-center justify-center overflow-hidden bg-[#facc15] px-7 text-xs font-medium uppercase tracking-[0.24em] text-[#111111] shadow-[0_16px_34px_rgba(250,204,21,0.18)] transition hover:bg-[#22c55e] hover:text-white hover:shadow-[0_18px_42px_rgba(34,197,94,0.2)] [animation-delay:420ms] sm:h-12 sm:px-8 sm:text-sm"
-            >
-              Learn More About Me
-            </a>
-          </div>
+          <a
+            href="#about"
+            className="home-reveal mt-5 inline-flex h-11 items-center justify-center overflow-hidden bg-[#facc15] px-7 text-xs font-medium uppercase tracking-[0.24em] text-[#111111] shadow-[0_16px_34px_rgba(250,204,21,0.18)] transition hover:bg-[#22c55e] hover:text-white hover:shadow-[0_18px_42px_rgba(34,197,94,0.2)] [animation-delay:420ms] sm:h-12 sm:px-8 sm:text-sm"
+          >
+            Learn More About Me
+          </a>
+        </div>
 
-          <div className="home-reveal flex justify-center [animation-delay:260ms] lg:justify-end">
-            <WorkbenchPanel />
-          </div>
+        <div className="home-reveal flex justify-center [animation-delay:260ms] lg:justify-end">
+          <WorkbenchPanel />
+        </div>
       </div>
     </section>
   );

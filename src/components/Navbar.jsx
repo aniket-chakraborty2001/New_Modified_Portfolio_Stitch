@@ -126,39 +126,6 @@ export default function Navbar() {
 
   return (
     <header className="fixed left-0 top-0 z-50 isolate w-full overflow-hidden border-y border-white/35 bg-[linear-gradient(135deg,rgba(255,255,255,0.22),rgba(255,255,255,0.1)_38%,rgba(250,204,21,0.07)_68%,rgba(255,255,255,0.13))] shadow-[0_18px_54px_rgba(0,0,0,0.46),0_0_0_1px_rgba(255,255,255,0.18),inset_0_1px_0_rgba(255,255,255,0.42),inset_0_-1px_0_rgba(255,255,255,0.18)] backdrop-blur-2xl backdrop-saturate-150">
-      <style>{`
-        @keyframes nav-glass-pop {
-          0% {
-            opacity: 0.72;
-            transform: scale(0.78);
-            filter: blur(10px);
-          }
-          45% {
-            opacity: 1;
-            transform: scale(1.08);
-            filter: blur(0);
-          }
-          100% {
-            opacity: 1;
-            transform: scale(1);
-            filter: blur(0);
-          }
-        }
-
-        @keyframes nav-glass-shine {
-          0% {
-            transform: translateX(-140%) skewX(-18deg);
-            opacity: 0;
-          }
-          35% {
-            opacity: 0.85;
-          }
-          100% {
-            transform: translateX(145%) skewX(-18deg);
-            opacity: 0;
-          }
-        }
-      `}</style>
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_0%,rgba(255,255,255,0.28),transparent_28%),radial-gradient(circle_at_82%_100%,rgba(250,204,21,0.1),transparent_36%)]" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/75" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-white/45" />

@@ -256,12 +256,7 @@ export default function Experience() {
 
       <div
         ref={stackSectionRef}
-        className="relative mx-auto mt-14 h-[300svh] w-full sm:mt-16 lg:mt-20"
-        style={{
-          "--experience-card-width": "min(58rem, calc(100vw - 2rem))",
-          "--experience-card-height": "clamp(25rem, 50svh, 30rem)",
-          "--experience-card-open-height": "clamp(35rem, 68svh, 40rem)",
-        }}
+        className="relative mx-auto mt-14 h-[300svh] w-full [--experience-card-height:clamp(25rem,50svh,30rem)] [--experience-card-open-height:clamp(35rem,68svh,40rem)] [--experience-card-width:min(58rem,calc(100vw_-_2rem))] sm:mt-16 lg:mt-20"
       >
         <div className="sticky top-36 flex h-[calc(100svh-9rem)] items-center justify-center overflow-visible py-8">
           <div className="relative h-full w-full max-w-5xl">

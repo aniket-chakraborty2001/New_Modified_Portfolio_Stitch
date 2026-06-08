@@ -42,7 +42,7 @@ const projects = [
     description: "A Retrieval Augmented Generation based Chatbot using opensource data for Hawaiin Wild Fire. Uses Openai API keys to build the RAG",
     tags: ["OpenAI", "RAG", "HuggingFace", "Langchain", "Faiss", "Vector database", "streamlit"],
     image: "/projects/demo_project.png",
-  }
+  },
 ];
 
 function ProjectCard({ project }) {
@@ -54,19 +54,17 @@ function ProjectCard({ project }) {
       <span className="pointer-events-none absolute left-4 top-4 z-20 h-8 w-8 border-l border-t border-[#facc15]/0 transition duration-500 group-hover:border-[#facc15]/80" />
       <span className="pointer-events-none absolute bottom-4 right-4 z-20 h-8 w-8 border-b border-r border-[#facc15]/0 transition duration-500 group-hover:border-[#facc15]/80" />
 
-      {/* Image */}
       <div className="relative h-48 w-full shrink-0 overflow-hidden bg-white sm:h-full sm:w-[55%]">
         <Image
           src={project.image}
           alt={`${project.title} project visual`}
           fill
           sizes="(min-width: 640px) 55%, 100vw"
-          className="object-contain transition duration-700 ease-out group-hover:scale-[1.03] group-hover:grayscale-0 grayscale"
+          className="object-contain grayscale transition duration-700 ease-out group-hover:scale-[1.03] group-hover:grayscale-0"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-white/0 to-transparent opacity-45 transition duration-500 group-hover:opacity-10 sm:bg-gradient-to-r" />
       </div>
 
-      {/* Content */}
       <div className="relative flex flex-1 flex-col justify-between p-4 sm:p-5">
         <div>
           <h3 className="text-base font-black uppercase leading-tight tracking-[0] text-[#111111] drop-shadow-[0_3px_0_rgba(250,204,21,0.12)] transition duration-500 group-hover:text-[#16a34a] sm:text-lg">
@@ -99,38 +97,6 @@ export default function Project() {
       id="projects"
       className="relative z-10 mx-auto w-full max-w-[92rem] scroll-mt-20 bg-[linear-gradient(135deg,#050505_0%,#111111_42%,#1d1d1d_72%,#2a2a2a_100%)] px-5 pb-20 pt-24 sm:px-8 md:pt-28 lg:px-12"
     >
-      {/* Pagination dot styles — scoped to this section only */}
-      <style>{`
-        .projects-flip .swiper-pagination {
-          position: relative;
-          bottom: auto;
-          margin-top: 20px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-        }
-        .projects-flip .swiper-pagination-bullet {
-          width: 10px;
-          height: 10px;
-          border-radius: 9999px;
-          opacity: 0.35;
-          background: #facc15;
-          transition: opacity 0.3s, transform 0.3s, background 0.3s;
-          margin: 0 !important;
-        }
-        .projects-flip .swiper-pagination-bullet:nth-child(1) { background: #facc15; }
-        .projects-flip .swiper-pagination-bullet:nth-child(2) { background: #16a34a; }
-        .projects-flip .swiper-pagination-bullet:nth-child(3) { background: #facc15; }
-        .projects-flip .swiper-pagination-bullet:nth-child(4) { background: #16a34a; }
-        .projects-flip .swiper-pagination-bullet:nth-child(5) { background: #facc15; }
-        .projects-flip .swiper-pagination-bullet:nth-child(6) { background: #16a34a; }
-        .projects-flip .swiper-pagination-bullet-active {
-          opacity: 1;
-          transform: scale(1.4);
-        }
-      `}</style>
-
       <div className="text-center">
         <h2 className="text-3xl font-black uppercase tracking-normal sm:text-4xl lg:text-5xl">
           <span className="text-[#facc15]">Engineering Archive</span>
@@ -162,7 +128,6 @@ export default function Project() {
         <button
           type="button"
           aria-label="Previous project"
-          suppressHydrationWarning
           onClick={() => swiperRef.current?.slidePrev()}
           className="absolute left-0 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-[6px] border border-yellow-300/70 bg-white text-[#16a34a] shadow-[0_12px_28px_rgba(0,0,0,0.14)] transition hover:bg-[#facc15] hover:text-[#111111] sm:h-12 sm:w-12"
         >
@@ -172,7 +137,6 @@ export default function Project() {
         <button
           type="button"
           aria-label="Next project"
-          suppressHydrationWarning
           onClick={() => swiperRef.current?.slideNext()}
           className="absolute right-0 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-[6px] border border-yellow-300/70 bg-white text-[#16a34a] shadow-[0_12px_28px_rgba(0,0,0,0.14)] transition hover:bg-[#facc15] hover:text-[#111111] sm:h-12 sm:w-12"
         >
