@@ -8,15 +8,13 @@ import Experience from "../components/Experience";
 import Education from "../components/Education";
 import Contact from "../components/Contact";
 import Welcome from "../components/Welcome";
-import MouseTrail from "../components/MouseTrail";
 
 export default function Page() {
   return (
-    <main className="relative min-h-screen overflow-x-clip scroll-smooth bg-white font-sans text-[#172033]">
+    <main className="relative min-h-screen overflow-x-clip scroll-smooth bg-[#050505] font-sans text-white">
       <Welcome />
-      <div className="fixed inset-0 bg-[radial-gradient(circle,rgba(14,165,233,0.13)_1px,transparent_1px)] [background-size:50px_50px]" />
-      <div className="fixed inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.94),rgba(236,253,245,0.78)_34%,rgba(239,246,255,0.78)_68%,rgba(253,244,255,0.82))]" />
-      <MouseTrail />
+      <div className="fixed inset-0 bg-[radial-gradient(circle,rgba(250,204,21,0.09)_1px,transparent_1px)] [background-size:50px_50px]" />
+      <div className="fixed inset-0 bg-[linear-gradient(135deg,#050505_0%,#111111_42%,#1d1d1d_72%,#2a2a2a_100%)]" />
 
       <Navbar />
       <Home />

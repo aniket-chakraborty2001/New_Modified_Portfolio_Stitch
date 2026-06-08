@@ -125,7 +125,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed left-0 top-0 z-50 w-full border-b border-white/40 bg-linear-to-r from-red-100/58 via-green-100/64 to-yellow-100/78 shadow-[0_12px_42px_rgba(20,184,166,0.12),inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-xl">
+    <header className="fixed left-0 top-0 z-50 isolate w-full overflow-hidden border-y border-white/35 bg-[linear-gradient(135deg,rgba(255,255,255,0.22),rgba(255,255,255,0.1)_38%,rgba(250,204,21,0.07)_68%,rgba(255,255,255,0.13))] shadow-[0_18px_54px_rgba(0,0,0,0.46),0_0_0_1px_rgba(255,255,255,0.18),inset_0_1px_0_rgba(255,255,255,0.42),inset_0_-1px_0_rgba(255,255,255,0.18)] backdrop-blur-2xl backdrop-saturate-150">
       <style>{`
         @keyframes nav-glass-pop {
           0% {
@@ -159,11 +159,14 @@ export default function Navbar() {
           }
         }
       `}</style>
-      <nav className="mx-auto flex min-h-20 w-full max-w-368 items-center justify-between gap-4 px-5 sm:px-8 lg:px-8 xl:px-10">
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_0%,rgba(255,255,255,0.28),transparent_28%),radial-gradient(circle_at_82%_100%,rgba(250,204,21,0.1),transparent_36%)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/75" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-white/45" />
+      <nav className="relative z-10 mx-auto flex min-h-20 w-full max-w-368 items-center justify-between gap-4 px-5 sm:px-8 lg:px-8 xl:px-10">
         <a
           href="#home"
           onClick={(event) => handleNavClick(event, "home")}
-          className="shrink-0 bg-linear-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-xl font-black tracking-[-0.04em] text-transparent sm:text-2xl"
+          className="shrink-0 text-xl font-black tracking-[-0.04em] text-[#facc15] sm:text-2xl"
         >
           A(I)NIKET
         </a>
@@ -179,14 +182,14 @@ export default function Navbar() {
                 key={item}
                 href={`#${id}`}
                 onClick={(event) => handleNavClick(event, id)}
-                className={`group relative isolate overflow-hidden rounded-full px-3 py-2 text-xs font-medium uppercase tracking-[0.2em] transition duration-300 hover:text-[#0ea5e9] xl:px-3.5 xl:text-sm xl:tracking-[0.24em] ${
+                className={`group relative isolate overflow-hidden rounded-full px-3 py-2 text-xs font-medium uppercase tracking-[0.2em] transition duration-300 hover:text-[#facc15] xl:px-3.5 xl:text-sm xl:tracking-[0.24em] ${
                   isActive
-                    ? "border border-white/55 bg-white/34 text-green-500 shadow-[0_8px_30px_rgba(20,184,166,0.14),inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-xl"
-                    : "text-pink-600 hover:bg-white/24 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.62)] hover:backdrop-blur-md"
+                    ? "border border-yellow-300/35 bg-white/10 text-[#facc15] shadow-[0_8px_30px_rgba(250,204,21,0.12),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl"
+                    : "text-white hover:bg-white/10 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] hover:backdrop-blur-md"
                 } ${isClicked ? "animate-[nav-glass-pop_620ms_cubic-bezier(0.22,1,0.36,1)]" : ""}`}
               >
                 <span
-                  className={`pointer-events-none absolute inset-0 -z-10 rounded-full bg-[radial-gradient(circle_at_35%_20%,rgba(14,165,233,0.22),rgba(217,70,239,0.1)_34%,rgba(245,158,11,0.08)_62%,transparent_76%)] transition duration-300 ${
+                  className={`pointer-events-none absolute inset-0 -z-10 rounded-full bg-[radial-gradient(circle_at_35%_20%,rgba(250,204,21,0.2),rgba(34,197,94,0.08)_48%,transparent_76%)] transition duration-300 ${
                     isActive ? "opacity-100" : "opacity-0 group-hover:opacity-70"
                   }`}
                 />
@@ -196,13 +199,13 @@ export default function Navbar() {
                   }`}
                 />
                 <span
-                  className={`pointer-events-none absolute inset-x-3 bottom-1 -z-10 h-px bg-[#0ea5e9]/70 transition duration-300 ${
+                  className={`pointer-events-none absolute inset-x-3 bottom-1 -z-10 h-px bg-[#facc15]/70 transition duration-300 ${
                     isActive ? "opacity-100" : "opacity-0 group-hover:opacity-60"
                   }`}
                 />
                 <span
                   className={`relative transition duration-300 ${
-                    isClicked ? "drop-shadow-[0_0_12px_rgba(14,165,233,0.55)]" : ""
+                    isClicked ? "drop-shadow-[0_0_12px_rgba(250,204,21,0.55)]" : ""
                   }`}
                 >
                   {item}
@@ -212,13 +215,13 @@ export default function Navbar() {
           })}
         </div>
 
-        <div className="flex shrink-0 items-center gap-2 text-slate-600 sm:gap-3">
+        <div className="flex shrink-0 items-center gap-2 text-white sm:gap-3">
           <a
             href="https://github.com/aniket-chakraborty2001/"
             aria-label="GitHub profile"
             target="_blank"
             rel="noreferrer"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/50 bg-white/26 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-lg transition hover:border-[#0ea5e9]/70 hover:bg-white/38 hover:text-[#0ea5e9]"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-lg transition hover:border-[#facc15]/70 hover:bg-white/15 hover:text-[#facc15]"
           >
             <FaGithub className="h-5 w-5" />
           </a>
@@ -227,14 +230,14 @@ export default function Navbar() {
             aria-label="LinkedIn profile"
             target="_blank"
             rel="noreferrer"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/50 bg-white/26 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-lg transition hover:border-[#0ea5e9]/70 hover:bg-white/38 hover:text-[#0ea5e9]"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-lg transition hover:border-[#facc15]/70 hover:bg-white/15 hover:text-[#facc15]"
           >
             <FaLinkedin className="h-5 w-5" />
           </a>
           <a
             href="/resume.pdf"
             aria-label="Download resume"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/50 bg-white/26 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-lg transition hover:border-[#0ea5e9]/70 hover:bg-white/38 hover:text-[#0ea5e9]"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-lg transition hover:border-[#facc15]/70 hover:bg-white/15 hover:text-[#facc15]"
           >
             <HiOutlineDownload className="h-5 w-5" />
           </a>

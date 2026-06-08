@@ -66,10 +66,10 @@ function ExperienceImage({ experience, index }) {
 
   if (!experience.image) {
     return (
-      <div className="relative flex h-full min-h-32 items-center justify-center overflow-hidden rounded-lg border border-[#20b2aa]/45 bg-[#bff3ef]/95">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(32,178,170,0.18),transparent_52%)]" />
-        <HiOutlineBriefcase className="relative h-12 w-12 text-[#0ea5e9]/80 sm:h-16 sm:w-16" />
-        <span className="absolute bottom-3 left-3 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-[#0ea5e9]">
+      <div className="relative flex h-full min-h-32 items-center justify-center overflow-hidden rounded-lg border border-yellow-200 bg-white">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(250,204,21,0.14),transparent_52%)]" />
+        <HiOutlineBriefcase className="relative h-12 w-12 text-[#16a34a]/80 sm:h-16 sm:w-16" />
+        <span className="absolute bottom-3 left-3 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-[#16a34a]">
           {label}
         </span>
       </div>
@@ -77,7 +77,7 @@ function ExperienceImage({ experience, index }) {
   }
 
   const image = (
-    <div className="relative flex h-full min-h-32 items-center justify-center overflow-hidden rounded-lg border border-[#20b2aa]/45 bg-[#bff3ef]/95">
+    <div className="relative flex h-full min-h-32 items-center justify-center overflow-hidden rounded-lg border border-yellow-200 bg-white">
       <Image
         src={experience.image}
         alt={`${experience.company} experience visual`}
@@ -88,11 +88,11 @@ function ExperienceImage({ experience, index }) {
         }`}
       />
       <div className="absolute inset-0 bg-linear-to-t from-white/65 via-transparent to-white/20" />
-      <span className="absolute bottom-3 left-3 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-[#0ea5e9]">
+      <span className="absolute bottom-3 left-3 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-[#16a34a]">
         {label}
       </span>
       {experience.link && (
-        <div className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-md border border-[#20b2aa]/55 bg-[#bff3ef]/95 text-[#0ea5e9] backdrop-blur-sm transition group-hover:bg-[#0ea5e9] group-hover:text-white">
+        <div className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-md border border-yellow-200 bg-white text-[#16a34a] transition group-hover:bg-[#facc15] group-hover:text-[#111111]">
           <FiExternalLink className="h-5 w-5" />
         </div>
       )}
@@ -139,38 +139,38 @@ function ExperienceCard({ experience, index, isOpen, canOpen, onOpen, style }) {
       aria-disabled={!canOpen}
       onClick={requestOpen}
       onKeyDown={handleKeyDown}
-      className={`experience-stack-card group absolute left-1/2 top-1/2 isolate grid w-(--experience-card-width) grid-cols-[minmax(8rem,40%)_1fr] gap-4 overflow-hidden rounded-lg border bg-[#bff3ef]/95 p-3 shadow-[0_18px_48px_rgba(32,178,170,0.16)] outline-none backdrop-blur-[2px] transition-[height,transform,opacity,border-color,box-shadow,filter] duration-500 ease-out focus-visible:border-[#20b2aa] focus-visible:shadow-[0_0_0_3px_rgba(32,178,170,0.18)] sm:grid-cols-[12rem_1fr] sm:gap-5 sm:p-5 ${
+      className={`experience-stack-card group absolute left-1/2 top-1/2 isolate grid w-(--experience-card-width) grid-cols-[minmax(8rem,40%)_1fr] gap-4 overflow-hidden rounded-lg border bg-white p-3 shadow-[0_18px_48px_rgba(0,0,0,0.2)] outline-none transition-[height,transform,opacity,border-color,box-shadow,filter] duration-500 ease-out focus-visible:border-[#facc15] focus-visible:shadow-[0_0_0_3px_rgba(250,204,21,0.2)] sm:grid-cols-[12rem_1fr] sm:gap-5 sm:p-5 ${
         canOpen ? "cursor-pointer" : "cursor-default"
       } ${
         isOpen
-          ? "h-(--experience-card-open-height) border-[#20b2aa]/80 shadow-[0_26px_90px_rgba(32,178,170,0.24)]"
-          : "h-(--experience-card-height) border-[#20b2aa]/55 hover:border-[#20b2aa]/80"
+          ? "h-(--experience-card-open-height) border-[#facc15] shadow-[0_26px_90px_rgba(250,204,21,0.16)]"
+          : "h-(--experience-card-height) border-yellow-200 hover:border-[#facc15]"
       }`}
       style={style}
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 rounded-lg border border-transparent bg-[linear-gradient(145deg,rgba(32,178,170,0.42),transparent_34%,rgba(255,255,255,0.2))] opacity-40 transition-opacity duration-400 [-webkit-mask:linear-gradient(#fff_0_0)_padding-box,linear-gradient(#fff_0_0)] [-webkit-mask-composite:xor] [mask-exclude] group-hover:opacity-100 group-focus-visible:opacity-100"
+        className="pointer-events-none absolute inset-0 rounded-lg border border-transparent bg-[linear-gradient(145deg,rgba(250,204,21,0.28),transparent_34%,rgba(34,197,94,0.12))] opacity-40 transition-opacity duration-400 [-webkit-mask:linear-gradient(#fff_0_0)_padding-box,linear-gradient(#fff_0_0)] [-webkit-mask-composite:xor] [mask-exclude] group-hover:opacity-100 group-focus-visible:opacity-100"
       />
       <ExperienceImage experience={experience} index={index} />
 
       <div className="flex min-w-0 flex-col pt-4 sm:pt-5">
         <div>
-          <p className="text-[0.65rem] font-black uppercase tracking-[0.22em] text-[#0ea5e9] sm:text-sm">
+          <p className="text-[0.65rem] font-black uppercase tracking-[0.22em] text-[#16a34a] sm:text-sm">
             {experience.company}
           </p>
-          <h3 className="mt-1 wrap-break-words text-lg font-black leading-tight tracking-normal text-[#172033] drop-shadow-[0_3px_0_rgba(14,165,233,0.12)] sm:mt-2 sm:text-[1.65rem]">
+          <h3 className="mt-1 wrap-break-words text-lg font-black leading-tight tracking-normal text-[#111111] drop-shadow-[0_3px_0_rgba(250,204,21,0.12)] sm:mt-2 sm:text-[1.65rem]">
             {experience.role}
           </h3>
         </div>
 
         <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[0.68rem] font-medium text-slate-600 sm:mt-3 sm:text-xs">
           <span className="flex items-center gap-2">
-            <HiOutlineCalendar className="h-4 w-4 text-[#0ea5e9]" />
+            <HiOutlineCalendar className="h-4 w-4 text-[#16a34a]" />
             {experience.period}
           </span>
           <span className="flex items-center gap-2">
-            <HiOutlineLocationMarker className="h-4 w-4 text-[#0ea5e9]" />
+            <HiOutlineLocationMarker className="h-4 w-4 text-[#16a34a]" />
             {experience.location}
           </span>
         </div>
@@ -187,7 +187,7 @@ function ExperienceCard({ experience, index, isOpen, canOpen, onOpen, style }) {
           <div className="min-h-0 space-y-3 overflow-hidden">
             {experience.highlights.map((highlight) => (
               <div key={highlight} className="flex gap-3 text-xs leading-5 text-slate-700 sm:text-sm sm:leading-6">
-                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#d946ef]" />
+                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#facc15]" />
                 <p>{highlight}</p>
               </div>
             ))}
@@ -242,15 +242,13 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative z-10 mx-auto w-full max-w-368 scroll-mt-20 px-5 pb-5 pt-20 sm:px-8 md:pt-22 lg:px-12 lg:pb-6 lg:pt-20"
+      className="relative z-10 mx-auto w-full max-w-368 scroll-mt-20 bg-[linear-gradient(135deg,#050505_0%,#111111_42%,#1d1d1d_72%,#2a2a2a_100%)] px-5 pb-5 pt-20 sm:px-8 md:pt-22 lg:px-12 lg:pb-6 lg:pt-20"
     >
       <div className="text-center">
         <h2 className="text-3xl font-black uppercase tracking-normal sm:text-4xl lg:text-5xl">
-          <span className="animate-pulse bg-linear-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
-            Experience History
-          </span>
+          <span className="text-[#facc15]">Experience History</span>
         </h2>
-        <p className="mx-auto mt-4 max-w-3xl text-center text-sm font-semibold leading-6 text-slate-700 sm:text-base">
+        <p className="mx-auto mt-4 max-w-3xl text-center text-sm font-semibold leading-6 text-white sm:text-base">
           A focused timeline of applied AI research, engineering work, and
           production-oriented experimentation.
         </p>

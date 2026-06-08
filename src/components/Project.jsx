@@ -47,15 +47,15 @@ const projects = [
 
 function ProjectCard({ project }) {
   return (
-    <article className="group relative isolate flex h-[24.5rem] w-full flex-col overflow-hidden rounded-[4px] border border-[#20b2aa]/55 bg-[#20b2aa]/18 shadow-[0_22px_56px_rgba(32,178,170,0.18)] backdrop-blur-[2px] transition duration-500 ease-out hover:border-[#20b2aa]/80 hover:shadow-[0_24px_58px_rgba(32,178,170,0.24)] sm:h-[21.5rem] sm:flex-row">
-      <span className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_0%,rgba(14,165,233,0.14),transparent_34%),radial-gradient(circle_at_85%_18%,rgba(217,70,239,0.12),transparent_32%)] opacity-0 transition duration-500 group-hover:opacity-100" />
+    <article className="group relative isolate flex h-[24.5rem] w-full flex-col overflow-hidden rounded-[4px] border border-yellow-200 bg-white shadow-[0_22px_56px_rgba(0,0,0,0.22)] transition duration-500 ease-out hover:border-[#facc15] hover:shadow-[0_24px_58px_rgba(250,204,21,0.16)] sm:h-[21.5rem] sm:flex-row">
+      <span className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_0%,rgba(250,204,21,0.12),transparent_34%),radial-gradient(circle_at_85%_18%,rgba(34,197,94,0.1),transparent_32%)] opacity-0 transition duration-500 group-hover:opacity-100" />
       <span className="pointer-events-none absolute inset-y-0 -left-1/2 z-20 w-1/2 -skew-x-[18deg] bg-gradient-to-r from-transparent via-white/60 to-transparent opacity-0 transition duration-700 group-hover:translate-x-[310%] group-hover:opacity-100" />
-      <span className="pointer-events-none absolute inset-0 rounded-[4px] border border-white/35 bg-[linear-gradient(135deg,rgba(32,178,170,0.16),transparent_32%,transparent_70%,rgba(255,255,255,0.14))] opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
-      <span className="pointer-events-none absolute left-4 top-4 z-20 h-8 w-8 border-l border-t border-[#0ea5e9]/0 transition duration-500 group-hover:border-[#0ea5e9]/80" />
-      <span className="pointer-events-none absolute bottom-4 right-4 z-20 h-8 w-8 border-b border-r border-[#0ea5e9]/0 transition duration-500 group-hover:border-[#0ea5e9]/80" />
+      <span className="pointer-events-none absolute inset-0 rounded-[4px] border border-white/35 bg-[linear-gradient(135deg,rgba(250,204,21,0.12),transparent_32%,transparent_70%,rgba(34,197,94,0.1))] opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
+      <span className="pointer-events-none absolute left-4 top-4 z-20 h-8 w-8 border-l border-t border-[#facc15]/0 transition duration-500 group-hover:border-[#facc15]/80" />
+      <span className="pointer-events-none absolute bottom-4 right-4 z-20 h-8 w-8 border-b border-r border-[#facc15]/0 transition duration-500 group-hover:border-[#facc15]/80" />
 
       {/* Image */}
-      <div className="relative h-48 w-full shrink-0 overflow-hidden bg-[#20b2aa]/10 sm:h-full sm:w-[55%]">
+      <div className="relative h-48 w-full shrink-0 overflow-hidden bg-white sm:h-full sm:w-[55%]">
         <Image
           src={project.image}
           alt={`${project.title} project visual`}
@@ -69,7 +69,7 @@ function ProjectCard({ project }) {
       {/* Content */}
       <div className="relative flex flex-1 flex-col justify-between p-4 sm:p-5">
         <div>
-          <h3 className="text-base font-black uppercase leading-tight tracking-[0] text-[#172033] drop-shadow-[0_3px_0_rgba(14,165,233,0.12)] transition duration-500 group-hover:text-[#0ea5e9] sm:text-lg">
+          <h3 className="text-base font-black uppercase leading-tight tracking-[0] text-[#111111] drop-shadow-[0_3px_0_rgba(250,204,21,0.12)] transition duration-500 group-hover:text-[#16a34a] sm:text-lg">
             {project.title}
           </h3>
           <p className="mt-2 text-xs leading-5 text-slate-600 sm:text-sm sm:leading-6">
@@ -80,7 +80,7 @@ function ProjectCard({ project }) {
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="inline-block text-[0.62rem] font-black uppercase tracking-[0.12em] text-[#0ea5e9] transition duration-300 group-hover:-translate-y-0.5 group-hover:text-[#d946ef] group-hover:drop-shadow-[0_0_14px_rgba(217,70,239,0.28)] sm:text-[0.68rem]"
+              className="inline-block text-[0.62rem] font-black uppercase tracking-[0.12em] text-[#16a34a] transition duration-300 group-hover:-translate-y-0.5 group-hover:text-[#ca8a04] group-hover:drop-shadow-[0_0_14px_rgba(250,204,21,0.22)] sm:text-[0.68rem]"
             >
               {tag}
             </span>
@@ -97,7 +97,7 @@ export default function Project() {
   return (
     <section
       id="projects"
-      className="relative z-10 mx-auto w-full max-w-[92rem] scroll-mt-20 px-5 pb-20 pt-24 sm:px-8 md:pt-28 lg:px-12"
+      className="relative z-10 mx-auto w-full max-w-[92rem] scroll-mt-20 bg-[linear-gradient(135deg,#050505_0%,#111111_42%,#1d1d1d_72%,#2a2a2a_100%)] px-5 pb-20 pt-24 sm:px-8 md:pt-28 lg:px-12"
     >
       {/* Pagination dot styles — scoped to this section only */}
       <style>{`
@@ -115,16 +115,16 @@ export default function Project() {
           height: 10px;
           border-radius: 9999px;
           opacity: 0.35;
-          background: #0ea5e9;
+          background: #facc15;
           transition: opacity 0.3s, transform 0.3s, background 0.3s;
           margin: 0 !important;
         }
-        .projects-flip .swiper-pagination-bullet:nth-child(1) { background: #0ea5e9; }
-        .projects-flip .swiper-pagination-bullet:nth-child(2) { background: #7c3aed; }
-        .projects-flip .swiper-pagination-bullet:nth-child(3) { background: #d946ef; }
-        .projects-flip .swiper-pagination-bullet:nth-child(4) { background: #f59e0b; }
-        .projects-flip .swiper-pagination-bullet:nth-child(5) { background: #0ea5e9; }
-        .projects-flip .swiper-pagination-bullet:nth-child(6) { background: #d946ef; }
+        .projects-flip .swiper-pagination-bullet:nth-child(1) { background: #facc15; }
+        .projects-flip .swiper-pagination-bullet:nth-child(2) { background: #16a34a; }
+        .projects-flip .swiper-pagination-bullet:nth-child(3) { background: #facc15; }
+        .projects-flip .swiper-pagination-bullet:nth-child(4) { background: #16a34a; }
+        .projects-flip .swiper-pagination-bullet:nth-child(5) { background: #facc15; }
+        .projects-flip .swiper-pagination-bullet:nth-child(6) { background: #16a34a; }
         .projects-flip .swiper-pagination-bullet-active {
           opacity: 1;
           transform: scale(1.4);
@@ -133,11 +133,9 @@ export default function Project() {
 
       <div className="text-center">
         <h2 className="text-3xl font-black uppercase tracking-normal sm:text-4xl lg:text-5xl">
-          <span className="animate-pulse bg-gradient-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
-            Engineering Archive
-          </span>
+          <span className="text-[#facc15]">Engineering Archive</span>
         </h2>
-        <p className="mx-auto mt-4 max-w-3xl text-center text-sm font-semibold leading-6 text-slate-700 sm:text-base">
+        <p className="mx-auto mt-4 max-w-3xl text-center text-sm font-semibold leading-6 text-white sm:text-base">
           A curated selection of experiments in Generative Artificial Intelligence, computer
           vision, and autonomous systems development.
         </p>
@@ -166,7 +164,7 @@ export default function Project() {
           aria-label="Previous project"
           suppressHydrationWarning
           onClick={() => swiperRef.current?.slidePrev()}
-          className="absolute left-0 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-[6px] border border-sky-300/70 bg-white/92 text-[#0ea5e9] shadow-[0_12px_28px_rgba(14,165,233,0.12)] transition hover:bg-[#0ea5e9] hover:text-white sm:h-12 sm:w-12"
+          className="absolute left-0 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-[6px] border border-yellow-300/70 bg-white text-[#16a34a] shadow-[0_12px_28px_rgba(0,0,0,0.14)] transition hover:bg-[#facc15] hover:text-[#111111] sm:h-12 sm:w-12"
         >
           <FiChevronLeft className="h-7 w-7" />
         </button>
@@ -176,7 +174,7 @@ export default function Project() {
           aria-label="Next project"
           suppressHydrationWarning
           onClick={() => swiperRef.current?.slideNext()}
-          className="absolute right-0 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-[6px] border border-sky-300/70 bg-white/92 text-[#0ea5e9] shadow-[0_12px_28px_rgba(14,165,233,0.12)] transition hover:bg-[#0ea5e9] hover:text-white sm:h-12 sm:w-12"
+          className="absolute right-0 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-[6px] border border-yellow-300/70 bg-white text-[#16a34a] shadow-[0_12px_28px_rgba(0,0,0,0.14)] transition hover:bg-[#facc15] hover:text-[#111111] sm:h-12 sm:w-12"
         >
           <FiChevronRight className="h-7 w-7" />
         </button>

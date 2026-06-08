@@ -45,13 +45,13 @@ function EducationTrace({ item, index }) {
 
   return (
     <article
-      className={`education-trace-row group relative grid min-h-64 gap-5 border-y border-[#20b2aa]/45 py-5 sm:py-7 lg:grid-cols-[minmax(0,1fr)_5.5rem_minmax(0,1fr)] lg:items-center lg:gap-8 ${
+      className={`education-trace-row group relative grid min-h-64 gap-5 border-y border-white/15 py-5 sm:py-7 lg:grid-cols-[minmax(0,1fr)_5.5rem_minmax(0,1fr)] lg:items-center lg:gap-8 ${
         isReversed ? "lg:[&_.education-copy]:col-start-3" : ""
       }`}
     >
       <span
         aria-hidden="true"
-        className="education-row-scan pointer-events-none absolute inset-x-0 top-0 h-px origin-left bg-linear-to-r from-[#0ea5e9] via-[#20b2aa] to-[#d946ef]"
+        className="education-row-scan pointer-events-none absolute inset-x-0 top-0 h-px origin-left bg-linear-to-r from-[#facc15] to-[#16a34a]"
       />
 
       <div
@@ -64,28 +64,28 @@ function EducationTrace({ item, index }) {
             isReversed ? "lg:justify-end" : ""
           }`}
         >
-          <span className="border border-[#20b2aa]/45 bg-[#20b2aa]/10 px-3 py-1 text-[0.66rem] font-semibold uppercase tracking-[0.16em] text-[#0ea5e9] sm:text-xs">
+          <span className="border border-yellow-300/45 bg-white px-3 py-1 text-[0.66rem] font-semibold uppercase tracking-[0.16em] text-[#16a34a] sm:text-xs">
             Node 0{index + 1}
           </span>
-          <span className="border border-[#20b2aa]/45 bg-white/45 px-3 py-1 text-[0.66rem] font-semibold tracking-[0.16em] text-[#d946ef] sm:text-xs">
+          <span className="border border-yellow-300/45 bg-white px-3 py-1 text-[0.66rem] font-semibold tracking-[0.16em] text-[#ca8a04] sm:text-xs">
             {item.period}
           </span>
         </div>
 
-        <h3 className="education-title mt-4 wrap-break-word text-xl font-black leading-tight tracking-normal text-[#0ea5e9] sm:text-2xl lg:text-3xl">
+        <h3 className="education-title mt-4 wrap-break-word text-xl font-black leading-tight tracking-normal text-[#facc15] sm:text-2xl lg:text-3xl">
           {item.institution}
         </h3>
-        <p className="education-degree mt-2 wrap-break-word text-base font-black leading-tight text-[#172033] drop-shadow-[0_3px_0_rgba(14,165,233,0.12)] sm:text-lg lg:text-xl">
+        <p className="education-degree mt-2 wrap-break-word text-base font-black leading-tight text-white drop-shadow-[0_3px_0_rgba(250,204,21,0.12)] sm:text-lg lg:text-xl">
           {item.degree}
         </p>
 
         <div className="education-concepts mt-5">
-          <p className="text-xs font-black uppercase tracking-[0.24em] text-[#d946ef]">
+          <p className="text-xs font-black uppercase tracking-[0.24em] text-[#facc15]">
             Learned Concepts
           </p>
 
           <div
-            className={`mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-xs leading-5 text-slate-700 sm:text-sm ${
+            className={`mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-xs leading-5 text-white/82 sm:text-sm ${
               isReversed ? "lg:justify-end" : ""
             }`}
           >
@@ -101,7 +101,7 @@ function EducationTrace({ item, index }) {
           href={item.certificateUrl}
           target="_blank"
           rel="noreferrer"
-          className={`education-link mt-5 inline-flex h-10 w-full items-center justify-center gap-2 border border-[#0ea5e9] px-5 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[#0ea5e9] transition hover:bg-[#0ea5e9] hover:text-white sm:w-auto sm:min-w-52 sm:text-xs ${
+          className={`education-link mt-5 inline-flex h-10 w-full items-center justify-center gap-2 border border-[#facc15] px-5 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[#facc15] transition hover:bg-[#facc15] hover:text-[#111111] sm:w-auto sm:min-w-52 sm:text-xs ${
             isReversed ? "lg:ml-auto" : ""
           }`}
         >
@@ -112,15 +112,15 @@ function EducationTrace({ item, index }) {
 
       <div
         aria-hidden="true"
-        className="education-marker absolute left-0 top-7 flex h-12 w-12 items-center justify-center border border-[#20b2aa]/70 bg-white/88 text-[#0ea5e9] shadow-[0_0_34px_rgba(14,165,233,0.2)] lg:static lg:col-start-2 lg:row-start-1 lg:mx-auto lg:h-16 lg:w-16"
+        className="education-marker absolute left-0 top-7 flex h-12 w-12 items-center justify-center border border-yellow-300 bg-white text-[#16a34a] shadow-[0_0_34px_rgba(250,204,21,0.18)] lg:static lg:col-start-2 lg:row-start-1 lg:mx-auto lg:h-16 lg:w-16"
       >
-        <span className="absolute inset-2 border border-[#d946ef]/30" />
+        <span className="absolute inset-2 border border-[#facc15]/30" />
         <Icon className="relative h-6 w-6 sm:h-7 sm:w-7" />
       </div>
 
       <div
         aria-hidden="true"
-        className={`education-connector hidden h-px bg-linear-to-r from-transparent via-[#20b2aa]/80 to-transparent lg:row-start-1 lg:block ${
+        className={`education-connector hidden h-px bg-linear-to-r from-transparent via-[#facc15]/80 to-transparent lg:row-start-1 lg:block ${
           isReversed ? "lg:col-start-1" : "lg:col-start-3"
         }`}
       />
@@ -196,19 +196,17 @@ export default function Education() {
     <section
       id="education"
       ref={sectionRef}
-      className="relative z-10 mx-auto h-[260svh] w-full max-w-368 scroll-mt-20 px-5 sm:px-8 lg:px-12"
+      className="relative z-10 mx-auto h-[260svh] w-full max-w-368 scroll-mt-20 bg-[linear-gradient(135deg,#050505_0%,#111111_42%,#1d1d1d_72%,#2a2a2a_100%)] px-5 sm:px-8 lg:px-12"
     >
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(14,165,233,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(217,70,239,0.05)_1px,transparent_1px)] bg-size-[64px_64px]" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(250,204,21,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-size-[64px_64px]" />
 
       <div className="sticky top-0 flex min-h-screen flex-col justify-center overflow-hidden py-20">
         <div className="text-center">
           <h2 className="education-heading text-3xl font-black uppercase tracking-normal sm:text-4xl lg:text-5xl">
-            <span className="animate-pulse bg-linear-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
-              Academic Trajectory
-            </span>
+            <span className="text-[#facc15]">Academic Trajectory</span>
           </h2>
-          <div className="mx-auto mt-4 h-1 w-28 bg-linear-to-r from-[#0ea5e9] to-[#d946ef]" />
-          <p className="education-intro mx-auto mt-4 max-w-3xl text-center text-sm font-semibold leading-6 text-slate-700 sm:text-base">
+          <div className="mx-auto mt-4 h-1 w-28 bg-[#facc15]" />
+          <p className="education-intro mx-auto mt-4 max-w-3xl text-center text-sm font-semibold leading-6 text-white sm:text-base">
             A rigorous foundation in computational science and artificial
             intelligence, mapped through institutions of technical excellence.
           </p>
@@ -217,9 +215,9 @@ export default function Education() {
         <div className="relative mx-auto mt-8 w-full max-w-6xl sm:mt-10 lg:mt-12">
           <div
             aria-hidden="true"
-            className="absolute bottom-5 left-6 top-5 w-px overflow-hidden bg-[#20b2aa]/18 lg:left-1/2 lg:-translate-x-1/2"
+            className="absolute bottom-5 left-6 top-5 w-px overflow-hidden bg-white/15 lg:left-1/2 lg:-translate-x-1/2"
           >
-            <span className="education-rail-fill block h-full w-full bg-linear-to-b from-[#0ea5e9]/45 via-[#20b2aa]/85 to-[#d946ef]/45" />
+            <span className="education-rail-fill block h-full w-full bg-linear-to-b from-[#facc15]/45 via-[#16a34a]/85 to-[#facc15]/45" />
           </div>
 
           <div className="grid gap-5 lg:gap-7">

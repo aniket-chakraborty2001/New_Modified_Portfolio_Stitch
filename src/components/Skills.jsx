@@ -62,7 +62,7 @@ function SkillCard({ skill, cardRef }) {
         ease: "power2.out", transformPerspective: 650,
       });
       gsap.set(glare, {
-        background: `radial-gradient(circle at ${e.clientX - left}px ${e.clientY - top}px, rgba(32,178,170,0.24) 0%, transparent 60%)`,
+        background: `radial-gradient(circle at ${e.clientX - left}px ${e.clientY - top}px, rgba(250,204,21,0.18) 0%, transparent 60%)`,
         opacity: 1,
       });
     };
@@ -87,26 +87,26 @@ function SkillCard({ skill, cardRef }) {
     <div
       ref={cardRef}
       style={{ transformStyle: "preserve-3d", willChange: "transform, opacity" }}
-      className="group relative flex h-46 flex-col overflow-hidden rounded-xl border border-[#20b2aa]/55 bg-[#20b2aa]/18 p-4 shadow-[0_18px_44px_rgba(32,178,170,0.16)] backdrop-blur-[2px] transition-[border-color] duration-300 hover:border-[#20b2aa]/80"
+      className="group relative flex h-46 flex-col overflow-hidden rounded-xl border border-yellow-200 bg-white p-4 shadow-[0_18px_44px_rgba(0,0,0,0.16)] transition-[border-color] duration-300 hover:border-[#facc15]"
     >
       {/* spotlight glare */}
       <span ref={glareRef} className="pointer-events-none absolute inset-0 rounded-xl opacity-0" />
 
       {/* accent bar */}
-      <span className="absolute bottom-0 left-0 right-0 h-0.5 origin-left scale-x-0 bg-linear-to-r from-[#0ea5e9] via-[#14b8a6] to-[#d946ef] transition-transform duration-360ms ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100" />
+      <span className="absolute bottom-0 left-0 right-0 h-0.5 origin-left scale-x-0 bg-linear-to-r from-[#facc15] to-[#16a34a] transition-transform duration-360ms ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100" />
 
       {/* icon */}
-      <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg bg-[#20b2aa]/12 ring-1 ring-[#20b2aa]/45">
+      <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg bg-white ring-1 ring-yellow-200">
         <Image src={skill.icon} alt={`${skill.name} icon`} fill sizes="2.5rem" className="object-contain p-1.5" />
       </div>
 
       {/* timeline */}
-      <span className="absolute right-3.5 top-3.5 text-[10px] font-black uppercase tracking-[0.13em] text-[#0ea5e9]">
+      <span className="absolute right-3.5 top-3.5 text-[10px] font-black uppercase tracking-[0.13em] text-[#16a34a]">
         {skill.timeline}
       </span>
 
       {/* name */}
-      <h3 className="mt-auto text-[0.95rem] font-black leading-tight tracking-tight text-[#172033]">
+      <h3 className="mt-auto text-[0.95rem] font-black leading-tight tracking-tight text-[#111111]">
         {skill.name}
       </h3>
 
@@ -185,7 +185,7 @@ export default function Skills() {
     <section
       id="skills"
       ref={sectionRef}
-      className="relative z-10 mx-auto w-full max-w-368 scroll-mt-20"
+      className="relative z-10 mx-auto w-full max-w-368 scroll-mt-20 bg-[linear-gradient(135deg,#050505_0%,#111111_42%,#1d1d1d_72%,#2a2a2a_100%)]"
       style={{ height: "300vh" }}
     >
       <div
@@ -193,21 +193,19 @@ export default function Skills() {
         className="sticky top-0 flex min-h-screen flex-col items-center justify-center overflow-hidden px-5 sm:px-8 lg:px-12"
       >
         {/* decorative rings */}
-        <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 h-176 w-176 -translate-x-1/2 -translate-y-1/2 rounded-full border border-sky-300/16 animate-[spin_32s_linear_infinite]" />
-        <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 h-112 w-md -translate-x-1/2 -translate-y-1/2 rounded-full border border-fuchsia-300/13 animate-[spin_42s_linear_infinite_reverse]" />
+        <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 h-176 w-176 -translate-x-1/2 -translate-y-1/2 rounded-full border border-yellow-300/16 animate-[spin_32s_linear_infinite]" />
+        <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 h-112 w-md -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10 animate-[spin_42s_linear_infinite_reverse]" />
 
         {/* heading */}
         <h2
           ref={headingRef}
           className="mb-3 text-center text-3xl font-black uppercase tracking-normal opacity-0 sm:text-4xl lg:text-5xl"
         >
-          <span className="animate-pulse bg-linear-to-r from-[#0ea5e9] via-[#d946ef] to-[#f59e0b] bg-clip-text text-transparent">
-            Technical Expertise
-          </span>
+          <span className="text-[#facc15]">Technical Expertise</span>
         </h2>
         <p
           ref={subtitleRef}
-          className="mx-auto mb-12 mt-4 max-w-3xl text-center text-sm font-semibold leading-6 text-slate-700 opacity-0 sm:text-base"
+          className="mx-auto mb-12 mt-4 max-w-3xl text-center text-sm font-semibold leading-6 text-white opacity-0 sm:text-base"
         >
           A quantitative breakdown of my technical capabilities, engineering
           proficiency, and the stack I leverage to solve complex problems in AI.
@@ -226,15 +224,15 @@ export default function Skills() {
 
         {/* counter */}
         <div className="mt-6 flex items-center gap-4">
-          <span className="h-px w-16 bg-sky-300/45" />
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+          <span className="h-px w-16 bg-yellow-300/45" />
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/70">
             {SKILLS.length} skills
           </p>
-          <span className="h-px w-16 bg-sky-300/45" />
+          <span className="h-px w-16 bg-yellow-300/45" />
         </div>
 
         {/* scroll nudge — fades out once scrolled */}
-        <p className="mt-4 text-xs font-medium uppercase tracking-[0.2em] text-slate-500 animate-bounce">
+        <p className="mt-4 text-xs font-medium uppercase tracking-[0.2em] text-white/70 animate-bounce">
           scroll to reveal
         </p>
       </div>
